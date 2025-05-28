@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   user: any;
   proveedor: Proveedor;
   role:any;
-
+  query:string ='';
   constructor(
     private proveedorService: ProveedorService,
     private ativatedRoute: ActivatedRoute,
@@ -43,7 +43,21 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  public PageSize(): void {
+      // this.getDirectorios();
+      this.query = '';
+    }
   
+  
+    search() {
+      // return this.directorioService.search(this.query).subscribe(
+      //   (res:any)=>{
+      //     this.directories = res;
+      //     if(!this.query){
+      //       this.ngOnInit();
+      //     }
+      //   });
+    }
 
 
 }

@@ -27,6 +27,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import{SliderIndexComponent} from './slider/slider-index/slider-index.component';
 import{SliderEditComponent} from './slider/slider-edit/slider-edit.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 
 

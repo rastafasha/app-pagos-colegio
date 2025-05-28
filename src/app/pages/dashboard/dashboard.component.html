@@ -10,6 +10,23 @@
     </div>
 </div>
 
+<!-- buscador -->
+<form class="form-horizontal">
+    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+        <div class="input-group">
+            <input type="search" name="search" type="text" class="form-control col-xs-12" placeholder="Buscar.."
+                [(ngModel)]="query" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+            <div class="input-group-append">
+                <button id="button-addon1" type="submit" class="btn btn-link text-primary" (click)="search()"
+                    name="submit" data-toggle="tooltip" title="mostrar todos"><i class="fa fa-search"></i></button>
+                <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><i
+                        class="fa fa-refresh"></i></a>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- buscador -->
+
 <div *ngIf="role === 'GUEST' || role === 'MEMBER' ">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -34,12 +51,12 @@
                         <span class="badge bg-danger" *ngIf="proveedor?.status === 'no'">No</span>
                     </p>
                     <span *ngIf="proveedor?.status === 'pending' || proveedor?.status !== null ">
-                        <button class="btn btn-outline-primary pull-right" 
+                        <button class="btn btn-outline-primary pull-right"
                             [routerLink]="['/dashboard/proveedor/edit/', user.id]">Editar</button>
 
                     </span>
                     <span *ngIf="proveedor?.status === null ">
-                        <button class="btn btn-outline-primary pull-right" 
+                        <button class="btn btn-outline-primary pull-right"
                             [routerLink]="['/dashboard/proveedor/edit/', user.id]">Crear</button>
 
                     </span>

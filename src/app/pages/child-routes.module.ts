@@ -12,6 +12,10 @@ import { UsersListComponent } from './users/user-list/users-list.component';
 import { EditProveedorComponent } from './proveedor/edit-proveedor/edit-proveedor.component';
 import { DetailProveedorComponent } from './proveedor/detail-proveedor/detail-proveedor.component';
 import { ListProveedorComponent } from './proveedor/list-proveedor/list-proveedor.component';
+import { PaymentEditComponent } from './payments/payment-edit/payment-edit.component';
+import { PaymentDetailsComponent } from './payments/payment-details/payment-details.component';
+import { Payment } from '../models/payment';
+import { PaymentsComponent } from './payments/payments.component';
 
 
 const childRoutes: Routes = [
@@ -34,6 +38,10 @@ const childRoutes: Routes = [
             { path: 'slider', component: SliderIndexComponent},
             { path: 'slider/create', component: SliderEditComponent},
             { path: 'slider/edit/:id', component: SliderEditComponent},
+            
+            { path: 'payments', component: PaymentsComponent},
+            { path: 'payment/edit/:id', component: PaymentEditComponent},
+            { path: 'payment-detail/:id', component: PaymentDetailsComponent},
             
 
 

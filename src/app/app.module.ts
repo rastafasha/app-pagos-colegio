@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.modulo';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { UserModule } from './pages/users/user.module';
 import { ProveedorModule } from './pages/proveedor/proveedor.module';
+import { PaymentsModule } from './pages/payments/payments.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProveedorModule } from './pages/proveedor/proveedor.module';
     SharedModule,
     PagesModule,
     UserModule,
+    PaymentsModule,
     ProveedorModule,
     NgxPaginationModule,
   ],
