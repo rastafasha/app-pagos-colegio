@@ -1,0 +1,255 @@
+<!-- =======| Main |======= -->
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+
+                        <span class="badge bg-warning" *ngIf="proveedorSelected.status === 'completed'">Completed to Review</span>
+                                        <span class="badge bg-warning" *ngIf="proveedorSelected.status === 'pending'">Pendiente</span>
+                                        <span class="badge bg-primary" *ngIf="proveedorSelected.status === 'review'">Revisando</span>
+                                        <span class="badge bg-success" *ngIf="proveedorSelected.status === 'ok'">Aprobado</span>
+                                        <span class="badge bg-danger" *ngIf="proveedorSelected.status === 'no'">No</span>
+                    </div>
+                    
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)"
+                            (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
+                <!-- <li class="breadcrumb-item"><a routerLink="/dashboard/directorio">Directorio</a></li> -->
+                <li class="breadcrumb-item active">{{title}}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+<div class="container animated fadeInUp" id="main" class="main" role="main" name="users">
+    <section class="section dashboard">
+
+
+        <!---Nuevo-->
+        <div class="container mt-5 mb-3 ">
+            <div class="row elemendirec">
+                <div class="col-xs-12 ">
+
+                    <div class="fr-view">
+                        <div class="card p-3">
+                            <h3>Info Usuario</h3>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6  b-r">
+                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Nombre</div>
+                                    <div class="col-12 info">{{userSelected.name}}</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6  b-r">
+                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Apellido</div>
+                                    <div class="col-12 info">{{userSelected.surname}}</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6  b-r">
+                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Email</div>
+                                    <div class="col-12 info">{{userSelected.email}}</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6  b-r">
+                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Registrado</div>
+                                    <div class="col-12 info">{{userSelected.created_at | date}}</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xs-12 ">
+                    <div class="card">
+                        <div class="card-body pt-3">
+                            <div class="col-xs-12">
+                                <div *ngIf="proveedorSelected">
+                                    <div class="row">
+                                        <h5>Información del Proveedor</h5>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-person-circle"></i> Nombre Empresa</div>
+                                            <div class="col-12  info">{{proveedorSelected.nombre_empresa}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-person-circle"></i> RUC</div>
+                                            <div class="col-12  info">{{proveedorSelected.ruc}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-person-circle"></i> Correo Electrónico</div>
+                                            <div class="col-12  info">{{proveedorSelected.email}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-geo"></i> Website</div>
+                                            <div class="col-12  info">
+                                                {{proveedorSelected.web_site}}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi  bi-award"></i> Nombre contacto principal</div>
+                                            <div class="col-12 info">{{proveedorSelected.nombre_contacto_principal}} </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-bank2"></i> Email contacto principal</div>
+                                            <div class="col-12  info">{{proveedorSelected.email_contacto_principal}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi  bi-award"></i> Teléfono contacto principal</div>
+                                            <div class="col-12  info">{{proveedorSelected.phone_contacto_principal}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi  bi-award"></i> Nombre Razón Social</div>
+                                            <div class="col-12  info">{{proveedorSelected.nombre_razon_social}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> direccion</div>
+                                            <div class="col-12  info">
+                                                {{proveedorSelected.direccion}}
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> telefonos</div>
+
+                                            <div class="col-12  info">
+                                                <a href="tel:{{proveedorSelected.telefonos}}" target="_blank">
+                                                {{proveedorSelected.telefonos}}
+                                              </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 b-r">
+                                            <div class="col-12  label"><i class="bi  bi-award"></i> Nombre Representante Legal</div>
+                                            <div class="col-12  info">{{proveedorSelected.nombre_representante_legal}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 b-r">
+                                            <div class="col-12  label"><i class="bi  bi-award"></i> Cédula Representante Legal</div>
+                                            <div class="col-12  info">{{proveedorSelected.cedula_representante_legal}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 b-r">
+                                            <div class="col-12  label"><i class="bi  bi-award"></i> Teléfono Representante Legal</div>
+                                            <div class="col-12  info">{{proveedorSelected.telefono_representante_legal}}</div>
+                                        </div>
+                                        
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h5>Información Financiera</h5>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> Cuenta Bancaria</div>
+                                            <div class="col-12 info">{{proveedorSelected.cuenta_bancaria}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-geo"></i> Banco</div>
+                                            <div class="col-12  info">{{proveedorSelected.banco}}</div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-file-text"></i> SWIFT/BIC</div>
+                                            <div class="col-12  info">
+                                                <p>{{proveedorSelected.swift_bic}}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-file-text"></i> Documentos Solvencia financiera</div>
+                                            <div class="col-12  info">
+                                                <p>{{proveedorSelected.documentos_de_solvencia_financiera}}</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h5>Información sobre Productos/Servicios</h5>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> Descripción de Proucto/ Servicio ofrecido</div>
+                                            <div class="col-12 info">{{proveedorSelected.descripcion_prod_serv}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-geo"></i> Categoría de Proucto/ Servicio</div>
+                                            <div class="col-12  info">{{proveedorSelected.categoria_prod_serv}}</div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-file-text"></i> Certificaciones</div>
+                                            <div class="col-12  info">
+                                                <p>{{proveedorSelected.certificaciones}}</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                            <div class="col-12  label"><i class="bi bi-file-text"></i> Credenciales</div>
+                                            <div class="col-12  info">
+                                                <p>{{proveedorSelected.credenciales}}</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h5>Documentación Legal</h5>
+                                        <div class="col-xs-12 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> Aviso de Operación</div>
+                                            <div class="col-12 info">{{proveedorSelected.aviso_operacion}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-geo"></i> Paz y Salvos (DGC y CSS) </div>
+                                            <div class="col-12  info">{{proveedorSelected.paz_salvos_dgi_y_css}}</div>
+                                        </div>
+                                        <div class="col-xs-12  b-r">
+                                            <div class="col-12  label"><i class="bi bi-file-text"></i> Documento Incorporacion empresa (Registro Público)</div>
+                                            <div class="col-12  info">
+                                                <p>{{proveedorSelected.documento_incorporacion_empresa_rp}}</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h5>Referencias</h5>
+                                        <div class="col-xs-12 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> Referencias Comerciales</div>
+                                            <div class="col-12 info">{{proveedorSelected.referencias_comerciales}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-geo"></i> Referencias Bancarias</div>
+                                            <div class="col-12  info">{{proveedorSelected.referencias_bancarias}}</div>
+                                        </div>
+                                        
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h5>Evaluaciones y Auditorias</h5>
+                                        <div class="col-xs-12 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-telephone"></i> Informes y Auditorias</div>
+                                            <div class="col-12 info">{{proveedorSelected.informes_auditorias}}</div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6  b-r">
+                                            <div class="col-12  label"><i class="bi bi-geo"></i> Otros</div>
+                                            <div class="col-12  info">{{proveedorSelected.otros}}</div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---Nuevo-->
+
+
+
+
+    </section>
+</div>
+<!--/main-->

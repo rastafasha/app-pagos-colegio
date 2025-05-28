@@ -1,0 +1,317 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-md-2 align-self-center" *ngIf="proveedorSelected">
+                        <form action="">
+                            <select class="form-control form-select-solid fw-bolder" name="state"
+                                [(ngModel)]="proveedorSelected.status" (change)="cambiarStatus(proveedorSelected)"
+                                placeholder="status">
+                                <option>-- Select --</option>
+                                <option value="pending">Pendiente</option>
+                                <option value="completed">Completado</option>
+                                <option value="review">Revisando</option>
+                            </select>
+                        </form>
+                    </div>
+                    
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)"
+                            (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section class="section dashboard accordion">
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+                <form [formGroup]="proveedorForm" id="kt_project_settings_form"
+                    class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate">
+                    <div class="card">
+                        <div class="card-header">
+                            <b>Información Proveedor</b>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Nombre de la Empresa </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="nombre_empresa" name="nombre_empresa"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>RUC </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="ruc" name="ruc" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Email </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="email" name="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Web Site </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="web_site" name="web_site"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Nombre Contacto Principal </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="nombre_contacto_principal"
+                                            name="nombre_contacto_principal" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Email Contacto Principal </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="email_contacto_principal"
+                                            name="email_contacto_principal" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Teléfono Contacto Principal </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="phone_contacto_principal"
+                                            name="phone_contacto_principal" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Nombre de la razón social </label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="nombre_razon_social"
+                                            name="nombre_razon_social" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Dirección</label>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" name="direccion"
+                                            formControlName="direccion"></textarea>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Teléfono(s)</label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="telefonos" name="telefonos"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Nombre Representante Legal</label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="nombre_representante_legal"
+                                            name="nombre_representante_legal" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Cédula Representante Legal</label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="cedula_representante_legal"
+                                            name="cedula_representante_legal" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <label>Teléfono Representante Legal</label>
+                                    <div class="mb-3">
+                                        <input type="text" formControlName="telefono_representante_legal"
+                                            name="telefono_representante_legal" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br>
+                            <br>
+                            <!-- Información Financiera -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row align-items-center">
+                                        <h3 class="card-title">Información Financiera</h3>
+
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Cuenta Bancaria</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="cuenta_bancaria"
+                                                    name="cuenta_bancaria" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Banco</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="banco" name="banco"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>SWIFT/BIC</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="swift_bic" name="swift_bic"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Documentos de solvencia financiera</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="documentos_de_solvencia_financiera"
+                                                    name="documentos_de_solvencia_financiera" class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Información Financiera -->
+                            <br><br>
+                            <!-- Información sobre Productos / Servicios -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row align-items-center">
+                                        <h3 class="card-title">Información sobre Productos / Servicios</h3>
+
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Descripción de producto / servicios ofrecidos</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="descripcion_prod_serv"
+                                                    name="descripcion_prod_serv" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Categoría de producto / servicios</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="categoria_prod_serv"
+                                                    name="categoria_prod_serv" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Certificaciones</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="certificaciones"
+                                                    name="certificaciones" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Credenciales</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="credenciales" name="credenciales"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Información sobre Productos / Servicios -->
+                            <br><br>
+                            <!-- Documentación Legal -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row align-items-center">
+                                        <h3 class="card-title">Documentación Legal</h3>
+
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Aviso de Operación</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="aviso_operacion"
+                                                    name="aviso_operacion" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Paz y Salvos (DGI y CSS)</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="paz_salvos_dgi_y_css"
+                                                    name="paz_salvos_dgi_y_css" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 ">
+                                            <label>Documento de incorporación de la Empresa (Registro Público)</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="documento_incorporacion_empresa_rp"
+                                                    name="documento_incorporacion_empresa_rp" class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Documentación Legal -->
+                            <br><br>
+                            <!-- Referencias -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row align-items-center">
+                                        <h3 class="card-title">Referencias</h3>
+
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Referencias Comerciales</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="referencias_comerciales"
+                                                    name="referencias_comerciales" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Referencias Bancarias</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="referencias_bancarias"
+                                                    name="referencias_bancarias" class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Referencias-->
+                            <br><br>
+                            <!-- Evaluaciones y auditorias -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row align-items-center">
+                                        <h3 class="card-title">Evaluaciones y auditorias</h3>
+
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Informes de auditorias</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="informes_auditorias"
+                                                    name="informes_auditorias" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6">
+                                            <label>Otros</label>
+                                            <div class="mb-3">
+                                                <input type="text" formControlName="otros" name="otros"
+                                                    class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Referencias-->
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm" (click)="save()">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>

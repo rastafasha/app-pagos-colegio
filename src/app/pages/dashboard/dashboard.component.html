@@ -1,0 +1,81 @@
+<div *ngIf="role === 'GUEST' || role === 'MEMBER' || role === 'SUPERADMIN' || role === 'ADMIN'">
+    <app-bannerplanes></app-bannerplanes>
+</div>
+
+<div class="row page-titles ">
+    <div class="col-md-5 align-self-center">
+        <h2 class="text-themecolor animated fadeInLeft">Bienvenido
+            <h4 class="animated fadeInDown">{{user.name}} </h4>
+        </h2>
+    </div>
+</div>
+
+<div *ngIf="role === 'GUEST' || role === 'MEMBER' ">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Info Perfil</h3>
+                    <p>Status : <span class="badge bg-success">active</span></p>
+                    <button class="btn btn-outline-primary pull-right"
+                        [routerLink]="['/dashboard/user/edit/', user.id]">Editar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Info Proveedor</h3>
+                    <p>Status Requerimieto:
+                        <span class="badge bg-warning" *ngIf="proveedor?.status === 'pending'">Pendiente</span>
+                        <span class="badge bg-warning" *ngIf="proveedor?.status === 'completed'">Completado</span>
+                        <span class="badge bg-primary" *ngIf="proveedor?.status === 'review'">Revisando</span>
+                        <span class="badge bg-success" *ngIf="proveedor?.status === 'ok'">Aprobado</span>
+                        <span class="badge bg-danger" *ngIf="proveedor?.status === 'no'">No</span>
+                    </p>
+                    <span *ngIf="proveedor?.status === 'pending' || proveedor?.status !== null ">
+                        <button class="btn btn-outline-primary pull-right" 
+                            [routerLink]="['/dashboard/proveedor/edit/', user.id]">Editar</button>
+
+                    </span>
+                    <span *ngIf="proveedor?.status === null ">
+                        <button class="btn btn-outline-primary pull-right" 
+                            [routerLink]="['/dashboard/proveedor/edit/', user.id]">Crear</button>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeInUp" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
+
+
+
+
+
+    <div class="col-6 col-sm-4 col-md-3">
+        <div class="card">
+            <a routerLink="../dashboard/usuarios">
+                <div class="card-body">
+                    <i class="mdi mdi-animation"></i>
+                    <p>Usuarios</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-6 col-sm-4 col-md-3">
+        <div class="card">
+            <a routerLink="../dashboard/proveedores">
+                <div class="card-body">
+                    <i class="mdi mdi-note"></i>
+                    <p>Proveedores</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>
