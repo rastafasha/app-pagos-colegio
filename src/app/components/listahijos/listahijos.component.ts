@@ -21,6 +21,7 @@ export class ListahijosComponent {
   loading = false;
   usersCount = 0;
   students: Student;
+  studentprofile: Student;
   roles;
 
   p: number = 1;
@@ -48,21 +49,19 @@ export class ListahijosComponent {
     window.scrollTo(0, 0);
     this.userprofile;
     this.getUsers();
-    console.log(this.userprofile);
   }
 
   getUsers(): void {
     this.studentService.getByParentId(this.userprofile.id).subscribe((res: any) => {
       this.students = res.students;
       (error) => (this.error = error);
-      console.log(this.students);
     });
   }
 
   
   search() {
     return this.parentService.search(this.query).subscribe((res: any) => {
-      console.log(res);
+      
       this.students = res;
       if (!this.query) {
         this.ngOnInit();

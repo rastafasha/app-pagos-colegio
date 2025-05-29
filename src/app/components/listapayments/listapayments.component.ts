@@ -47,22 +47,19 @@ export class ListapaymentsComponent {
       window.scrollTo(0, 0);
       this.userprofile;
       this.getPayments();
-      console.log(this.userprofile);
     }
 
     getPayments(): void {
     this.paymentService.getPagosbyUser(this.userprofile.id).subscribe((res: any) => {
       this.payments = res;
       (error) => (this.error = error);
-      console.log(this.payments);
     });
   }
   
   
     search() {
-      return this.parentService.search(this.query).subscribe((res: any) => {
-        console.log(res);
-        this.students = res;
+      return this.paymentService.search(this.query).subscribe((res: any) => {
+        this.payments = res;
         if (!this.query) {
           this.ngOnInit();
         }

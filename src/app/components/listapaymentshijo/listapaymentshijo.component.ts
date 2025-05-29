@@ -46,7 +46,6 @@ export class ListapaymentshijoComponent {
         window.scrollTo(0, 0);
         this.studentprofile;
         this.getPaymentsbyStudent();
-        console.log(this.studentprofile);
       }
     
       getPaymentsbyStudent(){
