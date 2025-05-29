@@ -1,5 +1,5 @@
 import { HttpClient, HttpBackend } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Parent } from 'src/app/models/parents';
 import { Payment } from 'src/app/models/payment';
 import { Student } from 'src/app/models/student';
@@ -10,11 +10,12 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-listapaymentshijo',
+  standalone: false,
   templateUrl: './listapaymentshijo.component.html',
   styleUrls: ['./listapaymentshijo.component.css']
 })
-export class ListapaymentshijoComponent {
-   @Input() studentprofile: Student;
+export class ListapaymentshijoComponent implements OnChanges {
+   @Input() selectedStudentProfile: Student;
     
       title = 'Padres';
     
@@ -44,14 +45,22 @@ export class ListapaymentshijoComponent {
     
       ngOnInit(): void {
         window.scrollTo(0, 0);
-        this.studentprofile;
-        this.getPaymentsbyStudent();
+        this.selectedStudentProfile;
+        
+        // this.getPaymentsbyStudent();
+      }
+
+      ngOnChanges(changes: SimpleChanges): void {
+        // console.log(this.selectedStudentProfile);
+        if (changes['selectedStudentProfile'] && changes['selectedStudentProfile'].currentValue) {
+          this.getPaymentsbyStudent();
+        }
       }
     
       getPaymentsbyStudent(){
         this.isLoading = true;
-        this.studentService.getPaymentById(this.studentprofile.id).subscribe((resp:any)=>{
-          this.payments = resp;
+        this.studentService.getPaymentById(this.selectedStudentProfile.id).subscribe((resp:any)=>{
+          this.payments = resp.payments;
           this.isLoading = false;
           // console.log(this.payments);
         })

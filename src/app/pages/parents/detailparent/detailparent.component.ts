@@ -10,7 +10,6 @@ import { Parent } from 'src/app/models/parents';
   styleUrls: ['./detailparent.component.css']
 })
 export class DetailparentComponent {
-   @Output() directorioUser : any;
   
     title = "Detalles de la cuenta";
     profileForm: FormGroup;
@@ -33,6 +32,7 @@ export class DetailparentComponent {
     profileSeleccionado: Parent;
   
     user_id: any;
+    representante_id: any;
     errors:any = null;
   
     constructor(
@@ -63,7 +63,16 @@ export class DetailparentComponent {
       this.parentService.getUserById(+id).subscribe(
         (res:any) =>{
           this.userprofile = res.representante;
-          this.user_id = res.user.id;
+          if(res.representante && res.representante.id){
+            this.representante_id = res.representante.id;
+          } else {
+            this.representante_id = null;
+            console.error('User or user.id is undefined in response:', res);
+          }
+        },
+        (error) => {
+          console.error('Error fetching user by id:', error);
+          this.representante_id = null;
         }
       );
     }

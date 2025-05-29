@@ -56,13 +56,13 @@
                         <td>{{studentprofile.school_year}} </td>
                         <td>{{studentprofile.section | uppercase}} </td>
                         <td class="text-nowrap text-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal" (click)="openPaymentsModal(studentprofile)">
                                 Pagos
                             </button>
                         </td>
 
                         <!-- Modal -->
-                        <app-listapaymentshijo [studentprofile]="studentprofile"></app-listapaymentshijo>
+                        <app-listapaymentshijo [selectedStudentProfile]="selectedStudentProfile"></app-listapaymentshijo>
                         
                         <!-- Modal -->
                     </tr>

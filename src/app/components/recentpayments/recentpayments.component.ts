@@ -48,7 +48,7 @@ export class RecentpaymentsComponent {
         (res:any) =>{
           this.payments = res.data;
           error => this.error = error
-          console.log(this.payments);
+          // console.log(this.payments);
         }
       );
     }

@@ -11,11 +11,12 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-listapayments',
+  standalone: false,
   templateUrl: './listapayments.component.html',
   styleUrls: ['./listapayments.component.css']
 })
 export class ListapaymentsComponent {
-   @Input() parentprofile: Parent;
+   @Input() userprofile: Parent;
   
     title = 'Padres';
     isLoading = false;
@@ -43,20 +44,37 @@ export class ListapaymentsComponent {
       this.http = new HttpClient(handler);
     }
   
-    ngOnInit(): void {
+  ngOnInit(): void {
       window.scrollTo(0, 0);
-      this.parentprofile;
-      this.getPayments();
+      // console.log(this.userprofile);
+      // Removed call to getPayments here to avoid accessing userprofile before it's set
+      
+    }
+
+    ngOnChanges(): void {
+      if (this.userprofile && this.userprofile.id) {
+        this.getPayments();
+      }
     }
 
     getPayments(): void {
+      if (!this.userprofile || !this.userprofile.id) {
+        this.isLoading = false;
+        this.error = 'Parent profile is not defined.';
+        return;
+      }
       this.isLoading = true;
-    this.paymentService.getPagosbyUser(this.parentprofile.id).subscribe((res: any) => {
-      this.payments = res;
-      this.isLoading = false;
-      (error) => (this.error = error);
-    });
-  }
+      this.paymentService.getPagosbyUser(this.userprofile.id).subscribe(
+        (res: any) => {
+          this.payments = res;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.error = error;
+          this.isLoading = false;
+        }
+      );
+    }
   
   
     search() {

@@ -33,10 +33,6 @@ export class DashboardComponent implements OnInit {
     this.user = JSON.parse(USER ? USER: '');
     this.role = this.user.roles[0];
 
-    if(this.role === 'GUEST'){
-      this.parentprofile = this.user.parent;
-      // console.log(this.parentprofile);
-    }
   }
 
 

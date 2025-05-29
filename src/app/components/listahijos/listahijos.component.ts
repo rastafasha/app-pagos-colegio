@@ -1,5 +1,5 @@
 import { HttpClient, HttpBackend } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Parent } from 'src/app/models/parents';
 import { Student } from 'src/app/models/student';
 import { User } from 'src/app/models/users';
@@ -13,8 +13,8 @@ import { environment } from 'src/environments/environment';
   templateUrl: './listahijos.component.html',
   styleUrls: ['./listahijos.component.css'],
 })
-export class ListahijosComponent {
-  @Input() parentprofile: Parent;
+export class ListahijosComponent implements OnChanges {
+  @Input() userprofile: Parent;
   isLoading = false;
   title = 'Padres';
 
@@ -36,6 +36,8 @@ export class ListahijosComponent {
   doctores;
   // role:any;
 
+  selectedStudentProfile: Student;
+
   constructor(
     private parentService: ParentService,
     private studentService: StudentService,
@@ -47,23 +49,37 @@ export class ListahijosComponent {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.parentprofile;
-    this.getUsers();
+    // console.log(this.userprofile);
+    // Removed this.getUsers() from here to avoid calling before userprofile is set
   }
 
-  getUsers(): void {
-    this.isLoading = true;
-    this.studentService.getByParentId(this.parentprofile.id).subscribe((res: any) => {
-      this.students = res.students;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['userprofile'] && this.userprofile && this.userprofile.id) {
+      this.getStudents();
+    }
+  }
+
+  getStudents(): void {
+    if (!this.userprofile || !this.userprofile.id) {
       this.isLoading = false;
-      (error) => (this.error = error);
-    });
+      this.error = 'User profile is not defined';
+      return;
+    }
+    this.isLoading = true;
+    this.studentService.getByParentId(this.userprofile.id).subscribe(
+      (res: any) => {
+        this.students = res.students;
+        this.isLoading = false;
+      },
+      (error) => {
+        this.error = error;
+        this.isLoading = false;
+      }
+    );
   }
 
-  
   search() {
     return this.studentService.search(this.query).subscribe((res: any) => {
-      
       this.students = res;
       if (!this.query) {
         this.ngOnInit();
@@ -72,7 +88,11 @@ export class ListahijosComponent {
   }
 
   public PageSize(): void {
-    this.getUsers();
+    this.getStudents();
     this.query = '';
+  }
+
+  openPaymentsModal(student: Student): void {
+    this.selectedStudentProfile = student;
   }
 }

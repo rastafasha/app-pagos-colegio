@@ -19,40 +19,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h3>Hijos</h3>
-                    <p>Status :
-                        <span class="badge bg-warning" *ngIf="proveedor?.status === 'pending'">Pendiente</span>
-                        <span class="badge bg-warning" *ngIf="proveedor?.status === 'completed'">Completado</span>
-                        <span class="badge bg-primary" *ngIf="proveedor?.status === 'review'">Revisando</span>
-                        <span class="badge bg-success" *ngIf="proveedor?.status === 'ok'">Aprobado</span>
-                        <span class="badge bg-danger" *ngIf="proveedor?.status === 'no'">No</span>
-                    </p>
-                    <span *ngIf="proveedor?.status === 'pending' || proveedor?.status !== null ">
-                        <button class="btn btn-outline-primary pull-right"
-                            [routerLink]="['/dashboard/hijos/edit/', user.id]">Editar</button>
-
-                    </span>
-                    <span *ngIf="proveedor?.status === null ">
-                        <button class="btn btn-outline-primary pull-right"
-                            [routerLink]="['/dashboard/hijos/edit/', user.id]">Crear</button>
-
-                    </span>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-6">
-            <app-listapayments [parentprofile]="parentprofile"></app-listapayments>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-            <app-listahijos [parentprofile]="parentprofile"></app-listahijos>
-        </div>
-    </div>
     
 </div>
 

@@ -58,7 +58,7 @@ export class ListComponent {
         (res:any) =>{
           this.parents = res.representantes;
           error => this.error = error;
-          console.log(this.parents);
+          // console.log(this.parents);
         }
       );
     }

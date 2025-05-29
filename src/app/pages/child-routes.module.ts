@@ -18,7 +18,7 @@ import { Payment } from '../models/payment';
 import { PaymentsComponent } from './payments/payments.component';
 import { ListComponent } from './parents/list/list.component';
 import { DetailparentComponent } from './parents/detailparent/detailparent.component';
-
+import { ConfigComponent } from './config/config.component';
 
 const childRoutes: Routes = [
 
@@ -48,6 +48,7 @@ const childRoutes: Routes = [
             { path: 'payment/edit/:id', component: PaymentEditComponent},
             { path: 'payment-detail/:id', component: PaymentDetailsComponent},
             
+            { path: 'config', component: ConfigComponent},
 
 
     { path: '', redirectTo: 'admin', pathMatch: 'full' },

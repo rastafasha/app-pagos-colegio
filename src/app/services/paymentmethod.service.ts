@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Paymentmethod } from '../models/paymentmethod';
 
-const baseUrl = environment.url_media;
+const baseUrl = environment.url_servicios;
 
 @Injectable({
   providedIn: 'root'
