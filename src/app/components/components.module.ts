@@ -9,6 +9,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListapaymentsComponent } from './listapayments/listapayments.component';
 import { ListapaymentshijoComponent } from './listapaymentshijo/listapaymentshijo.component';
+import { SharedModule } from '../shared/shared.modulo';
 
 @NgModule({
   declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent],
@@ -22,6 +23,7 @@ import { ListapaymentshijoComponent } from './listapaymentshijo/listapaymentshij
     BrowserAnimationsModule,
     NgxPaginationModule,
     CKEditorModule,
+    SharedModule 
   ],
 })
 export class ComponentsModule {}

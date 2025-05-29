@@ -18,7 +18,7 @@ export class ListapaymentsComponent {
    @Input() userprofile: Student;
   
     title = 'Padres';
-  
+    isLoading = false;
     loading = false;
     usersCount = 0;
     students: Student;
@@ -50,8 +50,10 @@ export class ListapaymentsComponent {
     }
 
     getPayments(): void {
+      this.isLoading = true;
     this.paymentService.getPagosbyUser(this.userprofile.id).subscribe((res: any) => {
       this.payments = res;
+      this.isLoading = false;
       (error) => (this.error = error);
     });
   }

@@ -25,7 +25,7 @@ export class ListapaymentshijoComponent {
     
       p: number = 1;
       count: number = 8;
-    
+      isLoading = false;
       error: string;
       selectedValue!: any;
       msm_error: string;
@@ -49,15 +49,17 @@ export class ListapaymentshijoComponent {
       }
     
       getPaymentsbyStudent(){
+        this.isLoading = true;
         this.studentService.getPaymentById(this.studentprofile.id).subscribe((resp:any)=>{
           this.payments = resp;
-          console.log(this.payments);
+          this.isLoading = false;
+          // console.log(this.payments);
         })
       }
     
       search() {
-        return this.parentService.search(this.query).subscribe((res: any) => {
-          console.log(res);
+        return this.studentService.search(this.query).subscribe((res: any) => {
+          // console.log(res);
           this.students = res;
           if (!this.query) {
             this.ngOnInit();

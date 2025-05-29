@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { BannerplanesComponent } from './bannerplanes/bannerplanes.component';
+import { LoadingComponent } from './loading/loading.component';
 
 // Pipes
 //import { PipesModule } from '../pipes/pipes.module';
@@ -26,12 +27,14 @@ import { BannerplanesComponent } from './bannerplanes/bannerplanes.component';
         MenuComponent,
         FooterComponent,
         BannerplanesComponent,
+        LoadingComponent
     ],
     exports: [
         HeaderComponent,
         MenuComponent,
         FooterComponent,
-        BannerplanesComponent
+        BannerplanesComponent,
+        LoadingComponent
     ]
 })
 

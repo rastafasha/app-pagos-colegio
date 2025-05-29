@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ListahijosComponent {
   @Input() userprofile: Parent;
-
+  isLoading = false;
   title = 'Padres';
 
   loading = false;
@@ -52,15 +52,17 @@ export class ListahijosComponent {
   }
 
   getUsers(): void {
+    this.isLoading = true;
     this.studentService.getByParentId(this.userprofile.id).subscribe((res: any) => {
       this.students = res.students;
+      this.isLoading = false;
       (error) => (this.error = error);
     });
   }
 
   
   search() {
-    return this.parentService.search(this.query).subscribe((res: any) => {
+    return this.studentService.search(this.query).subscribe((res: any) => {
       
       this.students = res;
       if (!this.query) {
