@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./listahijos.component.css'],
 })
 export class ListahijosComponent {
-  @Input() userprofile: Parent;
+  @Input() parentprofile: Parent;
   isLoading = false;
   title = 'Padres';
 
@@ -47,13 +47,13 @@ export class ListahijosComponent {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    this.userprofile;
+    this.parentprofile;
     this.getUsers();
   }
 
   getUsers(): void {
     this.isLoading = true;
-    this.studentService.getByParentId(this.userprofile.id).subscribe((res: any) => {
+    this.studentService.getByParentId(this.parentprofile.id).subscribe((res: any) => {
       this.students = res.students;
       this.isLoading = false;
       (error) => (this.error = error);

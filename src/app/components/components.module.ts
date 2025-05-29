@@ -10,10 +10,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ListapaymentsComponent } from './listapayments/listapayments.component';
 import { ListapaymentshijoComponent } from './listapaymentshijo/listapaymentshijo.component';
 import { SharedModule } from '../shared/shared.modulo';
+import { RecentpaymentsComponent } from './recentpayments/recentpayments.component';
 
 @NgModule({
-  declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent],
-  exports: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent],
+  declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent, 
+    RecentpaymentsComponent,],
+  exports: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent,
+    RecentpaymentsComponent, 
+  ],
   imports: [
     CommonModule,
     HttpClientModule,

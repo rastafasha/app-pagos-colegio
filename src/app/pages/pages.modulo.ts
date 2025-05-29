@@ -28,6 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import{SliderIndexComponent} from './slider/slider-index/slider-index.component';
 import{SliderEditComponent} from './slider/slider-edit/slider-edit.component';
 import { PaymentsComponent } from './payments/payments.component';
+import { ComponentsModule } from "../components/components.module";
 
 
 
@@ -54,18 +55,17 @@ import { PaymentsComponent } from './payments/payments.component';
 
     ],
     imports: [
-        CommonModule,
-        SharedModule,
-        PAGES_ROUTES,
-        FormsModule,
-        ReactiveFormsModule,
-        OrderModule,
-        NgxPaginationModule,
-        CKEditorModule,
-        
-        
-
-    ]
+    CommonModule,
+    SharedModule,
+    PAGES_ROUTES,
+    FormsModule,
+    ReactiveFormsModule,
+    OrderModule,
+    NgxPaginationModule,
+    CKEditorModule,
+    SharedModule,
+    ComponentsModule
+]
 })
 
 export class PagesModule {}

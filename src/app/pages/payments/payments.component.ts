@@ -23,7 +23,7 @@ export class PaymentsComponent implements OnInit {
   count: number = 8;
 
   public user;
-
+  query: string = '';
 
 
 
@@ -64,6 +64,20 @@ export class PaymentsComponent implements OnInit {
   goBack() {
     this.location.back(); // <-- go back to previous location on cancel
   }
+
+  search() {
+      return this.paymentService.search(this.query).subscribe((res: any) => {
+        this.payments = res;
+        if (!this.query) {
+          this.ngOnInit();
+        }
+      });
+    }
+  
+    public PageSize(): void {
+      this.getPagos();
+      this.query = '';
+    }
 
 
 

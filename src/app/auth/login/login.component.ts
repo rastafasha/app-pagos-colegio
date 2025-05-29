@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
     n_doc: ['', Validators.required],
     password: ['', Validators.required],
     password2: ['', Validators.required],
-    // role_id: [5],
+    // role: ['GUEST', Validators.required],
+    role_id: ['9', Validators.required],
     // terminos: [false, Validators.required],
 
   }, {
@@ -51,8 +52,6 @@ export class LoginComponent implements OnInit {
   // Registro
 
   errors:any = null;
-
-  
 
   constructor(
     private router: Router,
@@ -115,7 +114,7 @@ login(){
 
 
 // Registro
-crearUsuario(){debugger
+crearUsuario(){
   this.formSumitted = true;
   console.log('Register form value:', this.registerForm.value);
   this.authService.crearUsuario(this.registerForm.value).subscribe(

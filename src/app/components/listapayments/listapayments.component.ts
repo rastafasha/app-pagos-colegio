@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./listapayments.component.css']
 })
 export class ListapaymentsComponent {
-   @Input() userprofile: Student;
+   @Input() parentprofile: Parent;
   
     title = 'Padres';
     isLoading = false;
@@ -45,13 +45,13 @@ export class ListapaymentsComponent {
   
     ngOnInit(): void {
       window.scrollTo(0, 0);
-      this.userprofile;
+      this.parentprofile;
       this.getPayments();
     }
 
     getPayments(): void {
       this.isLoading = true;
-    this.paymentService.getPagosbyUser(this.userprofile.id).subscribe((res: any) => {
+    this.paymentService.getPagosbyUser(this.parentprofile.id).subscribe((res: any) => {
       this.payments = res;
       this.isLoading = false;
       (error) => (this.error = error);

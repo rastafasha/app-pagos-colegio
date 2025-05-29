@@ -4,6 +4,7 @@ import { UserService } from '../../services/users.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProveedorService } from 'src/app/services/proveedor.service';
 import { Proveedor } from 'src/app/models/proveedor';
+import { Parent } from 'src/app/models/parents';
 
 
 @Component({
@@ -16,11 +17,11 @@ export class DashboardComponent implements OnInit {
   error: string;
 
   user: any;
-  proveedor: Proveedor;
+  parentprofile:Parent;
   role:any;
   query:string ='';
+
   constructor(
-    private proveedorService: ProveedorService,
     private ativatedRoute: ActivatedRoute,
     ) {}
 
@@ -32,16 +33,12 @@ export class DashboardComponent implements OnInit {
     this.user = JSON.parse(USER ? USER: '');
     this.role = this.user.roles[0];
 
-     this.getProveedorporUsuario();
-
+    if(this.role === 'GUEST'){
+      this.parentprofile = this.user.parent;
+      // console.log(this.parentprofile);
+    }
   }
 
-  getProveedorporUsuario(){
-    this.proveedorService.getProveedorByUser(this.user.id).subscribe((resp:any)=>{
-      // console.log(resp);
-      this.proveedor = resp.proveedor;
-    })
-  }
 
   public PageSize(): void {
       // this.getDirectorios();
