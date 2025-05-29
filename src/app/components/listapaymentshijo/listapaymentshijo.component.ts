@@ -5,6 +5,7 @@ import { Payment } from 'src/app/models/payment';
 import { Student } from 'src/app/models/student';
 import { User } from 'src/app/models/users';
 import { ParentService } from 'src/app/services/parent-service.service';
+import { PaymentService } from 'src/app/services/payment.service';
 import { StudentService } from 'src/app/services/student-service.service';
 import { environment } from 'src/environments/environment';
 
@@ -36,6 +37,7 @@ export class ListapaymentshijoComponent implements OnChanges {
     
       constructor(
         private parentService: ParentService,
+        private paymentService: PaymentService,
         private studentService: StudentService,
         private http: HttpClient,
         handler: HttpBackend
@@ -45,12 +47,13 @@ export class ListapaymentshijoComponent implements OnChanges {
     
       ngOnInit(): void {
         window.scrollTo(0, 0);
-        this.selectedStudentProfile;
+        
         
         // this.getPaymentsbyStudent();
       }
 
       ngOnChanges(changes: SimpleChanges): void {
+        this.selectedStudentProfile;
         // console.log(this.selectedStudentProfile);
         if (changes['selectedStudentProfile'] && changes['selectedStudentProfile'].currentValue) {
           this.getPaymentsbyStudent();
@@ -80,4 +83,20 @@ export class ListapaymentshijoComponent implements OnChanges {
         this.getPaymentsbyStudent();
         this.query = '';
       }
+
+      cambiarStatus(data: any) {
+    const VALUE = data.status;
+    console.log(VALUE);
+
+    this.paymentService.updateStatus(data, data.id).subscribe((resp) => {
+      console.log(resp);
+      // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+      // this.toaster.open({
+      //   text:'Producto Actualizado!',
+      //   caption:'Mensaje de Validación',
+      //   type:'success',
+      // })
+      this.getPaymentsbyStudent();
+    });
+  }
 }
