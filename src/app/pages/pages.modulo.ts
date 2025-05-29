@@ -63,6 +63,7 @@ import { PaymentsComponent } from './payments/payments.component';
         NgxPaginationModule,
         CKEditorModule,
         
+        
 
     ]
 })

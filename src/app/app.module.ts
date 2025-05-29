@@ -12,10 +12,12 @@ import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { UserModule } from './pages/users/user.module';
 import { ProveedorModule } from './pages/proveedor/proveedor.module';
 import { PaymentsModule } from './pages/payments/payments.module';
+import { ParentsModule } from './pages/parents/parents.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,9 @@ import { PaymentsModule } from './pages/payments/payments.module';
     UserModule,
     PaymentsModule,
     ProveedorModule,
+    ParentsModule,
     NgxPaginationModule,
+    ComponentsModule
   ],
   providers: [
     {

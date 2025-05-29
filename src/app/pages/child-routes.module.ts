@@ -16,6 +16,8 @@ import { PaymentEditComponent } from './payments/payment-edit/payment-edit.compo
 import { PaymentDetailsComponent } from './payments/payment-details/payment-details.component';
 import { Payment } from '../models/payment';
 import { PaymentsComponent } from './payments/payments.component';
+import { ListComponent } from './parents/list/list.component';
+import { DetailparentComponent } from './parents/detailparent/detailparent.component';
 
 
 const childRoutes: Routes = [
@@ -29,6 +31,9 @@ const childRoutes: Routes = [
             { path: 'user/create', component: UserEditComponent},
             { path: 'user/edit/:id', component: UserEditComponent},
             { path: 'usuario/detail/:id', component: UserDetailsComponent},
+            
+            { path: 'padres', component: ListComponent},
+            { path: 'padre/detail/:id', component: DetailparentComponent},
             
             { path: 'proveedores', component: ListProveedorComponent},
             { path: 'proveedor/create', component: EditProveedorComponent},

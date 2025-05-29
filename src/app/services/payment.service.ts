@@ -87,12 +87,12 @@ export class PaymentService {
   }
 
   findByReference(title): Observable<any> {
-    return this.http.get(`${baseUrl}/pagos/?title=${title}`);
+    return this.http.get(`${baseUrl}/payment/?title=${title}`);
   }
 
   getPagosbyUser(id:number): Observable<any> {
 
-    const url = `${baseUrl}/pagos/pagosbyUser/${id}`;
+    const url = `${baseUrl}/payment/pagosbyUser/${id}`;
     return this.http.get<any>(url, this.headers)
       .pipe(
         map((resp:{ok: boolean, payments: Payment}) => resp.payments)
