@@ -50,7 +50,7 @@
                             <tbody>
                                 <tr *ngFor="let pago of payments |  paginate: { itemsPerPage: count, currentPage: p }">
                                     <th scope="row"><a [routerLink]="['/dashboard/payment-detail', pago.id]">{{pago.referencia}}</a></th>
-                                    <th><a [routerLink]="['/dashboard/user/', pago.parent_id]">{{pago.parent_id}}</a></th>
+                                    <th><a [routerLink]="['/dashboard/padre/detail/', pago.parent_id]">{{pago.parent_id}}</a></th>
                                     <td>{{pago.bank_name}}</td>
                                     <td>{{pago.metodo}}</td>
                                     <td>{{pago.monto|currency}}</td>
@@ -63,13 +63,22 @@
                                     </td>
                                     <td>{{pago.created_at | date:'MMM d, y, h:mm:ss a'}}</td>
                                     <td>
-                                        <div class="form-check form-switch" title="Verificar">
-                                            <!-- <a data-toggle="modal" [attr.data-target]="'#' + pago.id"> -->
+                                        <select class="form-control form-select-solid fw-bolder" name="status"
+                                            [(ngModel)]="pago.status" (change)="cambiarStatus(pago)"
+                                            
+                                            placeholder="status">
+                                            <option value="">Seleccione</option>
+                                            <option value="APPROVED">Aprobado</option>
+                                            <option value="PENDING">Pendiente</option>
+                                            <option value="REJECTED">Rechazado</option>
+                                        </select>
+                                        <!-- <div class="form-check form-switch" title="Verificar">
+                                            <a data-toggle="modal" [attr.data-target]="'#' + pago.id">
                                             <a [routerLink]="['/dashboard/payment/edit/', pago.id]">
                                                 <button class="btn btn-success">Editar</button>
                                             </a>
 
-                                        </div>
+                                        </div> -->
 
                                     </td>
                                 </tr>

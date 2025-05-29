@@ -70,6 +70,11 @@ export class PaymentService {
    const url = `${baseUrl}/payment/update/${payment.id}`;
     return this.http.put(url, payment, this.headers);
   }
+  updateStatus(data:any, payment_id:any): Observable<any> {
+   const url = `${baseUrl}/payment/update/status/${payment_id}`;
+    return this.http.put(url, data, this.headers);
+  }
+
 
 
   deleteFoto(id) {

@@ -39,7 +39,7 @@ export class PaimentmethodService {
   }
 
   getPaymentmethod(tipodepago: any) {
-    const url = `${baseUrl}/paymentmethod/show/${tipodepago}`;
+    const url = `${baseUrl}/paymentmethods/show/${tipodepago}`;
     return this.http.get<any>(url, this.headers)
       .pipe(
         map((resp:{ok: boolean, tipodepago: Paymentmethod}) => resp.tipodepago)
@@ -48,18 +48,18 @@ export class PaimentmethodService {
 
 
   createPaymentmethod(paymentmethod:any) {
-    const url = `${baseUrl}/paymentmethod/store`;
+    const url = `${baseUrl}/paymentmethods/store`;
     return this.http.post(url, paymentmethod, this.headers);
   }
 
 
   updatePaymentmethod(paymentmethod:Paymentmethod, id: number) {
-    return this.http.put<any>(baseUrl + '/paymentmethod/update/' + id, paymentmethod, this.headers)
+    return this.http.put<any>(baseUrl + '/paymentmethods/update/' + id, paymentmethod, this.headers)
 
   }
 
   deletePaymentmethod(paymentmethod: any) {
-    const url = `${baseUrl}/paymentmethod/destroy/${paymentmethod}`;
+    const url = `${baseUrl}/paymentmethods/destroy/${paymentmethod}`;
     return this.http.delete(url, this.headers);
   }
 }

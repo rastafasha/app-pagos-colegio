@@ -52,4 +52,23 @@ export class PaymentDetailsComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
+  cambiarStatus(data:any){
+    const VALUE = data.status;
+    console.log(VALUE);
+    
+    this.paymentService.updateStatus(data, data.id).subscribe(
+      resp =>{
+
+        console.log(resp);
+        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        // this.toaster.open({
+        //   text:'Producto Actualizado!',
+        //   caption:'Mensaje de Validación',
+        //   type:'success',
+        // })
+        this.ngOnInit();
+      }
+    )
+  }
+
 }
