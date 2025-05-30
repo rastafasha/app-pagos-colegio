@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/users';
-import { UserService } from '../../services/users.service';
 import { ActivatedRoute } from '@angular/router';
-import { ProveedorService } from 'src/app/services/proveedor.service';
-import { Proveedor } from 'src/app/models/proveedor';
 import { Parent } from 'src/app/models/parents';
 
 

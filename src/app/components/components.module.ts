@@ -11,12 +11,13 @@ import { ListapaymentsComponent } from './listapayments/listapayments.component'
 import { ListapaymentshijoComponent } from './listapaymentshijo/listapaymentshijo.component';
 import { SharedModule } from '../shared/shared.modulo';
 import { RecentpaymentsComponent } from './recentpayments/recentpayments.component';
+import { TasadiabcvComponent } from './tasadiabcv/tasadiabcv.component';
 
 @NgModule({
   declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent, 
-    RecentpaymentsComponent,],
+    RecentpaymentsComponent, TasadiabcvComponent],
   exports: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent,
-    RecentpaymentsComponent, 
+    RecentpaymentsComponent, TasadiabcvComponent
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,8 @@ export class TasabcvComponent {
   precio_dia:number;
   id:number;
   tipoSeleccionado:boolean=false;
+  title='Tasa de cambio BCV';
+  isLoading:boolean = false;
 
   constructor(
     private tasaBcvService: TasabcvService,
@@ -30,8 +32,10 @@ export class TasabcvComponent {
 
   
   getTiposdePago() {
+    this.isLoading = true;
     this.tasaBcvService.getTasas().subscribe((resp: any) => {
       this.tasasbcv= resp;
+      this.isLoading = false;
       // console.log(this.tiposdepagos);
     });
   }

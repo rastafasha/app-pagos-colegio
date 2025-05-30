@@ -1,31 +1,10 @@
 <!-- =======| Main |======= -->
 <div class="container animated fadeInUp" id="main" class="main" role="main" name="users">
-
-    <div class="col-xs-12">
-        <div class="leftside">
-            <!-- Page Title -->
-            <div class="pagetitle">
-                <h1><i class="bx bxs-user-account"></i> {{title}}</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
-                        <li class="breadcrumb-item active">{{title}}</li>
-                    </ol>
-                </nav>
-            </div>
-            <!-- End Page Title -->
-        </div>
-        <div class="buton">
-            <button class="btn btn-outline-danger pull-right" href="javascript:void(0)" (click)="goBack()">Volver</button>
-        </div>
-        <div class="clear"></div>
-
+    <app-backbreadcum [title]="title" ></app-backbreadcum>
+    <app-loading *ngIf="isLoading"></app-loading>
+    <div class="row animated fadeInUp">
         <section class="section dashboard">
-
-
-            <!-- Recent Pagos -->
-            <div class="container">
-                <div class="row">
+            <div class="row">
                     <div class="col-xs-12">
                         <!-- buscador -->
                         <form class="form-horizontal">
@@ -42,8 +21,7 @@
                         <!-- buscador -->
                     </div>
                 </div>
-                <app-loading *ngIf="isLoading"></app-loading>
-                <div class="card recent-sales overflow-auto" *ngIf="!isLoading">
+                <div class="card recent-sales overflow-auto" >
 
                     <div class="card-body">
 
@@ -71,17 +49,6 @@
                                         <span class="badge bg-success" *ngIf="user.roles.name === 'MEMBER'">Miembro</span>
                                         <span class="badge bg-danger" *ngIf="user.roles.name === 'GUEST'">Invitado</span>
                                     </td>
-                                    <!-- <td>
-                                        
-                                        <select class="form-control" [ngModelOptions]="{standalone: true}"
-                                         [(ngModel)]="role" (change)="cambiarRole($event.target.value)">
-                                            <ng-container *ngFor="let data of roles "  [value]="data.id" >
-                                                <option value="{{data.id}}">{{data.name}}</option>
-
-                                            </ng-container>
-                                            
-                                          </select>
-                                    </td> -->
 
                                     <td class="text-nowrap text-center">
 
@@ -103,10 +70,6 @@
                     </div>
 
                 </div>
-
-            </div>
-            <!-- End Recent Pagos -->
-
         </section>
     </div>
 

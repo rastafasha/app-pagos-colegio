@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 export class UsersListComponent implements OnInit {
   title = "Usuarios"
 
-  loading = false;
+  isLoading = false;
   usersCount = 0;
   usuarios: any;
   user: any;
@@ -54,10 +54,12 @@ export class UsersListComponent implements OnInit {
 
 
   getUsers(): void {
+    this.isLoading = true;
     this.userService.getAll().subscribe(
       (res:any) =>{
         this.usuarios = res.users.data;
         error => this.error = error;
+        this.isLoading = false;
         // console.log(this.usuarios);
       }
     );

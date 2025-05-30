@@ -29,7 +29,7 @@ export class UserEditComponent implements OnInit {
   userprofile!: User;
   id:any;
   error:string;
-  pageTitle:string;
+  title:string;
   infoUser:string;
 
   //Qr
@@ -88,7 +88,7 @@ this.user = this.userService.user;
   iniciarFormulario(id:number){
     // const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.pageTitle = 'Editar Perfil';
+      this.title = 'Editar Perfil';
       this.accountService.getUsuario(+id).subscribe(
         (res:any) => {
           console.log(res);
@@ -107,7 +107,7 @@ this.user = this.userService.user;
         }
       );
     } else {
-      this.pageTitle = 'Crear Perfil';
+      this.title = 'Crear Perfil';
     }
   }
 

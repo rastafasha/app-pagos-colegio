@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { BannerplanesComponent } from './bannerplanes/bannerplanes.component';
 import { LoadingComponent } from './loading/loading.component';
+import { BackbreadcumComponent } from './backbreadcum/backbreadcum.component';
 
 // Pipes
 //import { PipesModule } from '../pipes/pipes.module';
@@ -27,14 +28,16 @@ import { LoadingComponent } from './loading/loading.component';
         MenuComponent,
         FooterComponent,
         BannerplanesComponent,
-        LoadingComponent
+        LoadingComponent,
+        BackbreadcumComponent
     ],
     exports: [
         HeaderComponent,
         MenuComponent,
         FooterComponent,
         BannerplanesComponent,
-        LoadingComponent
+        LoadingComponent,
+        BackbreadcumComponent
     ]
 })
 

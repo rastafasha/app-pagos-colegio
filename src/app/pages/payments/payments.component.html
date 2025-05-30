@@ -1,34 +1,11 @@
 <!-- =======| Main |======= -->
 <div class="container animated fadeInUp" id="main" class="main" role="main" name="profile">
-
-    <div class="col-xs-12">
-        <div class="leftside">
-            <!-- Page Title -->
-            <div class="pagetitle">
-                <h1><i class="bx bxs-user-account"></i> {{title}}</h1>
-                <nav>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/"><i class="bi bi-house"></i> Inicio</a></li>
-                        <li class="breadcrumb-item"><a routerLink="/">Panel Admin</a></li>
-                        <li class="breadcrumb-item active">{{title}}</li>
-                    </ol>
-                </nav>
-            </div>
-            <!-- End Page Title -->
-        </div>
-        <div class="buton">
-            <button class="btn btn-outline-danger pull-right" href="javascript:void(0)"
-                (click)="goBack()">Volver</button>
-        </div>
-
-        <div class="clear"></div>
+    <app-backbreadcum [title]="title" ></app-backbreadcum>
+    <app-loading *ngIf="isLoading"></app-loading>
+    <div class="row animated fadeInUp" *ngIf="!isLoading">
+        
         <section class="section dashboard">
-
-
-
-            <!-- Recent Pagos -->
-            <div class="col-12">
-                <div class="card recent-sales overflow-auto">
+            <div class="card recent-sales overflow-auto">
 
                     <div class="row">
                         <div class="col-xs-12">
@@ -53,8 +30,8 @@
                             <!-- buscador -->
                         </div>
                     </div>
-                     <app-loading *ngIf="isLoading"></app-loading>
-                    <div class="card-body" *ngIf="!isLoading">
+                     
+                    <div class="card-body" >
                         <h5 class="card-title"> <i class="bi bi-currency-exchange"> </i> Transacciones <span>|
                                 Todas</span>
                         </h5>
@@ -138,13 +115,6 @@
                                             <option value="PENDING">Pendiente</option>
                                             <option value="REJECTED">Rechazado</option>
                                         </select>
-                                        <!-- <div class="form-check form-switch" title="Verificar">
-                                            <a data-toggle="modal" [attr.data-target]="'#' + pago.id">
-                                            <a [routerLink]="['/dashboard/payment/edit/', pago.id]">
-                                                <button class="btn btn-success">Editar</button>
-                                            </a>
-
-                                        </div> -->
 
                                     </td>
                                 </tr>
@@ -156,8 +126,6 @@
                     </div>
 
                 </div>
-            </div>
-            <!-- End Recent Pagos -->
         </section>
     </div>
 </div>

@@ -19,7 +19,6 @@ import { PaymentsComponent } from './payments/payments.component';
 import { ListComponent } from './parents/list/list.component';
 import { DetailparentComponent } from './parents/detailparent/detailparent.component';
 import { ConfigComponent } from './config/config.component';
-import { Tasabcv } from '../models/tasabcba';
 import { TasabcvComponent } from './tasabcv/tasabcv.component';
 
 const childRoutes: Routes = [

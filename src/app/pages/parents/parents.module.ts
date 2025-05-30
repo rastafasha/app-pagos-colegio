@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ComponentsModule } from '../../components/components.module';
+import { SharedModule } from 'src/app/shared/shared.modulo';
 
 @NgModule({
   declarations: [ListComponent, DetailparentComponent],
@@ -22,6 +23,7 @@ import { ComponentsModule } from '../../components/components.module';
     NgxPaginationModule,
     CKEditorModule,
     ComponentsModule,
+    SharedModule
   ],
 })
 export class ParentsModule {}

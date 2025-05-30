@@ -1,33 +1,8 @@
 <!-- =======| Main |======= -->
-<div class="row page-titles">
-    <div class="col-12 animated fadeInLeft">
-        <div class="card cardtop">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-10 align-self-center">
-                        <h3 class="text-themecolor">{{pageTitle}}</h3>
-                    </div>
-                    
-                    <div class="col-12 col-sm-2">
-                        <button class="btn btn-outline-danger" href="javascript:void(0)"
-                            (click)="goBack()">Volver</button>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
-                <!-- <li class="breadcrumb-item"><a routerLink="/dashboard/directorio">Directorio</a></li> -->
-                <li class="breadcrumb-item active">{{pageTitle}}</li>
-            </ol>
-        </nav>
-    </div>
-</div>
 
 
 <div class="container animated fadeInUp" id="main" class="main" role="main" name="users">
+    <app-backbreadcum [title]="title" ></app-backbreadcum>
 
     <div class="col-xs-12">
 
@@ -134,7 +109,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-xs-6 col-sm-8">
-                                                <h5>{{pageTitle}}</h5>
+                                                <h5>{{title}}</h5>
                                             </div>
                                             <div *ngIf="display" class="col-xs-6 col-sm-4">
                                                 <a [routerLink]="['/dashboard/directorio/view-public/', userprofile.id]">

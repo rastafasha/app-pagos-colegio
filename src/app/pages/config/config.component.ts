@@ -11,14 +11,14 @@ import { PaimentmethodService } from 'src/app/services/paymentmethod.service';
 })
 export class ConfigComponent {
 
-  
+    title = 'Configuración Pagos';
     public tiposdepago: Paymentmethod;
     error: string;
     uploadError: string;
     tipoSeleccionado:any;
     pagoSeleccionado:any;
     tiposdepagos:any;
-  
+    isLoading:boolean = false;
     bankAccountType:string;
     bankName:string;
     bankAccount:string;
@@ -50,9 +50,11 @@ export class ConfigComponent {
       }
     
       getTiposdePago(){
+        this.isLoading = true;
           this.paymentMethodService.getPaymentmethods().subscribe((resp:any)=>{
-            console.log(resp);
+            // console.log(resp);
             this.tiposdepagos = resp;
+            this.isLoading = false;
             // console.log(this.tiposdepagos);
           })
       }

@@ -9,6 +9,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersListComponent } from './user-list/users-list.component';
+import { SharedModule } from 'src/app/shared/shared.modulo';
 
 
 
@@ -31,7 +32,8 @@ import { UsersListComponent } from './user-list/users-list.component';
     RouterModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    CKEditorModule
+    CKEditorModule,
+    SharedModule
   ]
 })
 export class UserModule { }
