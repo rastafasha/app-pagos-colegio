@@ -11,6 +11,7 @@ export class Payment {
    student_id?:number;
    metodo?:string;
    bank_name?:string;
+   bank_destino?:string;
    monto:string;
    referencia?:string;
    telefono?:string;

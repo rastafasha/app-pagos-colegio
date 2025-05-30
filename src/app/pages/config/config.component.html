@@ -11,7 +11,7 @@
                                     <option value="seleccione">Seleccione</option>
                                     <option value="Transferencia Dólares">Transferencia Dólares</option>
                                     <option value="Transferencia Bolivares">Transferencia Bolívares</option>
-                                    <option value="pagomovil">Pago Móvil</option>
+                                    <option value="Pago Móvil">Pago Móvil</option>
                                 </select>
         
                             </div>
@@ -106,8 +106,8 @@
                             </div>
                         </div>
                         <!-- transferencia -->
-                        <!-- pagomovil -->
-                        <div *ngIf="pagoSeleccionado === 'pagomovil'" class="card p-3">
+                        <!-- Pago Móvil -->
+                        <div *ngIf="pagoSeleccionado === 'Pago Móvil'" class="card p-3">
                             <div class="card-body">
                                 <h4>Pago Móvil</h4>
                                 <div class="row">
@@ -131,7 +131,7 @@
                                     <button (click)="save()" class="btn btn-primary">Guardar</button>
                             </div>    
                         </div>
-                        <!-- pagomovil  -->
+                        <!-- Pago Móvil  -->
                         </form>
                     </div>
                     <div class="col-xs-12 col-sm-7" *ngIf="!tipoSeleccionado">
