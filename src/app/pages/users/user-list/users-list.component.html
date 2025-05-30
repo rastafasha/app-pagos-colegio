@@ -33,7 +33,7 @@
                                     <th>Usuario</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Role Edit</th>
+                                    <!-- <th>Role Edit</th> -->
                                     <!-- <th>Option</th> -->
                                     <th class="text-nowrap">Acciones</th>
                                 </tr>
@@ -51,29 +51,7 @@
                                         <span class="badge bg-success" *ngIf="user.roles.name === 'MEMBER'">Miembro</span>
                                         <span class="badge bg-danger" *ngIf="user.roles.name === 'GUEST'">Invitado</span>
                                     </td>
-                                    <!-- <td>
-                                        <select name="" id="input" class="form-control" 
-                                         name="roles" [(ngModel)]="user.roles" (change)="cambiarRole(user)">
-                                      <option value="">Seleccione</option>
-                                      <option value="SUPERADMIN">Super Admin</option>
-                                      <option value="ADMIN">Admin</option>
-                                      <option value="GUEST">Invitado</option>
-                                    </select>
-                                    </td> -->
-                                    <td>
-                                        
-                                        <select class="form-control" [ngModelOptions]="{standalone: true}"
-                                         [(ngModel)]="role" (change)="cambiarRole(user)">
-                                            <!-- <ng-container *ngFor="let data of roles "  [value]="data.id" >
-                                                <option value="{{data.id}}">{{data.name}}</option>
-                                            </ng-container> -->
-                                            <option value="">Seleccione</option>
-                                            <option value="SUPERADMIN">Super Admin</option>
-                                            <option value="ADMIN">Admin</option>
-                                            <option value="GUEST">Invitado</option>
-                                            
-                                          </select>
-                                    </td>
+                                    
 
                                     <td class="text-nowrap text-center">
 
