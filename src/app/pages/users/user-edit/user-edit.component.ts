@@ -24,7 +24,7 @@ export class UserEditComponent implements OnInit {
   userForm: FormGroup;
   passwordForm: FormGroup;
   public formSumitted = false;
-
+  isLoading:boolean = false;
   public user: User;
   userprofile!: User;
   id:any;
@@ -75,7 +75,7 @@ this.user = this.userService.user;
   }
 
   getUser(): void {
-
+    this.isLoading = true;
     this.user = JSON.parse(localStorage.getItem('user'));
     // this.activatedRoute.params.subscribe( ({id}) => this.getUserProfile(id));
     if(!this.user || !this.user.id || this.user.id == null || this.user.id == undefined){
@@ -83,6 +83,7 @@ this.user = this.userService.user;
 
     }
       this.id = this.user.id;
+      this.isLoading = false;
   }
 
   iniciarFormulario(id:number){
