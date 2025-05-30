@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PaymentDetailsComponent } from './payment-details/payment-details.component';
 import { PaymentEditComponent } from './payment-edit/payment-edit.component';
 import { PaymentsComponent } from './payments.component';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 
 
 
@@ -16,7 +17,8 @@ import { PaymentsComponent } from './payments.component';
   declarations: [
     PaymentDetailsComponent,
     PaymentEditComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    ImagenPipe
   ],
   imports: [
     CommonModule,

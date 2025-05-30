@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 @Component({
   selector: 'app-payment-details',
-  
   templateUrl: './payment-details.component.html',
   styleUrls: ['./payment-details.component.css']
 })
