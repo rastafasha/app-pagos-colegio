@@ -18,7 +18,7 @@ export class RecentpaymentsComponent {
   error: string;
   p: number = 1;
   count: number = 8;
-
+  isLoading:boolean = false;
   public user;
   query: string = '';
 
@@ -38,9 +38,11 @@ export class RecentpaymentsComponent {
   }
 
   getPagos(): void {
+    this.isLoading = true;
     this.paymentService.getRecientes().subscribe((res: any) => {
       this.payments = res.data;
       (error) => (this.error = error);
+      this.isLoading = false;
       // console.log(this.payments);
     });
   }

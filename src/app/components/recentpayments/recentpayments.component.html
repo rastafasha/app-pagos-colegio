@@ -1,5 +1,6 @@
 <!-- =======| Main |======= -->
-<div class="container animated fadeInUp" id="main" class="main" role="main" name="profile">
+ <app-loading *ngIf="isLoading"></app-loading>
+<div  *ngIf="!isLoading" class="container animated fadeInUp" id="main" class="main" role="main" name="profile">
 
     <div class="col-xs-12">
         <section class="section dashboard">
@@ -42,6 +43,9 @@
                                     <th scope="col">Banco</th>
                                     <th scope="col">Metodo</th>
                                     <th scope="col">Monto </th>
+                                    <th scope="col">deuda</th>
+                                    <th scope="col">monto_pendiente</th>
+                                    <th scope="col">status_deuda</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Fecha | Hora</th>
                                     <th scope="col">Acciones</th>
@@ -53,6 +57,14 @@
                                     <th><a [routerLink]="['/dashboard/padre/detail/', pago.parent_id]">{{pago.parent_id}}</a></th>
                                     <td>{{pago.bank_name}}</td>
                                     <td>{{pago.metodo}}</td>
+                                    <td>{{pago.monto|currency}}</td>
+                                    <td>{{pago.deuda|currency}}</td>
+                                    <td>{{pago.monto_pendiente|currency}}</td>
+                                    <td>
+                                        <!-- {{pago.status_deuda}} -->
+                                        <span class="badge bg-success" *ngIf="pago.status_deuda !== 'DEUDA'">Pagado</span>
+                                        <span class="badge bg-danger" *ngIf="pago.status_deuda === 'DEUDA'">Deuda</span>
+                                    </td>
                                     <td>{{pago.monto|currency}}</td>
 
                                     <td>

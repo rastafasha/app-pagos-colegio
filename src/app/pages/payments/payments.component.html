@@ -53,8 +53,8 @@
                             <!-- buscador -->
                         </div>
                     </div>
-
-                    <div class="card-body">
+                     <app-loading *ngIf="isLoading"></app-loading>
+                    <div class="card-body" *ngIf="!isLoading">
                         <h5 class="card-title"> <i class="bi bi-currency-exchange"> </i> Transacciones <span>|
                                 Todas</span>
                         </h5>
@@ -67,6 +67,9 @@
                                     <th scope="col">Banco</th>
                                     <th scope="col">Metodo</th>
                                     <th scope="col">Monto </th>
+                                    <th scope="col">deuda</th>
+                                    <th scope="col">monto_pendiente</th>
+                                    <th scope="col">status_deuda</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Fecha | Hora</th>
                                     <th scope="col">Acciones</th>
@@ -82,7 +85,13 @@
                                     <td>{{pago.bank_name}}</td>
                                     <td>{{pago.metodo}}</td>
                                     <td>{{pago.monto|currency}}</td>
-
+                                    <td>{{pago.deuda|currency}}</td>
+                                    <td>{{pago.monto_pendiente|currency}}</td>
+                                    <td>
+                                        <!-- {{pago.status_deuda}} -->
+                                        <span class="badge bg-success" *ngIf="pago.status_deuda !== 'DEUDA'">Pagado</span>
+                                        <span class="badge bg-danger" *ngIf="pago.status_deuda === 'DEUDA'">Deuda</span>
+                                    </td>
                                     <td>
                                         <span class="badge bg-success"
                                             *ngIf="pago.status === 'APPROVED'">Aprobado</span>

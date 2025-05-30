@@ -18,6 +18,7 @@ export class PaymentsComponent implements OnInit {
   error: string;
   p: number = 1;
   count: number = 8;
+  isLoading:boolean
 
   public user;
   query: string = '';
@@ -46,9 +47,11 @@ export class PaymentsComponent implements OnInit {
   }
 
   getPagos(): void {
+    this.isLoading = true;
     this.paymentService.getAll().subscribe((res: any) => {
       this.payments = res.data;
       (error) => (this.error = error);
+      this.isLoading = false;
       // console.log(this.payments);
     });
   }

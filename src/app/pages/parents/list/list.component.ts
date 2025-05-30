@@ -22,6 +22,7 @@ export class ListComponent {
     parents: any;
     user: any;
     roles;
+    isLoading:boolean=false;
   
     p: number = 1;
     count: number = 8;
@@ -54,10 +55,12 @@ export class ListComponent {
   
   
     getUsers(): void {
+      this.isLoading = true;
       this.parentService.getAll().subscribe(
         (res:any) =>{
           this.parents = res.representantes;
           error => this.error = error;
+          this.isLoading = false;
           // console.log(this.parents);
         }
       );
