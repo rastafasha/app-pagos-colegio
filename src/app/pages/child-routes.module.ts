@@ -19,6 +19,8 @@ import { PaymentsComponent } from './payments/payments.component';
 import { ListComponent } from './parents/list/list.component';
 import { DetailparentComponent } from './parents/detailparent/detailparent.component';
 import { ConfigComponent } from './config/config.component';
+import { Tasabcv } from '../models/tasabcba';
+import { TasabcvComponent } from './tasabcv/tasabcv.component';
 
 const childRoutes: Routes = [
 
@@ -49,6 +51,7 @@ const childRoutes: Routes = [
             { path: 'payment-detail/:id', component: PaymentDetailsComponent},
             
             { path: 'config', component: ConfigComponent},
+            { path: 'tasabcv', component: TasabcvComponent},
 
 
     { path: '', redirectTo: 'admin', pathMatch: 'full' },

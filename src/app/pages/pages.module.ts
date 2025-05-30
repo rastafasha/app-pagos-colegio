@@ -29,6 +29,7 @@ import{SliderIndexComponent} from './slider/slider-index/slider-index.component'
 import{SliderEditComponent} from './slider/slider-edit/slider-edit.component';
 import { ComponentsModule } from "../components/components.module";
 import { ConfigComponent } from './config/config.component';
+import { TasabcvComponent } from './tasabcv/tasabcv.component';
 
 
 
@@ -40,7 +41,8 @@ import { ConfigComponent } from './config/config.component';
         DashboardComponent,
         SliderIndexComponent,
         SliderEditComponent,
-        ConfigComponent
+        ConfigComponent,
+        TasabcvComponent
 
     ],
     exports: [
@@ -52,7 +54,8 @@ import { ConfigComponent } from './config/config.component';
         DashboardComponent,
         SliderIndexComponent,
         SliderEditComponent,
-        ConfigComponent
+        ConfigComponent,
+        TasabcvComponent
 
 
     ],
