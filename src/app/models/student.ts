@@ -13,6 +13,7 @@ export class Student {
     password?: string = "";
     token: string = "";
     is_active: number = 0;
+    matricula: number = 0;
     created_at: string = "";
     image: string = "";
     role?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST';

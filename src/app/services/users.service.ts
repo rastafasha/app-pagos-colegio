@@ -100,6 +100,10 @@ export class UserService {
       )
   }
 
+  updateUser(data:any, id: number) {
+        return this.http.put<any>(baseUrl + '/user/update/' + id, data, this.headers)
+    
+      }
 
   update(data: any) {
     const url = `${baseUrl}/user/update/${data.id}`;

@@ -87,19 +87,13 @@ export class UsersListComponent implements OnInit {
   //   );
   // }
 
-  cambiarRole(data:any){debugger
-    let VALUE = {
-      id: data.id,
-      roles:data.roles.name
-    };
-    // console.log(VALUE);
-    
-    // this.userService.update(data).subscribe(
-    //   resp =>{
-    //     // console.log(resp);
-    //     Swal.fire('Updated', `Client Status Updated successfully!`, 'success');
-    //   }
-    // )
+  cambiarRole(user: User){
+    this.userService.update(user).subscribe(
+      resp =>{ console.log(resp);
+        Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        this.getUsers();
+      }
+    )
   }
 
 

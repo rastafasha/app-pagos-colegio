@@ -36,6 +36,7 @@
                         <th>Nacimiento</th>
                         <th>Grado</th>
                         <th>Sección</th>
+                        <th>Matrícula</th>
                         <!-- <th>Option</th> -->
                         <th class="text-nowrap">Acciones</th>
                     </tr>
@@ -55,6 +56,7 @@
                         <td>{{studentprofile.birth_date|date}} </td>
                         <td>{{studentprofile.school_year}} </td>
                         <td>{{studentprofile.section | uppercase}} </td>
+                        <td>{{studentprofile.matricula}} </td>
                         <td class="text-nowrap text-center">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal" (click)="openPaymentsModal(studentprofile)">
                                 Pagos
