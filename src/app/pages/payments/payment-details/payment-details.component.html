@@ -44,9 +44,42 @@
                     </p>
                     <p><b>Nombre de la cuenta:</b> {{payment.nombre}}</p>
                     <p><b>email de la cuenta:</b> {{payment.email}}</p>
+                    <p><b>Padre:</b> {{parent.name}} {{parent.surname}}</p>
+                    <p><b>Estudiante:</b> {{student.name}} {{student.surname}}</p>
                     <p><b>Fecha | Hora:</b> {{payment.created_at | date:'MMM d, y, h:mm:ss a'}}</p>
-                    <p><b>Monto:</b> $ {{payment.monto}}</p>
-                    <p><b>Estudiante:</b> {{payment.student_id}}</p>
+                    <p><b>Monto:</b>
+                            <span
+                                *ngIf="payment.metodo ==='Transferencia Bolívares' || payment.metodo ==='payment Móvil'">
+                                {{payment.monto|currency:'Bs.'}}
+
+                            </span>
+                            <span *ngIf="payment.metodo ==='Transferencia Dólares'">
+                                {{payment.monto|currency}}
+                            </span>
+                        </p>
+                        
+                        <p><b>deuda:</b>
+                            <span
+                                *ngIf="payment.metodo ==='Transferencia Bolívares' || payment.metodo ==='payment Móvil'">
+                                {{payment.deuda|currency:'Bs.'}}
+
+                            </span>
+                            <span *ngIf="payment.metodo ==='Transferencia Dólares'">
+                                {{payment.deuda|currency}}
+                            </span>
+                        </p>
+                        <p><b>monto_pendiente:</b>
+                            <span
+                                *ngIf="payment.metodo ==='Transferencia Bolívares' || payment.metodo ==='payment Móvil'">
+                                {{payment.monto_pendiente|currency:'Bs.'}}
+
+                            </span>
+                            <span *ngIf="payment.metodo ==='Transferencia Dólares'">
+                                {{payment.monto_pendiente|currency}}
+                            </span>
+                        </p>
+                        <p><b>status_deuda:</b> {{payment.status_deuda}}</p>
+                    
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <!-- <p><b>Email:</b> {{pago.email}}</p> -->

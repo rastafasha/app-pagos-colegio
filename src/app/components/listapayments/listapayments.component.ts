@@ -67,7 +67,9 @@ export class ListapaymentsComponent {
       this.paymentService.getPagosbyUser(this.userprofile.id).subscribe(
         (res: any) => {
           this.payments = res;
+          
           this.isLoading = false;
+          
         },
         (error) => {
           this.error = error;

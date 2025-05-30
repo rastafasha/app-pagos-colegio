@@ -46,7 +46,8 @@
                                     <tr>
                                         <th scope="col">Referencia</th>
                                         <!-- <th scope="col">Usuario</th> -->
-                                        <th scope="col">Estudiante</th>
+                                        <!-- <th scope="col">Estudiante</th> -->
+                                        <th scope="col">bank </th>
                                         <th scope="col">bank destino</th>
                                         <th scope="col">Monto </th>
                                         <th scope="col">Metodo</th>
@@ -62,7 +63,8 @@
                                                 [routerLink]="['/dashboard/payment-detail', pago.id]">{{pago.referencia}}</a>
                                         </th>
                                         <!-- <th><a [routerLink]="['/dashboard/user/', pago.parent_id]">{{pago.parent_id}}</a></th> -->
-                                        <td>{{pago.student_id}}</td>
+                                        <!-- <td>{{pago.student_id}}</td> -->
+                                        <td>{{pago.bank_name}}</td>
                                         <td>{{pago.bank_destino}}</td>
                                         <td>{{pago.metodo}}</td>
                                          <td >

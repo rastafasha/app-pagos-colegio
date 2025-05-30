@@ -6,6 +6,10 @@ import { Payment } from 'src/app/models/payment';
 import { PaymentService } from 'src/app/services/payment.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
+import { StudentService } from 'src/app/services/student-service.service';
+import { ParentService } from 'src/app/services/parent-service.service';
+import { Parent } from 'src/app/models/parents';
+import { Student } from 'src/app/models/student';
 @Component({
   selector: 'app-payment-details',
   templateUrl: './payment-details.component.html',
@@ -16,11 +20,17 @@ export class PaymentDetailsComponent implements OnInit {
   title = "Detalle Pago";
   payment: Payment;
   error: string;
+  student_id:number;
+  parent_id:number;
+  parent:Parent;
+  student:Student;
 
   constructor(
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private paymentService: PaymentService,
+    private studentService: StudentService,
+    private parentService: ParentService,
     private http: HttpClient
   ) { }
 
@@ -33,7 +43,7 @@ export class PaymentDetailsComponent implements OnInit {
       res =>{
         this.payment = res;
         error => this.error = error
-        console.log(this.payment);
+        // console.log(this.payment);
       }
     );
   }
@@ -42,9 +52,27 @@ export class PaymentDetailsComponent implements OnInit {
     this.paymentService.getPagoById(id).subscribe(
       res=>{
         this.payment = res;
-        console.log(this.payment);
+        // console.log(this.payment);
+        this.parent_id = res.parent_id;
+        this.student_id = res.student_id;
+        this.getParent();
+        this.getStudent();
       }
+
     )
+  }
+  getParent(){
+    this.parentService.getUserById(this.parent_id).subscribe((resp:any)=>{
+      console.log(resp);
+      this.parent = resp.representante;
+
+    })
+  }
+  getStudent(){
+    this.studentService.getUserById(this.student_id).subscribe((resp:any)=>{
+      console.log(resp);
+      this.student = resp.student;
+    })
   }
 
   goBack() {
