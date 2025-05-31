@@ -36,7 +36,7 @@ export class UserService {
 
 
   get token():string{
-    return localStorage.getItem('auth_token') || '';
+    return localStorage.getItem('token') || '';
   }
 
   get role(): 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST' {

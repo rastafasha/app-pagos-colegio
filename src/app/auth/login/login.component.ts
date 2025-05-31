@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     password2: ['', Validators.required],
     // role: ['GUEST', Validators.required],
     role_id: ['9', Validators.required],
-    // terminos: [false, Validators.required],
+    terminos: [false, Validators.required],
 
   }, {
     validators: this.passwordsIguales('password', 'password2')

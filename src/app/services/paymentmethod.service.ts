@@ -17,7 +17,7 @@ export class PaimentmethodService {
   constructor(private http: HttpClient) { }
 
   get token():string{
-    return localStorage.getItem('auth_token') || '';
+    return localStorage.getItem('token') || '';
   }
 
 

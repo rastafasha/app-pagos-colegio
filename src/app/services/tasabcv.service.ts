@@ -17,9 +17,9 @@ export class TasabcvService {
   
     constructor(private http: HttpClient) { }
   
-    get token():string{
-      return localStorage.getItem('auth_token') || '';
-    }
+  get token():string{
+    return localStorage.getItem('token') || '';
+  }
   
   
     get headers(){

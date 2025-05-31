@@ -57,7 +57,7 @@ export class TasabcvComponent {
 
   deleteTipoPago(tiposdepago: any) {
     this.tasaBcvService
-      .createTasaBcv(tiposdepago.id)
+      .deleteTasaBcv(tiposdepago.id)
       .subscribe((resp: any) => {
         this.getTiposdePago();
       });

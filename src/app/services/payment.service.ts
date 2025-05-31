@@ -24,7 +24,7 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
   get token():string{
-    return localStorage.getItem('auth_token');
+    return localStorage.getItem('token') || '';
   }
 
 
@@ -76,6 +76,14 @@ export class PaymentService {
   }
 
 
+  getPagosStatusbyUser(parent_id:number): Observable<any> {
+
+    const url = `${baseUrl}/payment/check-debt-status-p/${parent_id}`;
+    return this.http.get<any>(url, this.headers)
+      .pipe(
+        map((resp:{ok: boolean}) => resp)
+        );
+  }
 
   deleteFoto(id) {
     return this.http.delete(baseUrl + '/payment/delete-foto/' + id);

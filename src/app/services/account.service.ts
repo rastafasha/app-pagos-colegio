@@ -35,9 +35,9 @@ export class AccountService {
       this.user;
     }
 
-    get token():string{
-      return localStorage.getItem('auth_token') || '';
-    }
+  get token():string{
+    return localStorage.getItem('token') || '';
+  }
 
     get role(): 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST' {
       return this.user.role!;
