@@ -33,7 +33,6 @@
                             {{payment.monto|currency}}
                         </span>
                     </p>
-
                     <p><b>deuda:</b>
                         <span *ngIf="payment.metodo ==='Transferencia Bolívares' || payment.metodo ==='payment Móvil'">
                             {{payment.deuda|currency:'Bs.'}}
