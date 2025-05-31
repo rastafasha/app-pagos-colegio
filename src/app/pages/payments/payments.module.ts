@@ -10,8 +10,7 @@ import { PaymentDetailsComponent } from './payment-details/payment-details.compo
 import { PaymentEditComponent } from './payment-edit/payment-edit.component';
 import { PaymentsComponent } from './payments.component';
 import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
-import { BackbreadcumComponent } from 'src/app/shared/backbreadcum/backbreadcum.component';
-import { SharedModule } from 'src/app/shared/shared.modulo';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 

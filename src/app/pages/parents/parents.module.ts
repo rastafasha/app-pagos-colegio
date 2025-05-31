@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ComponentsModule } from '../../components/components.module';
-import { SharedModule } from 'src/app/shared/shared.modulo';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [ListComponent, DetailparentComponent],

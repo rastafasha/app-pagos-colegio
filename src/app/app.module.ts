@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
-import { SharedModule } from './shared/shared.modulo';
+import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { UserModule } from './pages/users/user.module';
 import { ProveedorModule } from './pages/proveedor/proveedor.module';

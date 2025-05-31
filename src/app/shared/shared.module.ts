@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { BannerplanesComponent } from './bannerplanes/bannerplanes.component';
 import { LoadingComponent } from './loading/loading.component';
 import { BackbreadcumComponent } from './backbreadcum/backbreadcum.component';
+import { Breadc2Component } from './breadc2/breadc2.component';
 
 // Pipes
 //import { PipesModule } from '../pipes/pipes.module';
@@ -29,7 +30,8 @@ import { BackbreadcumComponent } from './backbreadcum/backbreadcum.component';
         FooterComponent,
         BannerplanesComponent,
         LoadingComponent,
-        BackbreadcumComponent
+        BackbreadcumComponent,
+        Breadc2Component
     ],
     exports: [
         HeaderComponent,
@@ -37,7 +39,8 @@ import { BackbreadcumComponent } from './backbreadcum/backbreadcum.component';
         FooterComponent,
         BannerplanesComponent,
         LoadingComponent,
-        BackbreadcumComponent
+        BackbreadcumComponent,
+        Breadc2Component
     ]
 })
 

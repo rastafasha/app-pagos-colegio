@@ -19,7 +19,7 @@ export class DetailparentComponent {
     display = false;
     public option_selected:number = 1;
     public solicitud_selected:any = null;
-  
+    isLoading:boolean = false;
     public selectedValue!: string;
   
     identity: any;
@@ -60,6 +60,7 @@ export class DetailparentComponent {
     }
     
     getUserServer(id:number){
+      this.isLoading = true;
       this.parentService.getUserById(+id).subscribe(
         (res:any) =>{
           this.userprofile = res.representante;
@@ -69,6 +70,7 @@ export class DetailparentComponent {
             this.representante_id = null;
             console.error('User or user.id is undefined in response:', res);
           }
+          this.isLoading = false;
         },
         (error) => {
           console.error('Error fetching user by id:', error);

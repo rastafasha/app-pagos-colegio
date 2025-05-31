@@ -24,6 +24,7 @@ export class PaymentDetailsComponent implements OnInit {
   parent_id:number;
   parent:Parent;
   student:Student;
+  isLoading:boolean=false;
 
   constructor(
     private location: Location,
@@ -49,12 +50,14 @@ export class PaymentDetailsComponent implements OnInit {
   }
 
   getPagoById(id:number){
+    this.isLoading= true;
     this.paymentService.getPagoById(id).subscribe(
       res=>{
         this.payment = res;
         // console.log(this.payment);
         this.parent_id = res.parent_id;
         this.student_id = res.student_id;
+        this.isLoading = false;
         this.getParent();
         this.getStudent();
       }

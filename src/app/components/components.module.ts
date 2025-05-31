@@ -9,7 +9,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListapaymentsComponent } from './listapayments/listapayments.component';
 import { ListapaymentshijoComponent } from './listapaymentshijo/listapaymentshijo.component';
-import { SharedModule } from '../shared/shared.modulo';
+import { SharedModule } from '../shared/shared.module';
 import { RecentpaymentsComponent } from './recentpayments/recentpayments.component';
 import { TasadiabcvComponent } from './tasadiabcv/tasadiabcv.component';
 

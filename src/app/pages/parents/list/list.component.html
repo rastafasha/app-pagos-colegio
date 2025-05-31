@@ -2,7 +2,7 @@
 <div class="container animated fadeInUp" id="main" class="main" role="main" name="users">
     <app-backbreadcum [title]="title" ></app-backbreadcum>
     <app-loading *ngIf="isLoading"></app-loading>
-    <div class="row animated fadeInUp">
+    <div class="row animated fadeInUp" *ngIf="!isLoading">
         <section class="section dashboard">
             <div class="row">
                     <div class="col-xs-12">
