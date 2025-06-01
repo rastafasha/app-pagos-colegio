@@ -14,7 +14,7 @@
                                     <input type="search" name="search" type="text" class="form-control col-xs-12" placeholder="Buscar.." [(ngModel)]="query" aria-describedby="button-addon1" class="form-control border-0 bg-light">
                                     <div class="input-group-append">
                                         <button id="button-addon1" type="submit" class="btn btn-link text-primary" (click)="search()" name="submit" data-toggle="tooltip" title="mostrar todos"><i class="fa fa-search"></i></button>
-                                        <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><i class="fa fa-refresh"></i></a>
+                                        <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2 circle"><i class="fa fa-refresh"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -55,9 +55,9 @@
 
                                     <td class="text-nowrap text-center">
 
-                                        <a [routerLink]="['/dashboard/user/edit', user.id]" class="cursor" data-toggle="tooltip" data-original-title="Edit">
+                                        <!-- <a [routerLink]="['/dashboard/user/edit', user.id]" class="cursor" data-toggle="tooltip" data-original-title="Edit">
                                             <div class="btn btn-success"><i class="fa fa-edit"></i></div>
-                                        </a>
+                                        </a> -->
                                         <a (click)="eliminarUser(user.id)" class="cursor" data-toggle="tooltip" data-original-title="Borrar">
                                             <div class="btn btn-danger"><i class="fa fa-trash"></i></div>
                                         </a>
