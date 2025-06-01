@@ -1,7 +1,13 @@
-<app-loading *ngIf="isLoading"></app-loading>
-<div class="row" *ngIf="!isLoading">
+<!-- <app-loading *ngIf="isLoading"></app-loading> -->
+<div class="row" >
     
-    <div  *ngIf="profile ">
+    <div  *ngIf="!precio_dia ">
+       Favor Actualizar Tasa del dia BCV
+       <button type="button" class="btn btn-outline-warning" routerLink="../dashboard/tasabcv">
+        Actualizar tasa
+       </button>
+    </div>
+    <div  *ngIf="precio_dia ">
        <p> Tasa BCV del día: {{precio_fecha | date:'MMM d, y, h:mm:ss a'}} <br>
         <strong>{{precio_dia|currency:'Bs.'}} x $</strong></p>
     </div>
