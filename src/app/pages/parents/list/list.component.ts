@@ -8,6 +8,7 @@ import { User } from 'src/app/models/users';
 import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 import { ParentService } from 'src/app/services/parent-service.service';
+import { Payment } from 'src/app/models/payment';
 
 @Component({
   selector: 'app-list',
@@ -31,6 +32,7 @@ export class ListComponent {
     selectedValue!: any;
     msm_error: string;
     query:string ='';
+    payments:Payment;
   
     ServerUrl = environment.url_servicios;
     doctores;
