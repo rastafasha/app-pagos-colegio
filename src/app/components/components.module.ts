@@ -13,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RecentpaymentsComponent } from './recentpayments/recentpayments.component';
 import { TasadiabcvComponent } from './tasadiabcv/tasadiabcv.component';
 import { StatuspagosComponent } from './statuspagos/statuspagos.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent, 
@@ -29,7 +30,8 @@ import { StatuspagosComponent } from './statuspagos/statuspagos.component';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CKEditorModule,
-    SharedModule 
+    SharedModule,
+    PipesModule
   ],
 })
 export class ComponentsModule {}

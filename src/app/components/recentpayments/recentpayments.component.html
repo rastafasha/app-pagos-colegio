@@ -38,15 +38,16 @@
                         <table class="table table-borderless datatable">
                             <thead>
                                 <tr>
+                                    <th scope="col">Imagen</th>
                                     <th scope="col">Referencia</th>
                                     <th scope="col">Padre</th>
                                     <th scope="col">Banco</th>
                                     <th scope="col">Banco Destino</th>
                                     <th scope="col">Metodo</th>
                                     <th scope="col">Monto </th>
-                                    <th scope="col">deuda</th>
-                                    <th scope="col">monto_pendiente</th>
-                                    <th scope="col">status_deuda</th>
+                                    <th scope="col">Deuda</th>
+                                    <th scope="col">Monto Pendiente</th>
+                                    <th scope="col">Status Deuda</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Fecha | Hora</th>
                                     <th scope="col">Acciones</th>
@@ -54,6 +55,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let pago of payments |  paginate: { itemsPerPage: count, currentPage: p }">
+                                    <td>
+                            <img [src]="pago?.avatar| imagenPipe: 'payments' "  class="imagecircle shadow" alt="">
+                        </td>
                                     <th scope="row"><a [routerLink]="['/dashboard/payment-detail', pago.id]">{{pago.referencia}}</a></th>
                                     <th><a [routerLink]="['/dashboard/padre/detail/', pago.parent_id]">{{pago.nombre}}</a></th>
                                     <td>{{pago.bank_name}}</td>

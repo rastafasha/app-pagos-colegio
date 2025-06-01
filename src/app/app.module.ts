@@ -15,6 +15,7 @@ import { PaymentsModule } from './pages/payments/payments.module';
 import { ParentsModule } from './pages/parents/parents.module';
 import { ComponentsModule } from './components/components.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ProveedorModule,
     ParentsModule,
     NgxPaginationModule,
+    PipesModule,
     ComponentsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

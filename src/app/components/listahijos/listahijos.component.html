@@ -30,6 +30,7 @@
                 <thead>
                     <tr>
                         <!-- <th>ID</th> -->
+                        <th>Foto</th>
                         <th>Nombre</th>
                         <th>CI</th>
                         <th>Género</th>
@@ -46,6 +47,9 @@
                         *ngFor="let studentprofile of students  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
 
                         <!-- <td><a [routerLink]="['/dashboard/padre/detail/', studentprofile.id]">{{studentprofile.id}}</a></td> -->
+                        <td>
+                            <img [src]="studentprofile.avatar| imagenPipe: 'students' "  class="imagecircle shadow" alt="">
+                        </td>
                         <td>{{studentprofile.name}} {{studentprofile.surname}} </td>
                         <td>{{studentprofile.n_doc}} </td>
                         <!-- <td>{{studentprofile.gender}} </td> -->

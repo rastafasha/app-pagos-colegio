@@ -11,6 +11,7 @@ import { PaymentEditComponent } from './payment-edit/payment-edit.component';
 import { PaymentsComponent } from './payments.component';
 import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 
@@ -19,7 +20,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     PaymentDetailsComponent,
     PaymentEditComponent,
     PaymentsComponent,
-    ImagenPipe,
+    
     
   ],
   imports: [
@@ -31,7 +32,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
         BrowserAnimationsModule,
         NgxPaginationModule,
         CKEditorModule,
-        SharedModule
+        SharedModule,
+        PipesModule
   ]
 })
 export class PaymentsModule { }

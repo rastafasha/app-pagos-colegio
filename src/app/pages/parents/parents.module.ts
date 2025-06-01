@@ -10,6 +10,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ComponentsModule } from '../../components/components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [ListComponent, DetailparentComponent],
@@ -23,7 +24,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     NgxPaginationModule,
     CKEditorModule,
     ComponentsModule,
-    SharedModule
+    SharedModule,
+    PipesModule
   ],
 })
 export class ParentsModule {}

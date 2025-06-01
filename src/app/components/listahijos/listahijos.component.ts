@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Parent } from 'src/app/models/parents';
 import { Student } from 'src/app/models/student';
 import { User } from 'src/app/models/users';
+import { ImagenPipe } from 'src/app/pipes/imagen.pipe';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { StudentService } from 'src/app/services/student-service.service';
 import { environment } from 'src/environments/environment';
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment';
   selector: 'app-listahijos',
   standalone: false,
   templateUrl: './listahijos.component.html',
-  styleUrls: ['./listahijos.component.css'],
+  styleUrls: ['./listahijos.component.css']
 })
 export class ListahijosComponent implements OnChanges {
   @Input() userprofile: Parent;
