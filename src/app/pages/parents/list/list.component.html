@@ -44,7 +44,7 @@
                             <tr
                                 *ngFor="let user of parents  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
                                 <td>
-                                    <img [src]="pago?.avatar| imagenPipe: 'parents' " class="imagecircle shadow" alt="">
+                                    <img [src]="user?.avatar| imagenPipe: 'parents' " class="imagecircle shadow" alt="">
                                 </td>
                                 <td><a [routerLink]="['/dashboard/padre/detail/', user.id]">{{user.id}}</a></td>
                                 <td><a [routerLink]="['/dashboard/padre/detail/', user.id]">{{user.name}}</a> </td>
