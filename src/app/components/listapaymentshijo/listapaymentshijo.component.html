@@ -8,11 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-
-                <div class="col-12">
-                    <div class="card recent-sales overflow-auto">
-
-                        <div class="row">
+                <div class="row">
                             <div class="col-xs-12">
                                 <!-- buscador -->
                                 <form class="form-horizontal">
@@ -37,6 +33,10 @@
                                 <!-- buscador -->
                             </div>
                         </div>
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+
+                        
                         <app-loading *ngIf="isLoading"></app-loading>
                         <div class="card-body" *ngIf="!isLoading">
                             
