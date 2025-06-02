@@ -9,3 +9,12 @@
     margin: 0;
     padding: 0;
 }
+
+@media (max-width:768px) {
+    .pagodetail {
+    flex-direction: column-reverse;
+}
+    .pagodetail img{
+    margin-bottom: 20px;
+}
+}
