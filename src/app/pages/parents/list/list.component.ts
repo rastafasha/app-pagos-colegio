@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { Payment } from 'src/app/models/payment';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-list',
@@ -42,6 +43,7 @@ export class ListComponent {
       private parentService: ParentService,
       private location: Location,
       private http: HttpClient,
+      public accountService: AccountService,
       handler: HttpBackend
       ) {
         this.http = new HttpClient(handler);
@@ -49,11 +51,9 @@ export class ListComponent {
   
     ngOnInit(): void {
       window.scrollTo(0,0);
-      this.closeMenu();
+      this.accountService.closeMenu();
       this.getUsers();
     }
-  
-  
   
   
     getUsers(): void {
@@ -67,25 +67,6 @@ export class ListComponent {
         }
       );
     }
-  
-  
-  
-    cambiarRole(data:any){debugger
-      let VALUE = {
-        id: data.id,
-        roles:data.roles.name
-      };
-      // console.log(VALUE);
-      
-      // this.userService.update(data).subscribe(
-      //   resp =>{
-      //     // console.log(resp);
-      //     Swal.fire('Updated', `Client Status Updated successfully!`, 'success');
-      //   }
-      // )
-    }
-  
-  
   
   
     eliminarUser(user:User){
@@ -102,14 +83,6 @@ export class ListComponent {
   
     goBack() {
       this.location.back(); // <-- go back to previous location on cancel
-    }
-  
-    closeMenu(){
-      var menuLateral = document.getElementsByClassName("sidebar");
-        for (var i = 0; i<menuLateral.length; i++) {
-           menuLateral[i].classList.remove("active");
-  
-        }
     }
   
     search() {

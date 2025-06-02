@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Parent } from 'src/app/models/parents';
+import { AccountService } from 'src/app/services/account.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private ativatedRoute: ActivatedRoute,
+    public accountService:AccountService
     ) {}
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit {
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     this.role = this.user.roles[0];
+    this.accountService.closeMenu();
 
   }
 

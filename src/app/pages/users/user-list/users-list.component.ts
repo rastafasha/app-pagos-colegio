@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/users';
 import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-users-list',
@@ -38,6 +39,7 @@ export class UsersListComponent implements OnInit {
     private userService: UserService,
     private location: Location,
     private http: HttpClient,
+    public accountService:AccountService,
     handler: HttpBackend
     ) {
       this.http = new HttpClient(handler);
@@ -45,8 +47,8 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0,0);
-    this.config();
-    this.closeMenu();
+    // this.config();
+    this.accountService.closeMenu();
     this.getUsers();
   }
 
@@ -92,7 +94,13 @@ export class UsersListComponent implements OnInit {
   cambiarRole(user: User){
     this.userService.update(user).subscribe(
       resp =>{ console.log(resp);
-        Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Actualizado',
+                              showConfirmButton: false,
+                              timer: 1500,
+                            });
         this.getUsers();
       }
     )
@@ -117,13 +125,7 @@ export class UsersListComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
-  closeMenu(){
-    var menuLateral = document.getElementsByClassName("sidebar");
-      for (var i = 0; i<menuLateral.length; i++) {
-         menuLateral[i].classList.remove("active");
-
-      }
-  }
+  
 
   search() {
     return this.userService.search(this.query).subscribe(

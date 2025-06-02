@@ -5,6 +5,7 @@ import { Payment } from 'src/app/models/payment';
 import { PaymentService } from 'src/app/services/payment.service';
 import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-payments',
@@ -28,24 +29,22 @@ export class PaymentsComponent implements OnInit {
     private location: Location,
     private paymentService: PaymentService,
     private userService: UserService,
+    public accountService: AccountService,
     private http: HttpClient
   ) {
     this.user = this.userService.user;
   }
 
   ngOnInit(): void {
-    this.closeMenu();
+    // this.closeMenu();
+
+    this.accountService.closeMenu();
     this.getPagos();
     window.scrollTo(0, 0);
     // this.getPagos_list();
   }
 
-  closeMenu() {
-    var menuLateral = document.getElementsByClassName('sidebar');
-    for (var i = 0; i < menuLateral.length; i++) {
-      menuLateral[i].classList.remove('active');
-    }
-  }
+  
 
   getPagos(): void {
     this.isLoading = true;
