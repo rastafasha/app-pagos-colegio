@@ -118,7 +118,7 @@ crearUsuario(){
   this.formSumitted = true;
   console.log('Register form value:', this.registerForm.value);
   this.authService.crearUsuario(this.registerForm.value).subscribe(
-    resp =>{
+    (resp:any) =>{
       Swal.fire('Registrado!', `Ya puedes ingresar`, 'success');
       this.ngOnInit();
     },(error) => {
