@@ -10,6 +10,7 @@ import { StudentService } from 'src/app/services/student-service.service';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { Parent } from 'src/app/models/parents';
 import { Student } from 'src/app/models/student';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-payment-details',
   templateUrl: './payment-details.component.html',
@@ -90,12 +91,13 @@ export class PaymentDetailsComponent implements OnInit {
       resp =>{
 
         console.log(resp);
-        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
-        // this.toaster.open({
-        //   text:'Producto Actualizado!',
-        //   caption:'Mensaje de Validación',
-        //   type:'success',
-        // })
+        Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Actualizado',
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
         this.ngOnInit();
       }
     )

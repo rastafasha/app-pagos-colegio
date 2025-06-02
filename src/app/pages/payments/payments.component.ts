@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Payment } from 'src/app/models/payment';
 import { PaymentService } from 'src/app/services/payment.service';
 import { UserService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-payments',
@@ -81,12 +82,13 @@ export class PaymentsComponent implements OnInit {
       resp =>{
 
         console.log(resp);
-        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
-        // this.toaster.open({
-        //   text:'Producto Actualizado!',
-        //   caption:'Mensaje de Validación',
-        //   type:'success',
-        // })
+        Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Actualizado',
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
         this.getPagos();
       }
     )

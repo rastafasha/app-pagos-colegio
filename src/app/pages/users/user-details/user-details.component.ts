@@ -141,7 +141,13 @@ export class UserDetailsComponent implements OnInit {
             Swal.fire('Error', this.error, 'error');
           } else {
             // this.infoDirectorio = res;
-            Swal.fire('Guardado', 'Los cambios fueron actualizados', 'success');
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'Actualizado',
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/usuarios']);
           }
         },

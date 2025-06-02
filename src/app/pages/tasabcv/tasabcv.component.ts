@@ -4,6 +4,7 @@ import { Tasabcv } from 'src/app/models/tasabcba';
 import { AccountService } from 'src/app/services/account.service';
 import { PaimentmethodService } from 'src/app/services/paymentmethod.service';
 import { TasabcvService } from 'src/app/services/tasabcv.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tasabcv',
@@ -51,6 +52,13 @@ export class TasabcvComponent {
         // console.log(resp);
         this.precio_dia ;
         // this.tipo ='';
+        Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Actualizado',
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
         this.getTiposdePago();
       });
   }

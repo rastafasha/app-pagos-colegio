@@ -8,6 +8,7 @@ import { ParentService } from 'src/app/services/parent-service.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { StudentService } from 'src/app/services/student-service.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listapaymentshijo',
@@ -90,12 +91,13 @@ export class ListapaymentshijoComponent implements OnChanges {
 
     this.paymentService.updateStatus(data, data.id).subscribe((resp) => {
       console.log(resp);
-      // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
-      // this.toaster.open({
-      //   text:'Producto Actualizado!',
-      //   caption:'Mensaje de Validación',
-      //   type:'success',
-      // })
+      Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Actualizado',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
       this.getPaymentsbyStudent();
     });
   }
