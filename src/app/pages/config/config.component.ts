@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Paymentmethod } from 'src/app/models/paymentmethod';
 import { AccountService } from 'src/app/services/account.service';
 import { PaimentmethodService } from 'src/app/services/paymentmethod.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-config',
@@ -66,12 +67,13 @@ export class ConfigComponent {
           this.paymentMethodService.updatePaymentmethod(tipodepago, tipodepago.id).subscribe(
             resp =>{
               // console.log(resp);
-              // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
-              // this.toaster.open({
-              //   text:'Producto Actualizado!',
-              //   caption:'Mensaje de Validación',
-              //   type:'success',
-              // })
+              Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Actualizado',
+              showConfirmButton: false,
+              timer: 1500,
+            });
               this.getTiposdePago();
     
     
@@ -94,6 +96,9 @@ export class ConfigComponent {
           }
           this.paymentMethodService.createPaymentmethod(data).subscribe((resp:any)=>{
             // console.log(resp);
+            // Swal.fire('Actualizado', this.text_success, 'success' );
+       
+            
             this.bankAccountType ='';
               this.bankName ='';
               this.bankAccount ='';
