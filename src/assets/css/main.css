@@ -98,6 +98,10 @@ img.avatar {
     cursor: pointer;
 }
 
+.border-radio{
+    border-radius: 16px !important;
+}
+
 .profile .profile-card .social-links a {
     color: var(--azul);
 }

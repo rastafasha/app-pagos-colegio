@@ -6,15 +6,15 @@
     <div class="row animated fadeInUp" *ngIf="!isLoading">
         <section class="section dashboard">
 
-            <div class="card pagodetail">
+            <div class="card pagodetail border-radio">
                 <div class="col-xs-12 col-sm-6">
                     <p><b>Referencia:</b> {{payment.referencia}}</p>
-                    <p><b>Status:</b>
+                    <p><b>Status: &nbsp;</b>
                         <span class="badge bg-success" *ngIf="payment.status === 'APPROVED'">Aprobado</span>
                         <span class="badge bg-primary" *ngIf="payment.status === 'PENDING'">Pendiente</span>
                         <span class="badge bg-danger" *ngIf="payment.status === 'REJECTED'">Rechazado</span>
                     </p>
-                    <p><b>Status deuda:</b> 
+                    <p><b>Status deuda: &nbsp;</b> 
                         <!-- {{payment.status_deuda}} -->
                     <span class="badge bg-success" *ngIf="payment.status_deuda === 'PAID'">Pagado</span>
                         <span class="badge bg-warning" *ngIf="payment.status_deuda === null">Pendiente</span>

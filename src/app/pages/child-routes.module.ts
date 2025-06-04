@@ -9,9 +9,6 @@ import { SliderIndexComponent } from './slider/slider-index/slider-index.compone
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UsersListComponent } from './users/user-list/users-list.component';
-import { EditProveedorComponent } from './proveedor/edit-proveedor/edit-proveedor.component';
-import { DetailProveedorComponent } from './proveedor/detail-proveedor/detail-proveedor.component';
-import { ListProveedorComponent } from './proveedor/list-proveedor/list-proveedor.component';
 import { PaymentEditComponent } from './payments/payment-edit/payment-edit.component';
 import { PaymentDetailsComponent } from './payments/payment-details/payment-details.component';
 import { Payment } from '../models/payment';
@@ -39,11 +36,6 @@ const childRoutes: Routes = [
             { path: 'padres', component: ListComponent},
             { path: 'padre/detail/:id', component: DetailparentComponent},
             
-            { path: 'proveedores', component: ListProveedorComponent},
-            { path: 'proveedor/create', component: EditProveedorComponent},
-            { path: 'proveedor/edit/:id', component: EditProveedorComponent},
-            { path: 'proveedor/view/:id', component: DetailProveedorComponent},
-
             { path: 'slider', component: SliderIndexComponent},
             { path: 'slider/create', component: SliderEditComponent},
             { path: 'slider/edit/:id', component: SliderEditComponent},

@@ -10,7 +10,6 @@ import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { UserModule } from './pages/users/user.module';
-import { ProveedorModule } from './pages/proveedor/proveedor.module';
 import { PaymentsModule } from './pages/payments/payments.module';
 import { ParentsModule } from './pages/parents/parents.module';
 import { ComponentsModule } from './components/components.module';
@@ -31,7 +30,6 @@ import { PipesModule } from './pipes/pipes.module';
     PagesModule,
     UserModule,
     PaymentsModule,
-    ProveedorModule,
     ParentsModule,
     NgxPaginationModule,
     PipesModule,
