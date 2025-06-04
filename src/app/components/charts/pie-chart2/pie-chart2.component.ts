@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -6,20 +6,43 @@ import Chart from 'chart.js/auto';
   templateUrl: './pie-chart2.component.html',
   styleUrls: ['./pie-chart2.component.css']
 })
-export class PieChart2Component {
+export class PieChart2Component implements OnChanges {
   public chart: Chart;
-  
-    ngOnInit(){
-      const data ={
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-          label: 'Series A',
-          data: [10, 20, 30, 40, 50],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+  @Input() payments: any[];
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['payments'] && this.payments) {
+      this.updateChart();
+    }
+  }
+
+  updateChart() {
+    const paidCount = this.payments.filter(p => p.status_deuda !== 'DEUDA').length;
+    const debtCount = this.payments.filter(p => p.status_deuda === 'DEUDA').length;
+
+    const data = {
+      labels: ['Pagados', 'Pendientes'],
+      datasets: [
+        {
+          label: 'Comportamiento',
+          data: [paidCount, debtCount],
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.6)', // greenish for paid
+            'rgba(255, 99, 132, 0.6)'  // reddish for debt
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(255, 99, 132, 1)'
+          ],
           borderWidth: 1
-          }]
-      }
+        }
+      ]
+    };
+
+    if (this.chart) {
+      this.chart.data = data;
+      this.chart.update();
+    } else {
       this.chart = new Chart('pieChart', {
         type: 'doughnut',
         data: data,
@@ -31,7 +54,7 @@ export class PieChart2Component {
             },
             title: {
               display: true,
-              text: 'Chart.js Doughnut Chart'
+              text: 'Comportamiento'
             }
           },
           scales: {
@@ -40,6 +63,7 @@ export class PieChart2Component {
             },
           },
         },
-      } );
-      }      
+      });
+    }
+  }
 }
