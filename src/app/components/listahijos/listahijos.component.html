@@ -50,7 +50,12 @@
                         <td>
                             <img [src]="studentprofile.avatar| imagenPipe: 'students' "  class="imagecircle shadow" alt="">
                         </td>
-                        <td>{{studentprofile.name}} {{studentprofile.surname}} </td>
+                        <td>
+                            <a [routerLink]="['/dashboard/estudiante/detail/', studentprofile.id]">
+
+                                {{studentprofile.name}} {{studentprofile.surname}} 
+                            </a>
+                        </td>
                         <td>{{studentprofile.n_doc}} </td>
                         <!-- <td>{{studentprofile.gender}} </td> -->
                         <td>

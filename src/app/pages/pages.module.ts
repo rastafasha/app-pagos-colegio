@@ -30,6 +30,10 @@ import{SliderEditComponent} from './slider/slider-edit/slider-edit.component';
 import { ComponentsModule } from "../components/components.module";
 import { ConfigComponent } from './config/config.component';
 import { TasabcvComponent } from './tasabcv/tasabcv.component';
+import { MateriasComponent } from './materias/materias.component';
+import { StudentsComponent } from './students/students.component';
+import { StudentDetailComponent } from './students/student-detail/student-detail.component';
+import { StudentsModule } from './students/students.module';
 
 
 
@@ -42,7 +46,8 @@ import { TasabcvComponent } from './tasabcv/tasabcv.component';
         SliderIndexComponent,
         SliderEditComponent,
         ConfigComponent,
-        TasabcvComponent
+        TasabcvComponent,
+        MateriasComponent,
 
     ],
     exports: [
@@ -69,7 +74,8 @@ import { TasabcvComponent } from './tasabcv/tasabcv.component';
     NgxPaginationModule,
     CKEditorModule,
     SharedModule,
-    ComponentsModule
+    ComponentsModule,
+    StudentsModule
 ]
 })
 

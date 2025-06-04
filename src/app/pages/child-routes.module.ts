@@ -20,6 +20,9 @@ import { ListComponent } from './parents/list/list.component';
 import { DetailparentComponent } from './parents/detailparent/detailparent.component';
 import { ConfigComponent } from './config/config.component';
 import { TasabcvComponent } from './tasabcv/tasabcv.component';
+import { MateriasComponent } from './materias/materias.component';
+import { StudentDetailComponent } from './students/student-detail/student-detail.component';
+import { StudentsComponent } from './students/students.component';
 
 const childRoutes: Routes = [
 
@@ -51,6 +54,9 @@ const childRoutes: Routes = [
             
             { path: 'config', component: ConfigComponent},
             { path: 'tasabcv', component: TasabcvComponent},
+            { path: 'materias', component: MateriasComponent},
+            { path: 'estudiantes', component: StudentsComponent},
+            { path: 'estudiante/detail/:id', component: StudentDetailComponent},
 
 
     { path: '', redirectTo: 'admin', pathMatch: 'full' },

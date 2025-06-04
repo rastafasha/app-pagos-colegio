@@ -4,6 +4,8 @@ const base_url = environment.url_media;
 export class Student {
 
     id: number;
+    materia_id: number;
+    user_id: number;
     // role_id: number = 3; // 3 = Rol miembro
     username: string = "";
     name: string = "";
@@ -16,6 +18,7 @@ export class Student {
     matricula: number = 0;
     created_at: string = "";
     image: string = "";
+    avatar: string = "";
     role?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST';
     
 

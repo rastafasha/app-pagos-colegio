@@ -3,6 +3,12 @@
     height: auto;
 }
 
+.cuadroicondatos{
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+}
+
 @media(max-width:768px) {
     .mantengase .partner {
         width: 60%;

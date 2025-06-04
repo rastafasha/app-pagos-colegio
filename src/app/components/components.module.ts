@@ -14,12 +14,17 @@ import { RecentpaymentsComponent } from './recentpayments/recentpayments.compone
 import { TasadiabcvComponent } from './tasadiabcv/tasadiabcv.component';
 import { StatuspagosComponent } from './statuspagos/statuspagos.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { CalificacionesComponent } from './calificaciones/calificaciones.component';
+import { CalificacionesEditComponent } from './calificaciones-edit/calificaciones-edit.component';
+import { ExamenesStudentComponent } from './examenes-student/examenes-student.component';
 
 @NgModule({
   declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent, 
-    RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent ],
+    RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent, CalificacionesComponent, 
+    CalificacionesEditComponent, ExamenesStudentComponent ],
   exports: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent,
-    RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent 
+    RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent, CalificacionesComponent,
+    CalificacionesEditComponent  , ExamenesStudentComponent
   ],
   imports: [
     CommonModule,

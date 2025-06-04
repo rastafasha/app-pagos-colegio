@@ -3,6 +3,7 @@ import { UserService } from '../../services/users.service';
 import { User } from '../../models/users';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
 
 
 @Component({
@@ -25,10 +26,12 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authService: AuthService,
+    private authService: AccountService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    ) {}
+    ) {
+      // this.user = this.authService.getUsuario;
+    }
 
 
 

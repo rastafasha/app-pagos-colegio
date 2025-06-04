@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- buscador -->
+            <form class="form-horizontal">
+                <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                    <div class="input-group">
+                        <!-- <input type="search" name="search" type="text" class="form-control col-xs-12"
+                            placeholder="Buscar.." [(ngModel)]="query" aria-describedby="button-addon1"
+                            class="form-control border-0 bg-light"> -->
+                        <div class="input-group-append">
+                            <!-- <button id="button-addon1" type="submit" class="btn btn-link text-primary circle"
+                                (click)="search()" name="submit" data-toggle="tooltip" title="mostrar todos"><i
+                                    class="fa fa-search"></i></button> -->
+                            <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2 circle"><i
+                                    class="fa fa-refresh"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- buscador -->
+             
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#examenModal" (click)="openNewModal($event.value)" >
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+    </div>
+    <app-loading *ngIf="isLoading"></app-loading>
+    <div class="card recent-sales overflow-auto" *ngIf="!isLoading">
+
+        <div class="card-body">
+
+            <table [ngClass]="loading? 'table table-borderless datatable':'table table-borderless'">
+                <thead>
+                    <tr>
+                        <!-- <th>ID</th> -->
+                        <th>Materia</th>
+                        <th>Titulo</th>
+                        <th>Puntaje</th>
+                        <th>Puntaje Letra</th>
+                        <th>Maestro</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let examen of examenes  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
+
+                    
+                        <td>{{examen.materia.name}} </td>
+                        <td>{{examen.title}} </td>
+                        <td>{{examen.puntaje}} </td>
+                        <td>{{examen.puntaje_letra}} </td>
+                        <td>{{examen.maestro.name}} {{examen.maestro.surname}} </td>
+                        <td>{{examen?.created_at|date}} </td>
+                        <td class="text-nowrap text-center">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#examenModal" (click)="openPaymentsModal(examen.id)">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            
+        </div>
+        <!-- Modal -->
+        <app-calificaciones-edit [selectedMateria]="selectedMateria" [userprofile]="userprofile" (closeModal)="getExamenes()"></app-calificaciones-edit>
+        
+        <!-- Modal -->
+
+    </div>
+
+   <!-- Button trigger modal -->
+
+
+
+
+</div>

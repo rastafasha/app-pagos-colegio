@@ -71,7 +71,8 @@ hr {
 }
 
 a{
-    color: var(--vinotinto);
+    color: var(--azulclaro);
+    text-decoration: none;
 }
 
 img.avatar {

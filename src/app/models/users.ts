@@ -15,7 +15,7 @@ export class User {
     is_active: number = 0;
     created_at: string = "";
     image: string = "";
-    role?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST';
+    role?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST'|'MAESTRO';
     
 
 

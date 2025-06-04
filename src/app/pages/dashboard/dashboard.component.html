@@ -28,10 +28,21 @@
 <div class="row animated fadeInUp" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
     <div class="col-6 col-sm-4 col-md-3">
             <div class="card d-flex justify-content-center">
-                <a routerLink="../dashboard/usuarios">
-                    <div class="card-body d-flex justify-content-center flex-column align-items-center p-2 gap-2" style=" border-left: green 2px solid;">
+                <a routerLink="../dashboard/padres">
+                    <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
+                        <i class="fa fa-vcard fa-2x"></i>
+                        <p>Padres: {{parents_nodeuda}}</p>
+                        <!-- <p>Padres con deuda: {{total_parents}}</p> -->
+                    </div>
+                </a>
+            </div>
+        </div>  
+    <div class="col-6 col-sm-4 col-md-3">
+            <div class="card d-flex justify-content-center">
+                <a routerLink="../dashboard/estudiantes">
+                    <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
                         <i class="fa fa-users fa-2x"></i>
-                        <p>Usuarios</p>
+                        <p>Estudiantes: {{total_students}}</p>
                     </div>
                 </a>
             </div>
@@ -39,23 +50,14 @@
         <div class="col-6 col-sm-4 col-md-3">
             <div class="card d-flex justify-content-center">
                 <a routerLink="../dashboard/payments">
-                    <div class="card-body d-flex justify-content-center flex-column align-items-center p-2 gap-2" style=" border-left: green 2px solid;">
-                        <i class="fa fa-money fa-2x"></i>
+                    <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
+                        <i class="fa fa-line-chart fa-2x"></i>
                         <p>Pagos</p>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="col-6 col-sm-4 col-md-3">
-            <div class="card d-flex justify-content-center">
-                <a routerLink="../dashboard/padres">
-                    <div class="card-body d-flex justify-content-center flex-column align-items-center p-2 gap-2" style=" border-left: green 2px solid;">
-                        <i class="fa fa-users fa-2x"></i>
-                        <p>Padres</p>
-                    </div>
-                </a>
-            </div>
-        </div>    
+          
         <div class="col-6 col-sm-4 col-md-3">
             <div class="card" style="padding: 10px; border-left: green 2px solid;">
                 <app-tasadiabcv></app-tasadiabcv>
