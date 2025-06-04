@@ -46,7 +46,7 @@ title = "Detalles de la cuenta";
     }
   
     ngOnInit(): void {
-      window.scrollTo(0,0);
+      // window.scrollTo(0,0);
       this.closeMenu();
       // this.getUser();
       this.activatedRoute.params.subscribe( ({id}) => this.getUserServer(id));

@@ -34,6 +34,7 @@ import { MateriasComponent } from './materias/materias.component';
 import { StudentsComponent } from './students/students.component';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentsModule } from './students/students.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -75,7 +76,8 @@ import { StudentsModule } from './students/students.module';
     CKEditorModule,
     SharedModule,
     ComponentsModule,
-    StudentsModule
+    StudentsModule,
+    NgxChartsModule
 ]
 })
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListahijosComponent } from './listahijos/listahijos.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,14 +17,20 @@ import { PipesModule } from '../pipes/pipes.module';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 import { CalificacionesEditComponent } from './calificaciones-edit/calificaciones-edit.component';
 import { ExamenesStudentComponent } from './examenes-student/examenes-student.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import { LineChartComponent } from './charts/line-chart/line-chart.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { PieChart2Component } from './charts/pie-chart2/pie-chart2.component';
 
 @NgModule({
   declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent, 
     RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent, CalificacionesComponent, 
-    CalificacionesEditComponent, ExamenesStudentComponent ],
+    CalificacionesEditComponent, ExamenesStudentComponent, PieChartComponent, LineChartComponent, BarChartComponent, PieChart2Component ],
   exports: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent,
     RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent, CalificacionesComponent,
-    CalificacionesEditComponent  , ExamenesStudentComponent
+    CalificacionesEditComponent  , ExamenesStudentComponent, PieChartComponent,LineChartComponent, BarChartComponent,
+    PieChart2Component
   ],
   imports: [
     CommonModule,
@@ -36,7 +42,9 @@ import { ExamenesStudentComponent } from './examenes-student/examenes-student.co
     NgxPaginationModule,
     CKEditorModule,
     SharedModule,
-    PipesModule
+    PipesModule,
+    NgxChartsModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {}
