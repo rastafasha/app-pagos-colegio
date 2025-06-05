@@ -6,14 +6,14 @@
     </div>
 </div>
 
-<div *ngIf="role === 'GUEST' || role === 'MEMBER' ">
+<div *ngIf="role === 'GUEST' || role === 'maestro' ">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <h3>Info Perfil</h3>
                     <h4 class="animated fadeInDown">{{user.name}} </h4>
-                    <p>Status : <span class="badge bg-success">active</span></p>
+                    <!-- <p>Status : <span class="badge bg-success">active</span></p> -->
                     <button class="btn btn-outline-primary pull-right"
                         [routerLink]="['/dashboard/user/edit/', user.id]">Editar</button>
                 </div>
