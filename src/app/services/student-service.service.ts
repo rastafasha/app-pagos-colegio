@@ -33,9 +33,7 @@ export class StudentService {
     return localStorage.getItem('token') || '';
   }
     
-      get role(): 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST' {
-        return this.user.role!;
-      }
+     
     
     
       get headers(){
