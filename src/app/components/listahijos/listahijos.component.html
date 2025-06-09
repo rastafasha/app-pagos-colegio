@@ -36,6 +36,7 @@
                         <th *ngIf="showGenero">Género</th>
                         <th *ngIf="showNacimiento">Nacimiento</th>
                         <th>Grado</th>
+                        <th>Status</th>
                         <th>Sección</th>
                         <th id="matricula" *ngIf="showMatricula">Matrícula</th>
                         <!-- <th>Option</th> -->
@@ -64,6 +65,12 @@
                         </td>
                         <td *ngIf="showNacimiento">{{studentprofile.birth_date|date}} </td>
                         <td>{{studentprofile.school_year}} </td>
+                        <td >
+                            <span class="badge bg-success" *ngIf="studentprofile.status === 'ACTIVE'">Activo</span>
+                            <span class="badge bg-danger" *ngIf="studentprofile.status === 'INACTIVE'">Inactivo</span>
+                            <span class="badge bg-primary" *ngIf="studentprofile.status === 'RETIRED'">Retirado</span>
+                            <span class="badge bg-warning" *ngIf="studentprofile.status === 'GRADUATED'">Graduado</span>
+                        </td>
                         <td>{{studentprofile.section | uppercase}} </td>
                         <td id="matricula" *ngIf="showMatricula">{{studentprofile.matricula}} </td>
                         <td  id="acciones" class="text-nowrap text-center" *ngIf="showAcciones">

@@ -1,28 +1,27 @@
 <!-- =======| Main |======= -->
 <div class="col-12 animated fadeInUp">
-        <div class="card cardtop">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-md-10 align-self-center">
-                        <h3 class="text-themecolor">{{title}}</h3>
-                    </div>
-                    
-                    <div class="col-12 col-sm-2">
-                        <button class="btn btn-outline-danger" href="javascript:void(0)"
-                            (click)="goBack()">Volver</button>
-                    </div>
+    <div class="card cardtop">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-md-10 align-self-center">
+                    <h3 class="text-themecolor">{{title}}</h3>
                 </div>
-                
+
+                <div class="col-12 col-sm-2">
+                    <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                </div>
             </div>
+
         </div>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
-                <!-- <li class="breadcrumb-item"><a routerLink="/dashboard/directorio">Directorio</a></li> -->
-                <li class="breadcrumb-item active">{{title}}</li>
-            </ol>
-        </nav>
     </div>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
+            <!-- <li class="breadcrumb-item"><a routerLink="/dashboard/directorio">Directorio</a></li> -->
+            <li class="breadcrumb-item active">{{title}}</li>
+        </ol>
+    </nav>
+</div>
 
 
 <div class="container animated fadeInUp" id="main" class="main" role="main" name="users">
@@ -36,11 +35,27 @@
                     <div class="card border-radio shadow">
                         <div class="card-body profile-card pt-4  fichasmall">
                             <div class="inffichasmall">
-                                <img [src]="userprofile?.avatar| imagenPipe: 'parents' " class="imagecircle shadow" alt="">
+                                <img [src]="userprofile?.avatar| imagenPipe: 'parents' " class="imagecircle shadow"
+                                    alt="">
                                 <h2>{{userprofile?.name}}</h2>
-                                <p>{{userprofile?.email}}</p>
+                                <!-- <p>{{userprofile?.email}}</p> -->
+
+                                <p>
+                                    <span class="badge bg-success" *ngIf="userprofile.status === 'ACTIVE'">Activo</span>
+                                    <span class="badge bg-danger"
+                                        *ngIf="userprofile.status === 'INACTIVE'">Inactivo</span>
+                                </p>
                             </div>
                         </div>
+                    </div>
+                    <div class="card border-radio shadow py-3">
+                        <label for="Email" class="col-form-label">Seleccione Status</label>
+                        <select class="form-control form-select-solid fw-bolder" name="status"
+                            [(ngModel)]="userprofile.status" (change)="cambiarStatus(userprofile)" placeholder="status">
+                            <option value="">Seleccione</option>
+                            <option value="ACTIVE">Activo</option>
+                            <option value="INACTIVE">Inactivo</option>
+                        </select>
                     </div>
 
                 </div>
@@ -54,7 +69,8 @@
                                 <ul class="nav nav-tabs nav-tabs-bordered">
 
                                     <li class="nav-item">
-                                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Detalles</button>
+                                        <button class="nav-link active" data-bs-toggle="tab"
+                                            data-bs-target="#profile-overview">Detalles</button>
                                     </li>
                                     <!-- <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Cambiar
@@ -65,23 +81,30 @@
 
                             </div>
 
-                            <div >
+                            <div>
                                 <ul class="nav nav-tabs nav-tabs-bordered">
                                     <li class="nav-item">
-                                        <button class="nav-link active" (click)="optionSelected(1)"  [ngClass]="{'active': option_selected === 1}" data-bs-toggle="tab" data-bs-target="#profile-overview">Detalles</button>
+                                        <button class="nav-link active" (click)="optionSelected(1)"
+                                            [ngClass]="{'active': option_selected === 1}" data-bs-toggle="tab"
+                                            data-bs-target="#profile-overview">Detalles</button>
                                     </li>
                                     <li class="nav-item">
-                                        <button class="nav-link" (click)="optionSelected(2)" [ngClass]="{'active': option_selected === 2}" data-bs-toggle="tab" data-bs-target="#hijos">Hijos</button>
+                                        <button class="nav-link" (click)="optionSelected(2)"
+                                            [ngClass]="{'active': option_selected === 2}" data-bs-toggle="tab"
+                                            data-bs-target="#hijos">Hijos</button>
                                     </li>
                                     <li class="nav-item">
-                                        <button class="nav-link" (click)="optionSelected(3)" [ngClass]="{'active': option_selected === 3}" data-bs-toggle="tab" data-bs-target="#pagos">Pagos</button>
+                                        <button class="nav-link" (click)="optionSelected(3)"
+                                            [ngClass]="{'active': option_selected === 3}" data-bs-toggle="tab"
+                                            data-bs-target="#pagos">Pagos</button>
                                     </li>
                                 </ul>
 
                             </div>
                             <div class="tab-content pt-2">
 
-                                <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 1 " id="profile-overview">
+                                <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 1 "
+                                    id="profile-overview">
 
                                     <br />
 
@@ -124,7 +147,8 @@
 
 
                                 </div>
-                                <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 2 " id="hijos">
+                                <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 2 "
+                                    id="hijos">
 
                                     <br />
 
@@ -132,7 +156,8 @@
                                         <app-listahijos [userprofile]="userprofile"></app-listahijos>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 3 " id="pagos">
+                                <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 3 "
+                                    id="pagos">
 
                                     <br />
 

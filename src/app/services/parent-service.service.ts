@@ -71,6 +71,11 @@ export class ParentService {
       const url = `${baseUrl}/parent/update/${data.id}`;
       return this.http.put(url, data, this.headers);
     }
+
+     updateStatus(data:any, id: number) {
+          return this.http.put<any>(baseUrl + '/student/update/status/' + id, data, this.headers)
+      
+        }
   
     deleteById(user:any): Observable<any> {
       const url = `${baseUrl}/parent/destroy/${user}`;

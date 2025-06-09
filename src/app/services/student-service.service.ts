@@ -81,6 +81,11 @@ export class StudentService {
         const url = `${baseUrl}/student/update/${data.id}`;
         return this.http.put(url, data, this.headers);
       }
+
+      updateStatus(data:any, id: number) {
+          return this.http.put<any>(baseUrl + '/student/update/status/' + id, data, this.headers)
+      
+        }
     
       deleteById(user:Student): Observable<any> {
         const url = `${baseUrl}/student/destroy/${user}`;

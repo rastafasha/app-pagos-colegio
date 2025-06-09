@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { Parent } from 'src/app/models/parents';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detailparent',
   templateUrl: './detailparent.component.html',
@@ -91,7 +92,8 @@ export class DetailparentComponent {
       this.option_selected = value;
       if(this.option_selected === 1){
 
-        this.ngOnInit();
+        // this.ngOnInit();
+        this.solicitud_selected = null;
       }
       if(this.option_selected === 2){
         this.solicitud_selected = null;
@@ -101,4 +103,23 @@ export class DetailparentComponent {
         
       }
     }
+
+    cambiarStatus(userprofile: any) {
+        const VALUE = userprofile.status;
+        const data = {
+          status: VALUE 
+        }
+
+        this.parentService.updateStatus(data,userprofile.id ).subscribe((resp) => {
+          // console.log(resp);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Actualizado',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.ngOnInit();
+        });
+      }
 }

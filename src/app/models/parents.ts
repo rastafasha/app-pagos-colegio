@@ -17,6 +17,7 @@ export class Parent {
     image: string = "";
     avatar: string = "";
     role?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST';
+    status?: 'ACTIVE' | 'INACTIVE' ;
     
 
 

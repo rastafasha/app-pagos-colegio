@@ -18,7 +18,8 @@
                                         (click)="search()" name="submit" data-toggle="tooltip" title="mostrar todos"><i
                                             class="fa fa-search"></i></button>
                                     <a href="javascript:;" (click)="PageSize()"
-                                        class="btn btn-primary doctor-refresh ms-2 circle"><i class="fa fa-refresh"></i></a>
+                                        class="btn btn-primary doctor-refresh ms-2 circle"><i
+                                            class="fa fa-refresh"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -38,6 +39,7 @@
                                 <th>Usuario</th>
                                 <th>Email</th>
                                 <th>Deuda</th>
+                                <th>Status</th>
                                 <th class="text-nowrap">Acciones</th>
                             </tr>
                         </thead>
@@ -45,22 +47,30 @@
                             <tr
                                 *ngFor="let parent of parents  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
                                 <td>
-                                    <img [src]="parent?.avatar| imagenPipe: 'parents' " class="imagecircle shadow" alt="">
+                                    <img [src]="parent?.avatar| imagenPipe: 'parents' " class="imagecircle shadow"
+                                        alt="">
                                 </td>
                                 <td><a [routerLink]="['/dashboard/padre/detail/', parent.id]">{{parent.id}}</a></td>
                                 <td>
-                                    <a [routerLink]="['/dashboard/padre/detail/', parent.id]">{{parent.name}}</a> 
-                                    
+                                    <a [routerLink]="['/dashboard/padre/detail/', parent.id]">{{parent.name}}</a>
+
                                 </td>
                                 <td>{{parent.email}}</td>
                                 <td>
-                                    
+
                                     <!-- {{parent.payments[0]?.status_deuda}} -->
 
-                                    <span class="badge bg-success" *ngIf="parent.payments[0]?.status_deuda === 'PAID'">Pagado</span>
-                        <span class="badge bg-warning" *ngIf="parent.payments[0]?.status_deuda === null">Pendiente</span>
-                        <span class="badge bg-danger" *ngIf="parent.payments[0]?.status_deuda === 'DEUDA'">Deuda</span>
-                                
+                                    <span class="badge bg-success"
+                                        *ngIf="parent.payments[0]?.status_deuda === 'PAID'">Pagado</span>
+                                    <span class="badge bg-warning"
+                                        *ngIf="parent.payments[0]?.status_deuda === null">Pendiente</span>
+                                    <span class="badge bg-danger"
+                                        *ngIf="parent.payments[0]?.status_deuda === 'DEUDA'">Deuda</span>
+
+                                </td>
+                                <td>
+                                    <span class="badge bg-success" *ngIf="parent.status === 'ACTIVE'">Activo</span>
+                                    <span class="badge bg-danger" *ngIf="parent.status === 'INACTIVE'">Inactivo</span>
                                 </td>
 
                                 <td class="text-nowrap text-center">

@@ -37,6 +37,7 @@
                                 <th>Usuario</th>
                                 <th>Género</th>
                                 <th>Grado</th>
+                                <th>Status</th>
                                 <th>Sección</th>
                                 <th class="text-nowrap">Acciones</th>
                             </tr>
@@ -57,6 +58,12 @@
                             <span class="badge bg-danger" *ngIf="student.gender === 2">F</span>
                         </td>
                                 <td>{{student.school_year}}</td>
+                                <td >
+                            <span class="badge bg-success" *ngIf="student.status === 'ACTIVE'">Activo</span>
+                            <span class="badge bg-danger" *ngIf="student.status === 'INACTIVE'">Inactivo</span>
+                            <span class="badge bg-primary" *ngIf="student.status === 'RETIRED'">Retirado</span>
+                            <span class="badge bg-warning" *ngIf="student.status === 'GRADUATED'">Graduado</span>
+                        </td>
                                 <td>{{student.section}}</td>
                                 
 
