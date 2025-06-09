@@ -51,6 +51,7 @@ export class ProfileComponent {
   
     ngOnInit() {
       window.scrollTo(0, 0);
+      this.accountService.closeMenu();
       this.activatedRoute.params.subscribe( ({id}) => this.iniciarFormulario(id));
       this.getMaterias();
   

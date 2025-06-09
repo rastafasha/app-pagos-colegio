@@ -65,6 +65,7 @@ this.user = this.userService.user;
     this.activatedRoute.params.subscribe( ({id}) => this.iniciarFormulario(id));
     this.getUser();
     this.getMaterias();
+    this.accountService.closeMenu();
 
   }
 

@@ -56,19 +56,13 @@ export class UserDetailsComponent implements OnInit {
     this.user = JSON.parse(USER ? USER: '');
     this.roles = this.user.roles;
     console.log(this.roles);
-    this.closeMenu();
+    this.authService.closeMenu();
     this.config();
     // this.getUser();
     this.activatedRoute.params.subscribe( ({id}) => this.getUserServer(id));
     this.activatedRoute.params.subscribe( ({id}) => this.iniciarFormularioPerfil(id));
   }
-  closeMenu(){
-    var menuLateral = document.getElementsByClassName("sidebar");
-      for (var i = 0; i<menuLateral.length; i++) {
-         menuLateral[i].classList.remove("active");
-
-      }
-  }
+  
   goBack() {
     this.location.back(); // <-- go back to previous location on cancel
   }

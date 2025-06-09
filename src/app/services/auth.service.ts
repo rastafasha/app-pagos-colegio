@@ -114,9 +114,9 @@ export class AuthService {
 
 
  closeMenu(){
-  var menuLateral = document.getElementsByClassName("sidemenu ");
+  var menuLateral = document.getElementsByClassName("mini-sidebar ");
   for (var i = 0; i<menuLateral.length; i++) {
-     menuLateral[i].classList.remove("active");
+     menuLateral[i].classList.remove("show-sidebar");
   }
 }
 
