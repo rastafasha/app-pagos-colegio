@@ -20,6 +20,7 @@ import { TasabcvComponent } from './tasabcv/tasabcv.component';
 import { MateriasComponent } from './materias/materias.component';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentsComponent } from './students/students.component';
+import { ProfileComponent } from './users/profile/profile.component';
 
 const childRoutes: Routes = [
 
@@ -31,6 +32,7 @@ const childRoutes: Routes = [
             { path: 'usuarios', component: UsersListComponent},
             { path: 'user/create', component: UserEditComponent},
             { path: 'user/edit/:id', component: UserEditComponent},
+            { path: 'user/profile/:id', component: ProfileComponent},
             { path: 'usuario/detail/:id', component: UserDetailsComponent},
             
             { path: 'padres', component: ListComponent},

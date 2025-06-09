@@ -237,6 +237,11 @@ img.avatar {
     align-items: flex-start;
 }
 
+.cardtop {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media(max-width:480px) {
     .bannerplanes .instruccioness .info {
         flex-direction: row;

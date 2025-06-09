@@ -5,7 +5,7 @@ import { Payment } from 'src/app/models/payment';
 import { PaymentService } from 'src/app/services/payment.service';
 import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
-import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-payments',
@@ -29,7 +29,7 @@ export class PaymentsComponent implements OnInit {
     private location: Location,
     private paymentService: PaymentService,
     private userService: UserService,
-    public accountService: AccountService,
+    public accountService: AuthService,
     private http: HttpClient
   ) {
     this.user = this.userService.user;

@@ -19,8 +19,13 @@
                         <i class="mdi mdi-animation"></i><span class="hide-menu">Mi Perfil </span>
                     </a>
                 </li>
-                <li><a (click)="logout()"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
-
+                <li>
+                    <a (click)="logout()"
+                        class="waves-effect waves-dark">
+                        <i class="fa fa-power-off"></i><span class="hide-menu">Salir</span>
+                    </a>
+                </li>
+                
             </ul>
             <ul id="sidebarnav" *ngIf="role === 'MAESTRO'">
                 <li>
@@ -44,8 +49,12 @@
                         <i class="mdi mdi-animation"></i><span class="hide-menu">Mi Perfil </span>
                     </a>
                 </li>
-                <li><a (click)="logout()"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
-
+               <li>
+                    <a (click)="logout()"
+                        class="waves-effect waves-dark">
+                        <i class="fa fa-power-off"></i><span class="hide-menu">Salir</span>
+                    </a>
+                </li>
             </ul>
             <ul id="sidebarnav" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
                 <li>
@@ -76,7 +85,7 @@
                 
                 <li>
                     <a routerLink="../dashboard/usuarios" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-users"></i><span class="hide-menu">Usuarios </span>
+                        <i class="fa fa-users"></i><span class="hide-menu">Personal </span>
                     </a>
                 </li>
                 <li> <a routerLink="../dashboard/config" routerLinkActive="active" class="waves-effect waves-dark">

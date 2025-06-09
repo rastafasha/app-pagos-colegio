@@ -44,24 +44,16 @@
             <!-- ============================================================== -->
             <ul class="navbar-nav my-lg-0">
                 <!-- ============================================================== -->
-                <!-- Search -->
-                <!-- ============================================================== >
-                <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                    <form class="app-search">
-                        <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                    </form>
-                </li-->
+                
                 <!-- ============================================================== -->
                 <!-- Profile -->
                 <!-- ============================================================== -->
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" (click)="openModal()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown">
+                    <img [src]="config?.avatar  | imagenPipe: 'configuracions' " class="profile-pic">
+                    <!-- <a class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" (click)="openModal()" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         
-                        <img *ngIf="!user.image" src="/assets/images/no-image.jpg" alt="user" class="profile-pic" />
-                        <img *ngIf="user.image" src="{{user.image}}" alt="user" class="profile-pic" />
-                        <h4>{{user.name}} </h4>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right animated fadeInDown">
+                    </a> -->
+                    <!-- <div class="dropdown-menu dropdown-menu-right animated fadeInDown">
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
@@ -81,8 +73,8 @@
                             <li><a href="http://google.com" target="_blank"><i class="ti-world"></i> Web App </a></li>
                             <li><a (click)="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
-                    </div>
-                </li> -->
+                    </div> -->
+                </li>
             </ul>
         </div>
     </nav>

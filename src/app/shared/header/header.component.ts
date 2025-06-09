@@ -3,7 +3,8 @@ import { UserService } from '../../services/users.service';
 import { User } from '../../models/users';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountService } from 'src/app/services/account.service';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import { Configuracion } from 'src/app/models/configuracion';
 
 
 @Component({
@@ -23,12 +24,15 @@ export class HeaderComponent implements OnInit {
   
   id:any;
   userprofile!: any;
+  idconf:number = 1;
+  config: Configuracion;
 
   constructor(
     private userService: UserService,
-    private authService: AccountService,
+    private authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private confgService: ConfiguracionService
     ) {
       // this.user = this.authService.getUsuario;
     }
@@ -40,7 +44,15 @@ export class HeaderComponent implements OnInit {
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     this.roles = this.user.roles[0];
+    this.getConfId();
 
+  }
+
+  getConfId(){
+    this.confgService.getSetting(this.idconf).subscribe((resp:any)=>{
+      this.config = resp.configuracion;
+      // console.log(this.config);
+    })
   }
 
 

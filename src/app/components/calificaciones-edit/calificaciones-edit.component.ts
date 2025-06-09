@@ -17,12 +17,11 @@ import { Calificacion } from 'src/app/models/calificacion';
 import { Examen } from 'src/app/models/examen';
 import { Materia } from 'src/app/models/materia';
 import { Student } from 'src/app/models/student';
-import { User } from 'src/app/models/users';
-import { AccountService } from 'src/app/services/account.service';
 import { CalificacionService } from 'src/app/services/calificacion.service';
 import { ExamenService } from 'src/app/services/examen.service';
 import { MateriaService } from 'src/app/services/materia.service';
 import { Modal } from 'bootstrap';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-calificaciones-edit',
@@ -61,7 +60,7 @@ export class CalificacionesEditComponent implements AfterViewInit {
     title: new FormControl(''),
     exam_date: new FormControl(''),
     puntaje: new FormControl(''),
-    puntaje_letra: new FormControl(''),
+    valor_examen: new FormControl(''),
   });
 
   private modalInstance: Modal;
@@ -70,7 +69,7 @@ export class CalificacionesEditComponent implements AfterViewInit {
     private calificacionesService: CalificacionService,
     private examenService: ExamenService,
     private materiaService: MateriaService,
-    private authService: AccountService,
+    private authService: AuthService,
     private fb: FormBuilder
   ) {}
 
@@ -131,7 +130,7 @@ export class CalificacionesEditComponent implements AfterViewInit {
           title: res.title,
           exam_date: res.exam_date,
           puntaje: res.puntaje,
-          puntaje_letra: res.puntaje_letra,
+          valor_examen: res.valor_examen,
           user_id: res.user_id,
           student_id: res.student_id,
         });
@@ -151,7 +150,7 @@ export class CalificacionesEditComponent implements AfterViewInit {
       student_id: ['', Validators.required],
       exam_date: ['', Validators.required],
       puntaje: [''],
-      puntaje_letra: [''],
+      valor_examen: [''],
       id: [''],
     });
   }
@@ -175,8 +174,8 @@ export class CalificacionesEditComponent implements AfterViewInit {
     if (this.examenForm.value.puntaje) {
       formData.append('puntaje', this.examenForm.value.puntaje);
     }
-    if (this.examenForm.value.puntaje_letra) {
-      formData.append('puntaje_letra', this.examenForm.value.puntaje_letra);
+    if (this.examenForm.value.valor_examen) {
+      formData.append('valor_examen', this.examenForm.value.valor_examen);
     }
 
     const data ={
@@ -186,7 +185,7 @@ export class CalificacionesEditComponent implements AfterViewInit {
       student_id: this.student_id,
       exam_date: this.examenForm.value.exam_date,
       puntaje: this.examenForm.value.puntaje,
-      puntaje_letra: this.examenForm.value.puntaje_letra,
+      valor_examen: this.examenForm.value.valor_examen,
 
     }
 
@@ -217,7 +216,7 @@ export class CalificacionesEditComponent implements AfterViewInit {
           }
         });
     } else {
-      this.examenService.createExamen(formData).subscribe((resp: any) => {
+      this.examenService.createExamen(data).subscribe((resp: any) => {
         console.log(resp);
         // Swal.fire('Exito!', 'Se ha actualizado la formData', 'success');
         // this.router.navigate(['/students']);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Materia } from 'src/app/models/materia';
-import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { MateriaService } from 'src/app/services/materia.service';
 import Swal from 'sweetalert2';
 
@@ -23,7 +23,7 @@ description:string;
 
   constructor(
     private materiaService: MateriaService,
-    private accountService: AccountService
+    private accountService: AuthService
   ) {}
 
   ngOnInit(): void {

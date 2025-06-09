@@ -18,7 +18,6 @@ const url_servicios = environment.url_servicios;
 export class AuthService {
 
   user:any;
-  token:any;
 
   constructor(
     private router: Router,
@@ -27,6 +26,17 @@ export class AuthService {
       this.getLocalStorage();//devuelve el usuario logueado
     }
 
+     get token(): string {
+      return localStorage.getItem('token') || '';
+    }
+  
+    get headers() {
+      return {
+        headers: {
+          auth_token: this.token,
+        },
+      };
+    }
   
   
     getLocalStorage(){
@@ -53,22 +63,6 @@ export class AuthService {
   }
 
   
-
-   
-  // login(email:string,password:string) {
-  //   let URL = url_servicios+"/login";
-  //   return this.http.post(URL,{email: email,password: password}).pipe(
-  //     map((auth:any) => {
-  //       console.log(auth);
-  //       const result = this.saveLocalStorage(auth);
-  //       return result;
-  //     }),
-  //     catchError((error:any) => {
-  //       console.log(error);
-  //       return of(undefined);
-  //     })
-  //   );
-  // }
 
   guardarLocalStorage( user:any, access_token: any){
     // localStorage.setItem('token', JSON.stringify(token));
@@ -153,10 +147,12 @@ resetPassword(formData:PasswordForm){
   return this.http.post(`${url_servicios}/reset-password`, formData)
 
 }
-newPassword(formData:PasswordForm){
-  return this.http.post(`${url_servicios}/change-password`, formData)
 
-}
+newPassword(data: any) {
+      const url = `${url_servicios}/change-password`;
+      return this.http.post(url, data);
+    }
+  
   
 
 }

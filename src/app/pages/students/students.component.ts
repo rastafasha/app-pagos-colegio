@@ -3,10 +3,10 @@ import { Location } from '@angular/common';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Payment } from 'src/app/models/payment';
 import { User } from 'src/app/models/users';
-import { AccountService } from 'src/app/services/account.service';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { environment } from 'src/environments/environment';
 import { StudentService } from 'src/app/services/student-service.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-students',
   standalone: false,
@@ -40,7 +40,7 @@ export class StudentsComponent {
         private studentService: StudentService,
         private location: Location,
         private http: HttpClient,
-        public accountService: AccountService,
+        public accountService: AuthService,
         handler: HttpBackend
         ) {
           this.http = new HttpClient(handler);

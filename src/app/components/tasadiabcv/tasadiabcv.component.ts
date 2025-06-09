@@ -15,6 +15,7 @@ export class TasadiabcvComponent {
   public profile: Parent = new Parent();
   precio_dia!:number;
   precio_fecha!:Date;
+  user:any;
 
   constructor(
     private tasaBcvService: TasabcvService,
@@ -23,6 +24,8 @@ export class TasadiabcvComponent {
   ngOnInit() {
     this.getTasaDBcvdelDia();
     // console.log(this.user);
+    let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER: '');
   }
   getTasaDBcvdelDia() {
     this.isLoading = true;

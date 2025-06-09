@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Dashboard } from 'src/app/models/dashboard';
 import { Parent } from 'src/app/models/parents';
-import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 
@@ -14,7 +14,10 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 export class DashboardComponent implements OnInit {
 
   error: string;
-
+ showMatricula: boolean = false;
+   showAcciones: boolean = false;
+   showGenero: boolean = false;
+     showNacimiento: boolean = false;
   user: any;
   parentprofile:Parent;
   role:any;
@@ -22,11 +25,12 @@ export class DashboardComponent implements OnInit {
   total_parents:Dashboard;
   parents_nodeuda:Dashboard
   total_parents_deuda:Dashboard
-  total_students:Dashboard
+  total_students:Dashboard;
+  userprofile:any;
 
   constructor(
     private dashboardService: DashboardService,
-    public accountService:AccountService
+    public accountService:AuthService
     ) {}
 
   ngOnInit() {
@@ -36,6 +40,8 @@ export class DashboardComponent implements OnInit {
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     this.role = this.user.roles[0];
+
+    this.userprofile = this.user;
     this.accountService.closeMenu();
     this.getDashboardData();
 

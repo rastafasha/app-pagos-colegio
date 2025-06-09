@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/users';
-import { AccountService } from 'src/app/services/account.service';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common';
 import { UserService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Materia } from 'src/app/models/materia';
+import { MateriaService } from 'src/app/services/materia.service';
 
 
 interface HtmlInputEvent extends Event{
@@ -31,14 +33,8 @@ export class UserEditComponent implements OnInit {
   error:string;
   title:string;
   infoUser:string;
-
-  //Qr
-  vCardInfo:string;
-  value: string;
-  display = false;
-  elementType: 'url' | 'canvas' | 'img' = 'url';
-  href : string;
-  vcard: string;
+  materia: Materia | undefined;
+  materias: Materia | undefined;
 
   uploadError: string;
 
@@ -52,7 +48,8 @@ export class UserEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private location: Location,
-    private accountService: AccountService,
+    private accountService: AuthService,
+     private materiaService: MateriaService,
     private fb: FormBuilder,
 
   ) {
@@ -63,10 +60,11 @@ this.user = this.userService.user;
 
   ngOnInit() {
     window.scrollTo(0, 0);
+    this.validarFormulario();
+    this.validarFormularioPassword();
     this.activatedRoute.params.subscribe( ({id}) => this.iniciarFormulario(id));
     this.getUser();
-    this.validarFormulario();
-    // this.validarFormularioPassword();
+    this.getMaterias();
 
   }
 
@@ -86,24 +84,39 @@ this.user = this.userService.user;
       this.isLoading = false;
   }
 
+   getMaterias() {
+    this.materiaService.getMaterias().subscribe((resp: any) => {
+      this.materias = resp;
+      // console.log(resp);
+    });
+  }
+
   iniciarFormulario(id:number){
     // const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.title = 'Editar Perfil';
-      this.accountService.getUsuario(+id).subscribe(
+      this.userService.getUserById(+id).subscribe(
         (res:any) => {
           console.log(res);
           this.userprofile = res;
           
           this.userForm.patchValue({
-            id: res.id,
-            name: res.name,
-            surname: res.surname,
-            role: res.role,
-            email: res.email,
+            id: res.user.id,
+            name: res.user.name,
+            surname: res.user.surname,
+            role: res.user.role,
+            email: res.user.email,
+            materia_id: res.user.materia_id,
+            grado: res.user.grado,
+            address: res.user.address,
+            telefono: res.user.telefono,
+            mobile: res.user.mobile,
+            n_doc: res.user.n_doc,
+            birth_date: res.user.birth_date,
+            gender: res.user.gender,
           });
           // this.imagePath = res.image;
-          this.infoUser = res;
+          this.infoUser = res.user;
           // console.log(this.infoDirectorio);
         }
       );
@@ -117,12 +130,18 @@ this.user = this.userService.user;
       id: [''],
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      role: ['', Validators.required],
-      password: ['', Validators.required],
+      // password: ['', Validators.required],
       n_doc: ['', Validators.required],
-      email: ['', Validators.required],
+      // email: ['', Validators.required],
+      materia_id: ['',],
+      address: ['',],
+      telefono: ['',],
+      mobile: ['',],
+      grado: ['',],
+      birth_date: ['',],
+      gender: ['',],
       
-      status: ['PENDING'],
+      // status: ['PENDING'],
     })
   }
 
@@ -130,9 +149,8 @@ this.user = this.userService.user;
     get surname() { return this.userForm.get('surname'); }
     get password() { return this.userForm.get('password'); }
     get email() { return this.userForm.get('email'); }
-    get role() { return this.userForm.get('role'); }
     get n_doc() { return this.userForm.get('n_doc'); }
-    get status() { return this.userForm.get('status'); }
+    // get status() { return this.userForm.get('status'); }
     
 
   avatarUpload(datos) {
@@ -146,18 +164,45 @@ this.user = this.userService.user;
 
   save() {
     this.submitted = true;
-    if(this.userForm.invalid){
-      return;
-        }
+    // if(this.userForm.invalid){
+    //   return;
+    //     }
 
     const formData = new FormData();
     formData.append('name', this.userForm.get('name').value);
     formData.append('surname', this.userForm.get('surname').value);
-    formData.append('password', this.userForm.get('password').value);
-    formData.append('role', this.userForm.get('role').value);
-    formData.append('email', this.userForm.get('email').value);
-    formData.append('n_doc', this.userForm.get('n_doc').value);
-    formData.append('status', 'PENDING');
+    // formData.append('password', this.userForm.get('password').value);
+    // formData.append('role', this.userForm.get('role').value);
+    // formData.append('email', this.userForm.get('email').value);
+    // formData.append('status', 'PENDING');
+
+     if (this.userForm.value.birth_date) {
+      formData.append("birth_date", this.userForm.value.birth_date);
+      
+    }
+     if (this.userForm.value.gender) {
+      formData.append("gender", this.userForm.value.gender);
+      
+    }
+     if (this.userForm.value.telefono) {
+      formData.append("telefono", this.userForm.value.telefono);
+      
+    }
+     if (this.userForm.value.mobile) {
+      formData.append("mobile", this.userForm.value.mobile);
+      
+    }
+    if (this.userForm.value.n_doc) {
+      formData.append("n_doc", this.userForm.value.n_doc);
+      
+    }
+    if (this.userForm.value.gender) {
+      formData.append("gender", this.userForm.value.gender);
+      
+    }
+    // if (this.FILE_AVATAR) {
+    //   formData.append("imagen", this.FILE_AVATAR);
+    // }
     
 
     const id = this.userForm.get('id').value;
@@ -198,61 +243,76 @@ this.user = this.userService.user;
 
 //cambiar contraseña
 
-// validarFormularioPassword(){
-//   this.passwordForm = this.fb.group({
-//     id: [''],
-//     email: ['', Validators.required],
-//   //   password: ['', Validators.required],
-//   // password2: ['', Validators.required],
-//   }, {
-//     // validators: this.passwordsIguales('password', 'password2')
+  validarFormularioPassword(){
+    this.passwordForm = this.fb.group({
+      id: [''],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      password2: ['', Validators.required],
+    }, {
+      validators: this.passwordsIguales('password', 'password2')
+    });
+  }
 
-//   });
-// }
+  passwordsIguales(pass1Name: string, pass2Name: string){
+    return (formGroup: FormGroup) =>{
+      const pass1Control = formGroup.get(pass1Name);
+      const pass2Control = formGroup.get(pass2Name);
 
-// passwordNoValido(){
-//   const pass1 = this.passwordForm?.get('password').value;
-//   const pass2 = this.passwordForm?.get('password2').value;
+      if(pass1Control.value === pass2Control.value){
+        pass2Control.setErrors(null)
+      }else{
+        pass2Control.setErrors({noEsIgual: true});
+      }
+    }
+  }
 
-//   if((pass1 !== pass2) && this.formSumitted){
-//     return true;
-//   }else{
-//     return false;
-//   }
-// }
+passwordNoValido(){
+  const pass1 = this.passwordForm?.get('password').value;
+  const pass2 = this.passwordForm?.get('password2').value;
 
-// passwordsIguales(pass1Name: string, pass2Name: string){
-//   return (formGroup: FormGroup) =>{
-//     const pass1Control = formGroup.get(pass1Name);
-//     const pass2Control = formGroup.get(pass2Name);
+  if((pass1 !== pass2) && this.formSumitted){
+    return true;
+  }else{
+    return false;
+  }
+}
 
-//     if(pass1Control.value === pass2Control.value){
-//       pass2Control.setErrors(null)
-//     }else{
-//       pass2Control.setErrors({noEsIgual: true});
-//     }
-//   }
-// }
+cambiarPassword(){
+  this.formSumitted = true;
 
-// cambiarPassword(){
-// this.formSumitted = true;
+  const {email } = this.passwordForm.value;
 
-// const {email } = this.passwordForm.value;
+  if(this.userprofile){
+    // Check if token exists before calling
+    const token = localStorage.getItem('token');
+    if (!token) {
+      Swal.fire('Error', 'Usuario no autenticado. Por favor inicie sesión.', 'error');
+      this.router.navigate(['/login']);
+      return;
+    }
 
-// if(this.userprofile){
-//   //actualizar
-//   const data = {
-//     ...this.passwordForm.value,
-//     id: this.userprofile.id
-//   }
-//   this.accountService.resetPassword(data).subscribe(
-//     resp =>{
-//       Swal.fire('Cambiado', `Enlace para restablecer su contraseña ha sido enviado a su correo electrónico`, 'success');
-//     });
+    //actualizar
+    const data = {
+      ...this.passwordForm.value,
+      id: this.userprofile.id
+    }
+    this.accountService.newPassword(data).subscribe(
+      resp =>{
+        Swal.fire('Cambiado', `Enlace para restablecer su contraseña ha sido enviado a su correo electrónico`, 'success');
+      },
+      error => {
+        if (error.status === 401) {
+          Swal.fire('Error', 'Usuario no autenticado. Por favor inicie sesión.', 'error');
+          this.router.navigate(['/login']);
+        } else {
+          Swal.fire('Error', 'Error al cambiar la contraseña.', 'error');
+        }
+      }
+    );
 
-// }
-
-// }
+  }
+}
 
 
 

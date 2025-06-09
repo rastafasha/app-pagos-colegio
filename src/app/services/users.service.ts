@@ -40,7 +40,7 @@ export class UserService {
   }
 
   get role(): 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST' |'MAESTRO' {
-    return this.user.role!;
+    return this.user.roles!;
   }
 
 
@@ -101,10 +101,14 @@ export class UserService {
   }
 
   updateUser(data:any, id: number) {
-        return this.http.put<any>(baseUrl + '/user/update/' + id, data, this.headers)
+        return this.http.put<any>(baseUrl + '/user/update-admin/' + id, data, this.headers)
     
       }
 
+  updateUserRole(data: any) {
+    const url = `${baseUrl}/user/update-admin/${data.id}`;
+    return this.http.put(url, data, this.headers);
+  }
   update(data: any) {
     const url = `${baseUrl}/user/update/${data.id}`;
     return this.http.put(url, data, this.headers);

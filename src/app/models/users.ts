@@ -1,4 +1,5 @@
 import { environment } from "src/environments/environment";
+import { Materia } from "./materia";
 const base_url = environment.url_media;
 
 export class User {
@@ -6,16 +7,24 @@ export class User {
     id: string;
     // role_id: number = 3; // 3 = Rol miembro
     username: string = "";
+    materia_id: string = "";
+    materia:Materia;
     name: string = "";
     surname: string = "";
-    num_doc: string = "";
+    n_doc: string = "";
+    address: string = "";
+    mobile: string = "";
+    telefono: string = "";
+    birth_date: Date ;
+    gender: number;
     email: string = "";
     password?: string = "";
     token: string = "";
+    grado: number = 0;
     is_active: number = 0;
     created_at: string = "";
     image: string = "";
-    role?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST'|'MAESTRO';
+    roles?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST'|'MAESTRO';
     
 
 

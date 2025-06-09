@@ -28,7 +28,7 @@
     </div>
     <app-loading *ngIf="isLoading"></app-loading>
     <div class="card recent-sales overflow-auto" *ngIf="!isLoading">
-
+        <!-- <app-calculador-bar [progress]="weightedAverageProgress"></app-calculador-bar> -->
         <div class="card-body">
 
             <table [ngClass]="loading? 'table table-borderless datatable':'table table-borderless'">
@@ -38,7 +38,8 @@
                         <th>Materia</th>
                         <th>Titulo</th>
                         <th>Puntaje</th>
-                        <th>Puntaje Letra</th>
+                        <th>% Valor</th>
+                        <th>Resultado</th>
                         <th>Maestro</th>
                         <th>Fecha</th>
                         <th>Acciones</th>
@@ -52,7 +53,8 @@
                         <td>{{examen.materia.name}} </td>
                         <td>{{examen.title}} </td>
                         <td>{{examen.puntaje}} </td>
-                        <td>{{examen.puntaje_letra}} </td>
+                        <td>{{examen.valor_examen}} </td>
+                        <td>{{(examen.puntaje)*(examen.valor_examen)}}%</td>
                         <td>{{examen.maestro.name}} {{examen.maestro.surname}} </td>
                         <td>{{examen?.created_at|date}} </td>
                         <td class="text-nowrap text-center">

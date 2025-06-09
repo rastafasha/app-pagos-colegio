@@ -10,6 +10,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersListComponent } from './user-list/users-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentsModule } from "../../components/components.module";
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -17,7 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     UserDetailsComponent,
     UserEditComponent,
-    UsersListComponent
+    UsersListComponent,
+    ProfileComponent
   ],
   exports: [
     UserDetailsComponent,
@@ -33,7 +36,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     BrowserAnimationsModule,
     NgxPaginationModule,
     CKEditorModule,
-    SharedModule
-  ]
+    SharedModule,
+    ComponentsModule
+]
 })
 export class UserModule { }

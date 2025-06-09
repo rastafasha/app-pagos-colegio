@@ -31,10 +31,10 @@ import { ComponentsModule } from "../components/components.module";
 import { ConfigComponent } from './config/config.component';
 import { TasabcvComponent } from './tasabcv/tasabcv.component';
 import { MateriasComponent } from './materias/materias.component';
-import { StudentsComponent } from './students/students.component';
-import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentsModule } from './students/students.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { CalendariotModule } from '../components/calendarioT/calendariot.module';
+import { ConfigModule } from './config/config.module';
 
 
 
@@ -46,7 +46,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
         DashboardComponent,
         SliderIndexComponent,
         SliderEditComponent,
-        ConfigComponent,
         TasabcvComponent,
         MateriasComponent,
 
@@ -60,7 +59,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
         DashboardComponent,
         SliderIndexComponent,
         SliderEditComponent,
-        ConfigComponent,
         TasabcvComponent
 
 
@@ -77,7 +75,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     SharedModule,
     ComponentsModule,
     StudentsModule,
-    NgxChartsModule
+    NgxChartsModule,
+     CalendariotModule,
+     ConfigModule
 ]
 })
 

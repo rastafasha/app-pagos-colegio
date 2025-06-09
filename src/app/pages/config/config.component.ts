@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Paymentmethod } from 'src/app/models/paymentmethod';
-import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { PaimentmethodService } from 'src/app/services/paymentmethod.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +12,9 @@ import Swal from 'sweetalert2';
 })
 export class ConfigComponent {
 
-    title = 'Configuración Pagos';
+  idconf:number = 1;
+
+    title = 'Configuración';
     public tiposdepago: Paymentmethod;
     error: string;
     uploadError: string;
@@ -27,12 +29,13 @@ export class ConfigComponent {
     telefono:string;
     email:string;
     tipo:string;
-
+public option_selected:number = 1;
+    public solicitud_selected:any = null;
 
 
       constructor(
         private paymentMethodService: PaimentmethodService,
-        private accountService:AccountService
+        private accountService:AuthService
         ) {}
     
       ngOnInit(): void {
@@ -119,5 +122,19 @@ export class ConfigComponent {
           
         }
   
+        optionSelected(value:number){
+      this.option_selected = value;
+      if(this.option_selected === 1){
+
+        // this.ngOnInit();
+      }
+      if(this.option_selected === 2){
+        this.solicitud_selected = null;
+      }
+      if(this.option_selected === 3){
+        this.solicitud_selected = null;
+        
+      }
+    }
 
 }

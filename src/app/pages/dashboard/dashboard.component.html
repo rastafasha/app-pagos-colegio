@@ -6,48 +6,38 @@
     </div>
 </div>
 
-<div *ngIf="role === 'GUEST' || role === 'MAESTRO' ">
-    <div class="row">
+<div *ngIf="role === 'GUEST' ">
+    <div class="row animated fadeInUp">
         <div class="col-xs-12 col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <h3>Info Perfil</h3>
                     <h4 class="animated fadeInDown">{{user.name}} </h4>
+                    <p>Solicita la Actualización de Usuario con el Administrador</p>
                     <!-- <p>Status : <span class="badge bg-success">active</span></p> -->
-                    <button class="btn btn-outline-primary pull-right"
-                        [routerLink]="['/dashboard/user/edit/', user.id]">Editar</button>
+                    <!-- <button class="btn btn-outline-primary pull-right"
+                        [routerLink]="['/dashboard/usuario/detail/', user.id]">Perfil</button> -->
                 </div>
-            </div>
-        </div>
-        <div class="col-6 col-sm-4 col-md-3">
-            <div class="card d-flex justify-content-center">
-                <a routerLink="../dashboard/estudiantes">
-                    <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
-                        <i class="fa fa-users fa-2x"></i>
-                        <p>Estudiantes: {{total_students}}</p>
-                    </div>
-                </a>
             </div>
         </div>
     </div>
 
-    
+
 </div>
-
-
-<div class="row animated fadeInUp" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
-    <div class="col-6 col-sm-4 col-md-3">
-            <div class="card d-flex justify-content-center">
-                <a routerLink="../dashboard/padres">
-                    <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
-                        <i class="fa fa-vcard fa-2x"></i>
-                        <p>Padres: {{parents_nodeuda}}</p>
-                        <!-- <p>Padres con deuda: {{total_parents}}</p> -->
-                    </div>
-                </a>
+<div *ngIf="role === 'MAESTRO' ">
+    <!-- <div class="row animated fadeInUp">
+        <div class="col-xs-12 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Info Perfil</h3>
+                    <h4 class="animated fadeInDown">{{user.name}} </h4>
+                    <p>Status : <span class="badge bg-success">active</span></p>
+                    <button class="btn btn-outline-primary pull-right"
+                        [routerLink]="['/dashboard/user/edit/', user.id]">Perfil</button>
+                </div>
             </div>
-        </div>  
-    <div class="col-6 col-sm-4 col-md-3">
+        </div>
+        <div class="col-6 col-sm-6 ">
             <div class="card d-flex justify-content-center">
                 <a routerLink="../dashboard/estudiantes">
                     <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
@@ -57,21 +47,76 @@
                 </a>
             </div>
         </div>
-        <div class="col-6 col-sm-4 col-md-3">
-            <div class="card d-flex justify-content-center">
-                <a routerLink="../dashboard/payments">
-                    <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
-                        <i class="fa fa-line-chart fa-2x"></i>
-                        <p>Pagos</p>
-                    </div>
-                </a>
+    </div> -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="card border-radio">
+                <app-calendario-t [user]="user"></app-calendario-t>
             </div>
         </div>
-          
-        <div class="col-6 col-sm-4 col-md-3">
-            <div class="card" style="padding: 10px; border-left: green 2px solid;">
-                <app-tasadiabcv></app-tasadiabcv>
+        <div class="col-xs-12 col-sm-6 ">
+            <div class="card border-radio pt-3">
+                <app-listahijos [userprofile]="userprofile" [showMatricula]="showMatricula"
+                    [showAcciones]="showAcciones" [showGenero]="showGenero"
+                    [showNacimiento]="showGenero"></app-listahijos>
             </div>
-        </div>    
-        <app-recentpayments></app-recentpayments>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row animated fadeInUp" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
+    <div class="col-xs-12 col-sm-8">
+    <div class="row">
+        <div class="col-6 col-sm-6  ">
+        <div class="card d-flex justify-content-center shadow">
+            <a routerLink="../dashboard/padres">
+                <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
+                    <i class="fa fa-vcard fa-2x"></i>
+                    <p>Padres: {{parents_nodeuda}}</p>
+                    <!-- <p>Padres con deuda: {{total_parents}}</p> -->
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-6 col-sm-6  ">
+        <div class="card d-flex justify-content-center shadow">
+            <a routerLink="../dashboard/estudiantes">
+                <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
+                    <i class="fa fa-users fa-2x"></i>
+                    <p>Estudiantes: {{total_students}}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-6 col-sm-6  ">
+        <div class="card d-flex justify-content-center shadow">
+            <a routerLink="../dashboard/usuarios">
+                <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
+                    <i class="fa fa-users fa-2x"></i>
+                    <p>Personal</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-6 col-sm-6  ">
+        <div class="card d-flex justify-content-center shadow">
+            <a routerLink="../dashboard/payments">
+                <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
+                    <i class="fa fa-line-chart fa-2x"></i>
+                    <p>Pagos</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="col-12 col-sm-4 col-md-4 ">
+        <div class="card shadow" style="padding: 10px; border-left: green 2px solid;">
+            <app-tasadiabcv></app-tasadiabcv>
+        </div>
+    </div>
+    <app-recentpayments></app-recentpayments>
 </div>

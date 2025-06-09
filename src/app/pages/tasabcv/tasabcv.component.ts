@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Paymentmethod } from 'src/app/models/paymentmethod';
 import { Tasabcv } from 'src/app/models/tasabcba';
-import { AccountService } from 'src/app/services/account.service';
-import { PaimentmethodService } from 'src/app/services/paymentmethod.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { TasabcvService } from 'src/app/services/tasabcv.service';
 import Swal from 'sweetalert2';
 
@@ -23,7 +22,7 @@ export class TasabcvComponent {
 
   constructor(
     private tasaBcvService: TasabcvService,
-    private accountService: AccountService
+    private accountService: AuthService
   ) {}
 
   ngOnInit(): void {

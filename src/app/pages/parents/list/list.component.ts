@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { Payment } from 'src/app/models/payment';
-import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-list',
@@ -43,7 +43,7 @@ export class ListComponent {
       private parentService: ParentService,
       private location: Location,
       private http: HttpClient,
-      public accountService: AccountService,
+      public accountService: AuthService,
       handler: HttpBackend
       ) {
         this.http = new HttpClient(handler);

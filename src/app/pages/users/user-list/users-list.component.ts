@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/users';
 import { UserService } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
-import { AccountService } from 'src/app/services/account.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +15,7 @@ import { AccountService } from 'src/app/services/account.service';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  title = "Usuarios"
+  title = "Personal"
 
   isLoading = false;
   usersCount = 0;
@@ -39,7 +39,7 @@ export class UsersListComponent implements OnInit {
     private userService: UserService,
     private location: Location,
     private http: HttpClient,
-    public accountService:AccountService,
+    public accountService:AuthService,
     handler: HttpBackend
     ) {
       this.http = new HttpClient(handler);

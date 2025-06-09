@@ -59,6 +59,8 @@ export class ExamenesStudentComponent {
       }
     }
   
+  weightedAverageProgress: number = 0;
+
     getExamenes(): void {
       if (!this.userprofile || !this.userprofile.id) {
         this.isLoading = false;
@@ -69,6 +71,7 @@ export class ExamenesStudentComponent {
       this.exameneService.getExamensbyStudent(this.userprofile.id).subscribe(
         (res: any) => {
           this.examenes = res.examenes;
+          this.calculateWeightedAverage();
           this.isLoading = false;
         },
         (error) => {
@@ -77,6 +80,21 @@ export class ExamenesStudentComponent {
         }
       );
     }
+
+  calculateWeightedAverage(): void {
+    if (!this.examenes) {
+      this.weightedAverageProgress = 0;
+      return;
+    }
+    let totalScore = 0;
+    // If examenes is a single object, convert to array for iteration
+    const examenesArray = Array.isArray(this.examenes) ? this.examenes : [this.examenes];
+    for (const examen of examenesArray) {
+      totalScore += examen.puntaje;
+    }
+    this.weightedAverageProgress = totalScore;
+    console.log(this.weightedAverageProgress);
+  }
   
     search() {
       return this.exameneService.search(this.query).subscribe((res: any) => {

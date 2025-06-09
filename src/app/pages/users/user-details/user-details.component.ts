@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { User } from 'src/app/models/users';
 import { UserService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -25,6 +26,8 @@ export class UserDetailsComponent implements OnInit {
   uploadError: boolean;
 
   public selectedValue!: string;
+  public option_selected:number = 1;
+  public solicitud_selected:any = null;
 
   identity: any;
 
@@ -43,11 +46,16 @@ export class UserDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private authService:AuthService
   ) {
   }
 
   ngOnInit(): void {
     window.scrollTo(0,0);
+    let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER: '');
+    this.roles = this.user.roles;
+    console.log(this.roles);
     this.closeMenu();
     this.config();
     // this.getUser();
@@ -134,7 +142,7 @@ export class UserDetailsComponent implements OnInit {
       const data = {
         ...this.profileForm.value,
       }
-      this.userService.update(data).subscribe(
+      this.userService.updateUserRole(data).subscribe(
         (res:any) => {
           if (this.error) {
             // this.uploadError = res.message;
@@ -171,5 +179,20 @@ export class UserDetailsComponent implements OnInit {
   );
 }
 
+
+optionSelected(value:number){
+      this.option_selected = value;
+      if(this.option_selected === 1){
+
+        this.ngOnInit();
+      }
+      if(this.option_selected === 2){
+        this.solicitud_selected = null;
+      }
+      if(this.option_selected === 3){
+        this.solicitud_selected = null;
+        
+      }
+    }
 
 }

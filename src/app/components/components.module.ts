@@ -22,15 +22,19 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 import { PieChart2Component } from './charts/pie-chart2/pie-chart2.component';
-
+import { CalendariotModule } from './calendarioT/calendariot.module';
+import { CalculadorBarComponent } from './calculador-bar/calculador-bar.component';
 @NgModule({
   declarations: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent, 
     RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent, CalificacionesComponent, 
-    CalificacionesEditComponent, ExamenesStudentComponent, PieChartComponent, LineChartComponent, BarChartComponent, PieChart2Component ],
+    CalificacionesEditComponent, ExamenesStudentComponent, PieChartComponent, LineChartComponent, BarChartComponent, 
+    PieChart2Component, CalculadorBarComponent, 
+  ],
+
   exports: [ListahijosComponent, ListapaymentsComponent, ListapaymentshijoComponent,
     RecentpaymentsComponent, TasadiabcvComponent,StatuspagosComponent, CalificacionesComponent,
     CalificacionesEditComponent  , ExamenesStudentComponent, PieChartComponent,LineChartComponent, BarChartComponent,
-    PieChart2Component
+    PieChart2Component,CalculadorBarComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,8 @@ import { PieChart2Component } from './charts/pie-chart2/pie-chart2.component';
     CKEditorModule,
     SharedModule,
     PipesModule,
-    NgxChartsModule
+    NgxChartsModule,
+    CalendariotModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

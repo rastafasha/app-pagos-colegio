@@ -10,6 +10,7 @@ import { BannerplanesComponent } from './bannerplanes/bannerplanes.component';
 import { LoadingComponent } from './loading/loading.component';
 import { BackbreadcumComponent } from './backbreadcum/backbreadcum.component';
 import { Breadc2Component } from './breadc2/breadc2.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 // Pipes
 //import { PipesModule } from '../pipes/pipes.module';
@@ -22,7 +23,7 @@ import { Breadc2Component } from './breadc2/breadc2.component';
     imports: [
         RouterModule,
         CommonModule,
-        //PipesModule
+        PipesModule
     ],
     declarations: [
         HeaderComponent,
