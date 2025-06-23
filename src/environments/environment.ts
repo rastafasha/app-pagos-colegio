@@ -10,10 +10,10 @@ export const environment = {
   //   url_media: 'http://127.0.0.1:8000/storage/',
 
     //remoto v2
-    url_backend: 'https://svcbmf.com/backend-api-colegio/',
-    url_servicios: 'https://svcbmf.com/backend-api-colegio/public/api',
-    url_frontend: 'https://mapaconcentracion.sinmordaza.org/',
-    url_media: 'https://svcbmf.com/backend-api-colegio/public/storage/',
+    url_backend: 'https://malcolmcordova.com/backend-api-colegio/',
+    url_servicios: 'https://malcolmcordova.com/backend-api-colegio/public/api',
+    // url_frontend: 'https://mapaconcentracion.sinmordaza.org/',
+    url_media: 'https://malcolmcordova.com/backend-api-colegio/public/storage/',
 
 };
 
