@@ -42,8 +42,19 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
 
     let USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
-    this.roles = this.user.roles[0];
+    if (USER) {
+      try {
+        this.user = JSON.parse(USER);
+        this.roles = this.user.roles && this.user.roles.length > 0 ? this.user.roles[0] : '';
+      } catch (e) {
+        console.error('Error parsing user from localStorage', e);
+        this.user = null;
+        this.roles = '';
+      }
+    } else {
+      this.user = null;
+      this.roles = '';
+    }
     this.getConfId();
 
   }

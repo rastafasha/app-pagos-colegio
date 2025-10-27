@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
   total_parents_deuda:Dashboard
   total_students:Dashboard;
   userprofile:any;
+  roles: any;
 
   constructor(
     private dashboardService: DashboardService,
@@ -38,8 +39,19 @@ export class DashboardComponent implements OnInit {
     window.scrollTo(0, 0);
 
     let USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
-    this.role = this.user.roles[0];
+     if (USER) {
+      try {
+        this.user = JSON.parse(USER);
+        this.roles = this.user.roles && this.user.roles.length > 0 ? this.user.roles[0] : '';
+      } catch (e) {
+        console.error('Error parsing user from localStorage', e);
+        this.user = null;
+        this.roles = '';
+      }
+    } else {
+      this.user = null;
+      this.roles = '';
+    }
 
     this.userprofile = this.user;
     this.accountService.closeMenu();
