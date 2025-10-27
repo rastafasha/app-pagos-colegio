@@ -19,7 +19,7 @@
 
                                 <span class="badge bg-dark-light" *ngIf="user.roles.name === 'SUPERADMIN'">SuperAdmin</span>
                                 <span class="badge bg-primary" *ngIf="user.roles.name === 'ADMIN'">Admin</span>
-                                <span class="badge bg-success" *ngIf="user.roles.name === 'MEMBER'">Miembro</span>
+                                <span class="badge bg-success" *ngIf="user.roles.name === 'PARTNER'">Partner</span>
                                 <span class="badge bg-secondary" *ngIf="user.roles.name === 'GUEST'">Invitado</span>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             </li>
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab"
-                                    data-bs-target="#profile-settings">Mi Perfil</button>
+                                    data-bs-target="#profile-settings">Perfil: {{infoUser.name}} </button>
                             </li>
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab"
@@ -184,7 +184,12 @@
 
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-md-6">
+                                             <div class="col-xs-12 col-md-6">
+                                                <label for="exampleInputEmail1">Empresa</label>
+                                                <input type="text" class="form-control" formControlName="empresa">
+                                            </div>
+
+                                            <!-- <div class="col-xs-12 col-md-6">
                                                 <label for="exampleInputEmail1">Materia (si es por sección)</label>
                                                 <select class="form-control" id="materia_id" [value]="materia?.id"
                                                     formControlName="materia_id">
@@ -196,7 +201,7 @@
                                             <div class="col-xs-12 col-md-6">
                                                 <label for="exampleInputEmail1">Grado (Todas las materias)</label>
                                                 <input type="text" class="form-control" formControlName="grado">
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                         <input type="hidden" formControlName="id">

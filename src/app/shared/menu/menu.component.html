@@ -27,22 +27,18 @@
                 </li>
                 
             </ul>
-            <ul id="sidebarnav" *ngIf="role === 'MAESTRO'">
+            <ul id="sidebarnav" *ngIf="role === 'PARTNER'">
                 <li>
                     <a routerLink="/" routerLinkActive="active" class="waves-effect waves-dark">
                         <i class="mdi mdi-monitor"></i><span class="hide-menu">Inicio </span>
                     </a>
                 </li>
                 <li>
-                    <a routerLink="../dashboard/estudiantes" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-users"></i><span class="hide-menu">Estudiantes </span>
+                    <a [routerLink]="['/dashboard/eventos/user/', user.id]" routerLinkActive="active" class="waves-effect waves-dark">
+                        <i class="fa fa-users"></i><span class="hide-menu">Eventos </span>
                     </a>
                 </li>
-                <li>
-                    <a routerLink="../dashboard/materias" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-graduation-cap"></i><span class="hide-menu">Materias </span>
-                    </a>
-                </li>
+                
                 <li>
                     <a [routerLink]="['/dashboard/user/edit/', user.id]" routerLinkActive="active"
                         class="waves-effect waves-dark">
@@ -68,24 +64,20 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="../dashboard/padres" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-vcard"></i><span class="hide-menu">Padres </span>
+                    <a routerLink="../dashboard/clientes" routerLinkActive="active" class="waves-effect waves-dark">
+                        <i class="fa fa-vcard"></i><span class="hide-menu">Clientes </span>
                     </a>
                 </li>
                 <li>
-                    <a routerLink="../dashboard/estudiantes" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-users"></i><span class="hide-menu">Estudiantes </span>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="../dashboard/materias" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-graduation-cap"></i><span class="hide-menu">Materias </span>
+                    <a routerLink="../dashboard/eventos" routerLinkActive="active" class="waves-effect waves-dark">
+                        <i class="fa fa-users"></i><span class="hide-menu">Eventos </span>
                     </a>
                 </li>
                 
+                
                 <li>
-                    <a routerLink="../dashboard/usuarios" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="fa fa-users"></i><span class="hide-menu">Personal </span>
+                    <a routerLink="../dashboard/partners" routerLinkActive="active" class="waves-effect waves-dark">
+                        <i class="fa fa-users"></i><span class="hide-menu">Partners </span>
                     </a>
                 </li>
                 <li> <a routerLink="../dashboard/config" routerLinkActive="active" class="waves-effect waves-dark">

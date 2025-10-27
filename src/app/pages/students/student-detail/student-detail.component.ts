@@ -7,13 +7,15 @@ import { Location } from '@angular/common';
 import { CalificacionService } from 'src/app/services/calificacion.service';
 import { Calificacion } from 'src/app/models/calificacion';
 import Swal from 'sweetalert2';
+import { EventoService } from 'src/app/services/evento.service';
+import { Evento } from 'src/app/models/evento';
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
   styleUrls: ['./student-detail.component.css'],
 })
 export class StudentDetailComponent {
-  title = 'Detalles de la cuenta';
+  title = 'Detalles del Evento';
   profileForm: FormGroup;
   imagePath: string;
   error: string;
@@ -28,7 +30,8 @@ export class StudentDetailComponent {
 
   user: Student;
   parent: Student;
-  userprofile: Student;
+  eventprofile: Evento;
+  userprofile: Evento;
 
   calificaciones: Calificacion;
 
@@ -36,12 +39,12 @@ export class StudentDetailComponent {
   profileSeleccionado: Student;
 
   user_id: any;
-  student_id: any;
+  event_id: any;
   errors: any = null;
 
   constructor(
     private location: Location,
-    private studentService: StudentService,
+    private eventoService: EventoService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -63,21 +66,21 @@ export class StudentDetailComponent {
 
   getUserServer(id: number) {
     this.isLoading = true;
-    this.studentService.getUserById(+id).subscribe(
+    this.eventoService.getById(+id).subscribe(
       (res: any) => {
-        this.userprofile = res.student;
+        this.userprofile = res.event;
         // this.calificaciones = res.calificaciones;
-        if (res.student && res.student.id) {
-          this.student_id = res.student.id;
+        if (res.event && res.event.id) {
+          this.event_id = res.event.id;
         } else {
-          this.student_id = null;
+          this.event_id = null;
           console.error('User or user.id is undefined in response:', res);
         }
         this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching user by id:', error);
-        this.student_id = null;
+        this.event_id = null;
       }
     );
   }
@@ -113,7 +116,7 @@ export class StudentDetailComponent {
     }
 
 
-    this.studentService.updateStatus(data, userprofile.id ).subscribe((resp) => {
+    this.eventoService.updateStatus(data, userprofile.id ).subscribe((resp) => {
       // console.log(resp);
       Swal.fire({
         position: 'top-end',

@@ -17,11 +17,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent {
-  title = "Padres";
+  title = "Clientes";
   
     loading = false;
     usersCount = 0;
-    parents: any;
+    clientes: any;
     user: any;
     roles;
     isLoading:boolean=false;
@@ -60,7 +60,7 @@ export class ListComponent {
       this.isLoading = true;
       this.parentService.getAll().subscribe(
         (res:any) =>{
-          this.parents = res.representantes;
+          this.clientes = res.clientes;
           error => this.error = error;
           this.isLoading = false;
           // console.log(this.parents);
@@ -88,8 +88,7 @@ export class ListComponent {
     search() {
       return this.parentService.search(this.query).subscribe(
         (res:any)=>{
-          console.log(res);
-          this.parents = res;
+          this.clientes = res;
           if(!this.query){
             this.ngOnInit();
           }

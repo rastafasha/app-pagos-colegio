@@ -32,55 +32,45 @@
                         <!-- <th>ID</th> -->
                         <th>Foto</th>
                         <th>Nombre</th>
-                        <th>CI</th>
-                        <th *ngIf="showGenero">Género</th>
-                        <th *ngIf="showNacimiento">Nacimiento</th>
-                        <th>Grado</th>
+                        <th *ngIf="showNacimiento">Fecha</th>
                         <th>Status</th>
                         <th>Sección</th>
-                        <th id="matricula" *ngIf="showMatricula">Matrícula</th>
+                        <th id="matricula" *ngIf="showMatricula">Precio general</th>
                         <!-- <th>Option</th> -->
                         <th id="acciones" class="text-nowrap" *ngIf="showAcciones">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr
-                        *ngFor="let studentprofile of students  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
+                        *ngFor="let eventprofile of eventos  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
 
-                        <!-- <td><a [routerLink]="['/dashboard/padre/detail/', studentprofile.id]">{{studentprofile.id}}</a></td> -->
+                        <!-- <td><a [routerLink]="['/dashboard/padre/detail/', eventprofile.id]">{{eventprofile.id}}</a></td> -->
                         <td>
-                            <img [src]="studentprofile.avatar| imagenPipe: 'students' "  class="imagecircle shadow" alt="">
+                            <img [src]="eventprofile.avatar| imagenPipe: 'events' "  class="imagecircle shadow" alt="">
                         </td>
                         <td>
-                            <a [routerLink]="['/dashboard/estudiante/detail/', studentprofile.id]">
+                            <a [routerLink]="['/dashboard/evento/detail/', eventprofile.id]">
 
-                                {{studentprofile.name}} {{studentprofile.surname}} 
+                                {{eventprofile.name}} 
                             </a>
                         </td>
-                        <td>{{studentprofile.n_doc}} </td>
-                        <!-- <td>{{studentprofile.gender}} </td> -->
-                        <td *ngIf="showGenero">
-                            <span class="badge bg-primary" *ngIf="studentprofile.gender === 1">M</span>
-                            <span class="badge bg-danger" *ngIf="studentprofile.gender === 2">F</span>
-                        </td>
-                        <td *ngIf="showNacimiento">{{studentprofile.birth_date|date}} </td>
-                        <td>{{studentprofile.school_year}} </td>
+                        <td *ngIf="showNacimiento">{{eventprofile.fecha_inicio|date}} </td>
                         <td >
-                            <span class="badge bg-success" *ngIf="studentprofile.status === 'ACTIVE'">Activo</span>
-                            <span class="badge bg-danger" *ngIf="studentprofile.status === 'INACTIVE'">Inactivo</span>
-                            <span class="badge bg-primary" *ngIf="studentprofile.status === 'RETIRED'">Retirado</span>
-                            <span class="badge bg-warning" *ngIf="studentprofile.status === 'GRADUATED'">Graduado</span>
+                            <span class="badge bg-success" *ngIf="eventprofile.status === 'ACTIVE'">Activo</span>
+                            <span class="badge bg-danger" *ngIf="eventprofile.status === 'INACTIVE'">Inactivo</span>
+                            <span class="badge bg-primary" *ngIf="eventprofile.status === 'RETIRED'">Retirado</span>
+                            <span class="badge bg-warning" *ngIf="eventprofile.status === 'GRADUATED'">Graduado</span>
                         </td>
-                        <td>{{studentprofile.section | uppercase}} </td>
-                        <td id="matricula" *ngIf="showMatricula">{{studentprofile.matricula}} </td>
+                        <td>{{eventprofile.section | uppercase}} </td>
+                        <td id="matricula" *ngIf="showMatricula">{{eventprofile.precio_general}}</td>
                         <td  id="acciones" class="text-nowrap text-center" *ngIf="showAcciones">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentModal" (click)="openPaymentsModal(studentprofile)">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModal" (click)="openPaymentsModal(eventprofile)">
                                 Pagos
                             </button>
                         </td>
 
                         <!-- Modal -->
-                        <app-listapaymentshijo [selectedStudentProfile]="selectedStudentProfile"></app-listapaymentshijo>
+                        <app-listapaymentshijo [selectedeventProfile]="selectedeventProfile"></app-listapaymentshijo>
                         
                         <!-- Modal -->
                     </tr>

@@ -1,6 +1,6 @@
 
 <div class="row">
-    <app-line-chart [calificaciones]="calificaciones" ></app-line-chart>
+    <!-- <app-line-chart [calificaciones]="calificaciones" ></app-line-chart> -->
     <!-- <div class="col-xs-12 col-sm-6">
         <app-bar-chart></app-bar-chart>
     </div>
@@ -42,8 +42,8 @@
             <table class="table table-borderless datatable table-striped">
                 <thead>
                     <tr>
-                        <th>Materia</th>
-                        <th>Puntaje</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
                         <!-- <th>Semestre</th> -->
                         <th>Año Escolar</th>
                         <!-- <th class="text-nowrap">Acciones</th> -->
@@ -51,11 +51,11 @@
                 </thead>
                 <tbody>
                     <tr style="border-left: 2px solid cornflowerblue; border-spacing: 2px;"
-                        *ngFor="let califi of calificaciones  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
+                        *ngFor="let califi of clients  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
 
                     
-                        <td>{{califi.materia.name}} </td>
-                        <td>{{califi.grade}} </td>
+                        <td>{{califi.name}} </td>
+                        <td>{{califi.email}} </td>
                         <!-- <td>{{califi.semestre}} </td> -->
                         <td>{{califi.anio_escolar}} </td>
                         

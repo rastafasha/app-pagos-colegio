@@ -24,7 +24,7 @@
 
 
 </div>
-<div *ngIf="role === 'MAESTRO' ">
+<div *ngIf="role === 'PARTNER' ">
     <!-- <div class="row animated fadeInUp">
         <div class="col-xs-12 col-sm-6">
             <div class="card">
@@ -71,31 +71,31 @@
     <div class="row">
         <div class="col-6 col-sm-6  ">
         <div class="card d-flex justify-content-center shadow">
-            <a routerLink="../dashboard/padres">
+            <a routerLink="../dashboard/clientes">
                 <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
                     <i class="fa fa-vcard fa-2x"></i>
-                    <p>Padres: {{parents_nodeuda}}</p>
-                    <!-- <p>Padres con deuda: {{total_parents}}</p> -->
+                    <p>Clientes: {{clients_nodeuda}}</p>
+                    <!-- <p>Padres con deuda: {{total_clients}}</p> -->
                 </div>
             </a>
         </div>
     </div>
     <div class="col-6 col-sm-6  ">
         <div class="card d-flex justify-content-center shadow">
-            <a routerLink="../dashboard/estudiantes">
+            <a routerLink="../dashboard/eventos">
                 <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
                     <i class="fa fa-users fa-2x"></i>
-                    <p>Estudiantes: {{total_students}}</p>
+                    <p>Eventos: {{total_events}}</p>
                 </div>
             </a>
         </div>
     </div>
     <div class="col-6 col-sm-6  ">
         <div class="card d-flex justify-content-center shadow">
-            <a routerLink="../dashboard/usuarios">
+            <a routerLink="../dashboard/partners">
                 <div class="card-body cuadroicondatos" style=" border-left: green 2px solid;">
                     <i class="fa fa-users fa-2x"></i>
-                    <p>Personal</p>
+                    <p>Partners</p>
                 </div>
             </a>
         </div>

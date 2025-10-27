@@ -7,6 +7,8 @@ import { ParentService } from 'src/app/services/parent-service.service';
 import { environment } from 'src/environments/environment';
 import { StudentService } from 'src/app/services/student-service.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { EventoService } from 'src/app/services/evento.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-students',
   standalone: false,
@@ -14,16 +16,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent {
-  title = "Estudiantes";
+  title = "Eventos";
     
       loading = false;
       usersCount = 0;
-      students: any;
+      eventos: any;
       user: any;
       roles;
+      role;
       isLoading:boolean=false;
     
       p: number = 1;
+      id: number = 1;
       count: number = 8;
     
       error: string;
@@ -37,10 +41,11 @@ export class StudentsComponent {
       // role:any;
     
       constructor(
-        private studentService: StudentService,
+        private eventosService:EventoService,
         private location: Location,
         private http: HttpClient,
         public accountService: AuthService,
+        public activatedRoute: ActivatedRoute,
         handler: HttpBackend
         ) {
           this.http = new HttpClient(handler);
@@ -49,15 +54,33 @@ export class StudentsComponent {
       ngOnInit(): void {
         window.scrollTo(0,0);
         this.accountService.closeMenu();
-        this.getUsers();
+        this.role = this.accountService.role;
+        this.getEvents();
+        if (this.activatedRoute.snapshot.params['id']) {
+          this.activatedRoute.params.subscribe(({ id }) => this.getEventsbyUser(id));
+        }
+
+        
       }
     
     
-      getUsers(): void {
+      getEvents(): void {
         this.isLoading = true;
-        this.studentService.getAll().subscribe(
+        this.eventosService.getAll().subscribe(
           (res:any) =>{
-            this.students = res.students.data;
+            this.eventos = res.events;
+            error => this.error = error;
+            this.isLoading = false;
+            // console.log(this.students);
+          }
+        );
+      }
+
+      getEventsbyUser(id:number): void {
+        this.isLoading = true;
+        this.eventosService.eventsbyUser(+id).subscribe(
+          (res:any) =>{
+            this.eventos = res.events;
             error => this.error = error;
             this.isLoading = false;
             // console.log(this.students);
@@ -72,10 +95,10 @@ export class StudentsComponent {
       }
     
       search() {
-        return this.studentService.search(this.query).subscribe(
+        return this.eventosService.search(this.query).subscribe(
           (res:any)=>{
             console.log(res);
-            this.students = res;
+            this.eventos = res;
             if(!this.query){
               this.ngOnInit();
             }
@@ -83,7 +106,7 @@ export class StudentsComponent {
       }
     
       public PageSize(): void {
-        this.getUsers();
+        this.ngOnInit();
         this.query = '';
       }
 } 

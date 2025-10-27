@@ -51,7 +51,7 @@
                                         <span class="badge bg-primary"
                                             *ngIf="userprofile.status === 'RETIRED'">Retirado</span>
                                         <span class="badge bg-warning"
-                                            *ngIf="userprofile.status === 'GRADUATED'">Graduado</span>
+                                            *ngIf="userprofile.status === 'FINISHED'">Terminado</span>
                                     </p>
 
 
@@ -67,7 +67,7 @@
                             <option value="ACTIVE">Activo</option>
                             <option value="INACTIVE">Inactivo</option>
                             <option value="RETIRED">Retirado</option>
-                            <option value="GRADUATED">Graduado</option>
+                            <option value="FINISHED">Terminado</option>
                         </select>
                     </div>
 
@@ -104,19 +104,19 @@
                                     <li class="nav-item">
                                         <button class="nav-link" (click)="optionSelected(2)"
                                             [ngClass]="{'active': option_selected === 2}" data-bs-toggle="tab"
-                                            data-bs-target="#hijos">Calificaciones</button>
+                                            data-bs-target="#hijos">Usuarios</button>
                                     </li>
                                     <li class="nav-item">
                                         <button class="nav-link" (click)="optionSelected(3)"
                                             [ngClass]="{'active': option_selected === 3}" data-bs-toggle="tab"
-                                            data-bs-target="#examenes">Examenes</button>
+                                            data-bs-target="#examenes">Pagos</button>
                                     </li>
 
                                 </ul>
 
                             </div>
                             <div class="tab-content pt-2">
-
+<!-- detalles -->
                                 <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 1 "
                                     id="profile-overview">
 
@@ -126,31 +126,43 @@
 
                                         <div class="col-xs-6 col-sm-3">
                                             <div class=" label ">
-                                                <i class="fa fa-user-circle"></i> Nombre y Apellido
+                                                <i class="fa fa-user-circle"></i> Nombre 
                                             </div>
-                                            <p>{{userprofile?.name}} {{userprofile?.surname}}</p>
+                                            <p>{{userprofile?.name}} </p>
                                         </div>
                                         <div class="col-xs-6 col-sm-3">
-                                            <div class=" label"><i class="fa fa-calendar-check-o"></i> Año Escolar</div>
-                                            <p>{{userprofile?.school_year}}</p>
+                                            <div class=" label ">
+                                                <i class="fa fa-user-circle"></i> descripcion 
+                                            </div>
+                                            <p>{{userprofile?.description}} </p>
                                         </div>
                                         <div class="col-xs-6 col-sm-3">
-                                            <div class=" label"><i class="fa fa-compass"></i> Sección</div>
-                                            <p>{{userprofile?.section|uppercase}}</p>
+                                            <div class=" label"><i class="fa fa-calendar-check-o"></i> Fecha Inicio</div>
+                                            <p>{{userprofile?.fecha_inicio}}</p>
                                         </div>
                                         <div class="col-xs-6 col-sm-3">
-                                            <div class=" label"><i class="fa fa-vcard-o"></i> Id/CI</div>
-                                            <p>{{userprofile?.n_doc}}</p>
+                                            <div class=" label"><i class="fa fa-calendar-check-o"></i> Fecha fin</div>
+                                            <p>{{userprofile?.fecha_fin}}</p>
                                         </div>
                                         <div class="col-xs-6 col-sm-3">
-                                            <div class=" label"><i class="fa fa-calendar"></i> Nacimiento</div>
-                                            <p>{{userprofile?.birth_date|date}}</p>
+                                            <div class=" label"><i class="fa fa-compass"></i> precio_general</div>
+                                            <p>{{userprofile?.precio_general|currency}}</p>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div class=" label"><i class="fa fa-compass"></i> precio estudiantes</div>
+                                            <p>{{userprofile?.precio_estudiantes|currency}}</p>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-3">
+                                            <div class=" label"><i class="fa fa-compass"></i> precio especialistas</div>
+                                            <p>{{userprofile?.precio_especialistas|currency}}</p>
                                         </div>
 
                                     </div>
 
 
                                 </div>
+                                <!-- fin detalles -->
+                                 <!-- subcriptores -->
                                 <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 2 "
                                     id="hijos">
                                     <br />
@@ -158,6 +170,8 @@
                                         <app-calificaciones [userprofile]="userprofile"></app-calificaciones>
                                     </div>
                                 </div>
+                                <!-- fin subcriptores -->
+                                 <!-- pagos -->
                                 <div class="tab-pane fade show active profile-overview" *ngIf="option_selected === 3 "
                                     id="examenes">
                                     <br />

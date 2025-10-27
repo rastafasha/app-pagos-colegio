@@ -19,10 +19,10 @@
                             <span class="badge bg-dark-light"
                                 *ngIf="userprofile.roles.name === 'SUPERADMIN'">SuperAdmin</span>
                             <span class="badge bg-primary" *ngIf="userprofile.roles.name === 'ADMIN'">Admin</span>
-                            <span class="badge bg-success" *ngIf="userprofile.roles.name === 'MEMBER'">Miembro</span>
+                            <span class="badge bg-success" *ngIf="userprofile.roles.name === 'PARTNER'">Partner</span>
                             <span class="badge bg-secondary" *ngIf="userprofile.roles.name === 'GUEST'">Invitado</span>
                             <button class="btn btn-outline-primary pull-right"
-                        [routerLink]="['/dashboard/user/profile/', userprofile.id]">Perfil</button>
+                        [routerLink]="['/dashboard/partner/profile/', userprofile.id]">Perfil</button>
                         </div>
                     </div>
 
@@ -62,7 +62,7 @@
                                                 <option value="1">Superadmin</option>
                                                 <option value="2">Admin</option>
                                                 <option value="9">Invitado</option>
-                                                <option value="11">Maestro</option>
+                                                <option value="10">Partner</option>
                                             </select>
                                         </div>
                                         <div class="text-center">

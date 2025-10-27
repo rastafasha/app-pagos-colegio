@@ -41,10 +41,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    let USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
-    this.roles = this.user.roles[0];
-    this.getConfId();
+    this.authService.getRole();
+    this.id = this.user.id;
+    // this.getConfId();
 
   }
 

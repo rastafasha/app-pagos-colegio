@@ -7,8 +7,8 @@ const base_url = environment.url_media;
 export class Payment {
    id:number;
    user_id?:User;
-   parent_id?:number;
-   student_id?:number;
+   client_id?:number;
+   event_id?:number;
    metodo?:string;
    bank_name?:string;
    bank_destino?:string;

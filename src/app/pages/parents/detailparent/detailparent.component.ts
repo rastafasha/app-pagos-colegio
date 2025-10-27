@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { Parent } from 'src/app/models/parents';
 import Swal from 'sweetalert2';
+import { Payment } from 'src/app/models/payment';
+import { Evento } from 'src/app/models/evento';
 @Component({
   selector: 'app-detailparent',
   templateUrl: './detailparent.component.html',
@@ -27,6 +29,8 @@ export class DetailparentComponent {
   
     user: Parent;
     parent: Parent;
+    payments: Payment;
+    events: Evento;
     userprofile: Parent;
   
     roles:any;
@@ -64,7 +68,7 @@ export class DetailparentComponent {
       this.isLoading = true;
       this.parentService.getUserById(+id).subscribe(
         (res:any) =>{
-          this.userprofile = res.representante;
+          this.userprofile = res.cliente;
           if(res.representante && res.representante.id){
             this.representante_id = res.representante.id;
           } else {

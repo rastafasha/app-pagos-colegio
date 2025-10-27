@@ -22,11 +22,12 @@ export class DashboardComponent implements OnInit {
   parentprofile:Parent;
   role:any;
   query:string ='';
-  total_parents:Dashboard;
-  parents_nodeuda:Dashboard
-  total_parents_deuda:Dashboard
-  total_students:Dashboard;
+  total_clients:Dashboard;
+  clients_nodeuda:Dashboard
+  total_clients_deuda:Dashboard
+  total_events:Dashboard;
   userprofile:any;
+  roles: any;
 
   constructor(
     private dashboardService: DashboardService,
@@ -37,10 +38,7 @@ export class DashboardComponent implements OnInit {
 
     window.scrollTo(0, 0);
 
-    let USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
-    this.role = this.user.roles[0];
-
+    this.role = this.accountService.role;
     this.userprofile = this.user;
     this.accountService.closeMenu();
     this.getDashboardData();
@@ -49,10 +47,10 @@ export class DashboardComponent implements OnInit {
   getDashboardData(){
     this.dashboardService.getDasboardConfig().subscribe((resp:any)=>{
       // console.log(resp);
-      this.total_parents = resp.total_parents;
-      this.parents_nodeuda = resp.parents_nodeuda;
-      this.total_parents_deuda = resp.total_parents_deuda;
-      this.total_students = resp.total_students;
+      this.total_clients = resp.total_clients;
+      this.clients_nodeuda = resp.clients_nodeuda;
+      this.total_clients_deuda = resp.total_clients_deuda;
+      this.total_events = resp.total_events;
     })
   }
 

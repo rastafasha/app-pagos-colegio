@@ -108,7 +108,7 @@ this.user = this.userService.user;
             role: res.user.role,
             email: res.user.email,
             materia_id: res.user.materia_id,
-            grado: res.user.grado,
+            empresa: res.user.empresa,
             address: res.user.address,
             telefono: res.user.telefono,
             mobile: res.user.mobile,

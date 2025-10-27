@@ -15,7 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  title = "Personal"
+  title = "Partners"
 
   isLoading = false;
   usersCount = 0;

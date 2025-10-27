@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
 
   user:any;
   role:any;
+  roles:any;
 
   constructor(
     private authService: AuthService
@@ -30,8 +31,20 @@ export class MenuComponent implements OnInit {
     //init_plugins();
 
     let USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
-    this.role = this.user.roles[0]
+     if (USER) {
+      try {
+        this.user = JSON.parse(USER);
+        this.role = this.user.roles && this.user.roles.length > 0 ? this.user.roles[0] : '';
+      } catch (e) {
+        console.error('Error parsing user from localStorage', e);
+        this.user = null;
+        this.role = '';
+      }
+    } else {
+      this.user = null;
+      this.role = '';
+    }
+    
   }
 
   toggleNav(){
