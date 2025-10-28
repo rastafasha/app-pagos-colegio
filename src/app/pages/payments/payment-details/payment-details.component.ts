@@ -11,6 +11,8 @@ import { ParentService } from 'src/app/services/parent-service.service';
 import { Parent } from 'src/app/models/parents';
 import { Student } from 'src/app/models/student';
 import Swal from 'sweetalert2';
+import { Evento } from 'src/app/models/evento';
+import { EventoService } from 'src/app/services/evento.service';
 @Component({
   selector: 'app-payment-details',
   templateUrl: './payment-details.component.html',
@@ -21,17 +23,17 @@ export class PaymentDetailsComponent implements OnInit {
   title = "Detalle Pago";
   payment: Payment;
   error: string;
-  student_id:number;
+  event_id:number;
   parent_id:number;
   parent:Parent;
-  student:Student;
+  event:Evento;
   isLoading:boolean=false;
 
   constructor(
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private paymentService: PaymentService,
-    private studentService: StudentService,
+    private eventService: EventoService,
     private parentService: ParentService,
     private http: HttpClient
   ) { }
@@ -57,7 +59,7 @@ export class PaymentDetailsComponent implements OnInit {
         this.payment = res;
         // console.log(this.payment);
         this.parent_id = res.parent_id;
-        this.student_id = res.student_id;
+        this.event_id = res.event_id;
         this.isLoading = false;
         this.getParent();
         this.getStudent();
@@ -73,9 +75,9 @@ export class PaymentDetailsComponent implements OnInit {
     })
   }
   getStudent(){
-    this.studentService.getUserById(this.student_id).subscribe((resp:any)=>{
+    this.eventService.getById(this.event_id).subscribe((resp:any)=>{
       console.log(resp);
-      this.student = resp.student;
+      this.event = resp.event;
     })
   }
 

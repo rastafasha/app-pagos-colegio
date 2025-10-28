@@ -31,41 +31,99 @@
         <!-- <app-calculador-bar [progress]="weightedAverageProgress"></app-calculador-bar> -->
         <div class="card-body">
 
-            <table [ngClass]="loading? 'table table-borderless datatable':'table table-borderless'">
-                <thead>
-                    <tr>
-                        <!-- <th>ID</th> -->
-                        <th>Materia</th>
-                        <th>Titulo</th>
-                        <th>Puntaje</th>
-                        <th>% Valor</th>
-                        <th>Resultado</th>
-                        <th>Maestro</th>
-                        <th>Fecha</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let examen of examenes  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
+            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Referencia</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Banco</th>
+                                        <th scope="col">Banco Destino</th>
+                                        <th scope="col">Metodo</th>
+                                        <th scope="col">Monto </th>
+                                        <th scope="col">Deuda</th>
+                                        <th scope="col">Monto Pendiente</th>
+                                        <th scope="col">Status Deuda</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Fecha | Hora</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let pago of payments |  paginate: { itemsPerPage: count, currentPage: p }">
+                                        <td>
+                                <img [src]="pago?.avatar| imagenPipe: 'payments' "  class="imagecircle shadow" alt="">
+                            </td>
+                                        <th scope="row"><a [routerLink]="['/dashboard/payment-detail', pago.id]">{{pago.referencia}}</a></th>
+                                        <th><a [routerLink]="['/dashboard/cliente/detail/', pago.client_id]">{{pago.nombre}}</a></th>
+                                        <td>{{pago.bank_name}}</td>
+                                        <td>{{pago.bank_destino}}</td>
+                                        <td>{{pago.metodo}}</td>
+                                        <td >
+                                            <span *ngIf="pago.metodo ==='Transferencia Bolívares' || pago.metodo ==='Pago Móvil'">
+                                                {{pago.monto|currency:'Bs.'}}
+                                                
+                                            </span>
+                                            <span *ngIf="pago.metodo ==='Transferencia Dólares'">
+                                                {{pago.monto|currency}}
+                                            </span>
+                                        </td>
 
-                    
-                        <td>{{examen.materia.name}} </td>
-                        <td>{{examen.title}} </td>
-                        <td>{{examen.puntaje}} </td>
-                        <td>{{examen.valor_examen}} </td>
-                        <td>{{(examen.puntaje)*(examen.valor_examen)}}%</td>
-                        <td>{{examen.maestro.name}} {{examen.maestro.surname}} </td>
-                        <td>{{examen?.created_at|date}} </td>
-                        <td class="text-nowrap text-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#examenModal" (click)="openPaymentsModal(examen.id)">
-                                <i class="fa fa-edit"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-                
-            </table>
+                                        <td >
+                                            <span *ngIf="pago.metodo ==='Transferencia Bolívares' || pago.metodo ==='Pago Móvil'">
+                                                {{pago.deuda|currency:'Bs.'}}
+                                                
+                                            </span>
+                                            <span *ngIf="pago.metodo ==='Transferencia Dólares'">
+                                                {{pago.deuda|currency}}
+                                            </span>
+                                        </td>
+                                        <td >
+                                            <span *ngIf="pago.metodo ==='Transferencia Bolívares' || pago.metodo ==='Pago Móvil'">
+                                                {{pago.monto_pendiente|currency:'Bs.'}}
+                                                
+                                            </span>
+                                            <span *ngIf="pago.metodo ==='Transferencia Dólares'">
+                                                {{pago.monto_pendiente|currency}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <!-- {{pago.status_deuda}} -->
+                                            <span class="badge bg-success" *ngIf="pago.status_deuda !== 'DEUDA'">Pagado</span>
+                                            <span class="badge bg-danger" *ngIf="pago.status_deuda === 'DEUDA'">Deuda</span>
+                                        </td>
+
+                                        <td>
+                                            <span class="badge bg-success" *ngIf="pago.status === 'APPROVED'">Aprobado</span>
+                                            <span class="badge bg-primary" *ngIf="pago.status === 'PENDING'">Pendiente</span>
+                                            <span class="badge bg-danger" *ngIf="pago.status === 'REJECTED'">Rechazado</span>
+                                            <!-- <span class="badge bg-success">{{pago.status}}</span> -->
+                                        </td>
+                                        <td>{{pago.created_at | date:'MMM d, y, h:mm:ss a'}}</td>
+                                        <td>
+                                            <select class="form-control form-select-solid fw-bolder" name="status"
+                                                [(ngModel)]="pago.status" (change)="cambiarStatus(pago)"
+                                                
+                                                placeholder="status">
+                                                <option value="">Seleccione</option>
+                                                <option value="APPROVED">Aprobado</option>
+                                                <option value="PENDING">Pendiente</option>
+                                                <option value="REJECTED">Rechazado</option>
+                                            </select>
+                                            <!-- <div class="form-check form-switch" title="Verificar">
+                                                <a data-toggle="modal" [attr.data-target]="'#' + pago.id">
+                                                <a [routerLink]="['/dashboard/payment/edit/', pago.id]">
+                                                    <button class="btn btn-success">Editar</button>
+                                                </a>
+
+                                            </div> -->
+
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
             
             <pagination-controls (pageChange)="p = $event"></pagination-controls>
             

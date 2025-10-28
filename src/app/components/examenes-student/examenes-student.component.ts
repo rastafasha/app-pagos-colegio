@@ -2,7 +2,9 @@ import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { Calificacion } from 'src/app/models/calificacion';
 import { Examen } from 'src/app/models/examen';
+import { Payment } from 'src/app/models/payment';
 import { Student } from 'src/app/models/student';
+import { EventoService } from 'src/app/services/evento.service';
 import { ExamenService } from 'src/app/services/examen.service';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { StudentService } from 'src/app/services/student-service.service';
@@ -21,7 +23,7 @@ export class ExamenesStudentComponent {
   
     loading = false;
     usersCount = 0;
-    examenes: Examen;
+    payments: Payment;
     studentprofile: Student;
     p: number = 1;
     count: number = 8;
@@ -39,7 +41,7 @@ export class ExamenesStudentComponent {
     selectedMateria: Examen;
   
     constructor(
-      private exameneService: ExamenService,
+      private eventoService: EventoService,
       private http: HttpClient,
       handler: HttpBackend
     ) {
@@ -55,22 +57,22 @@ export class ExamenesStudentComponent {
     ngOnChanges(changes: SimpleChanges): void {
       if (changes['userprofile'] && this.userprofile && this.userprofile.id) {
         // console.log(this.userprofile);
-        this.getExamenes();
+        this.getPayments();
       }
     }
   
   weightedAverageProgress: number = 0;
 
-    getExamenes(): void {
+    getPayments(): void {
       if (!this.userprofile || !this.userprofile.id) {
         this.isLoading = false;
         this.error = 'User profile is not defined';
         return;
       }
       this.isLoading = true;
-      this.exameneService.getExamensbyStudent(this.userprofile.id).subscribe(
+      this.eventoService.getPaymentById(this.userprofile.id).subscribe(
         (res: any) => {
-          this.examenes = res.examenes;
+          this.payments = res.payments;
           this.calculateWeightedAverage();
           this.isLoading = false;
         },
@@ -82,14 +84,14 @@ export class ExamenesStudentComponent {
     }
 
   calculateWeightedAverage(): void {
-    if (!this.examenes) {
+    if (!this.payments) {
       this.weightedAverageProgress = 0;
       return;
     }
     let totalScore = 0;
-    // If examenes is a single object, convert to array for iteration
-    const examenesArray = Array.isArray(this.examenes) ? this.examenes : [this.examenes];
-    for (const examen of examenesArray) {
+    // If payments is a single object, convert to array for iteration
+    const paymentsArray = Array.isArray(this.payments) ? this.payments : [this.payments];
+    for (const examen of paymentsArray) {
       totalScore += examen.puntaje;
     }
     this.weightedAverageProgress = totalScore;
@@ -97,8 +99,8 @@ export class ExamenesStudentComponent {
   }
   
     search() {
-      return this.exameneService.search(this.query).subscribe((res: any) => {
-        this.examenes = res;
+      return this.eventoService.search(this.query).subscribe((res: any) => {
+        this.payments = res;
         if (!this.query) {
           this.ngOnInit();
         }
@@ -106,7 +108,7 @@ export class ExamenesStudentComponent {
     }
   
     public PageSize(): void {
-      this.getExamenes();
+      this.getPayments();
       this.query = '';
     }
   

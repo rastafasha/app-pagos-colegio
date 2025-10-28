@@ -45,14 +45,14 @@
                         </thead>
                         <tbody>
                             <tr
-                                *ngFor="let parent of parents  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
+                                *ngFor="let parent of clientes  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
                                 <td>
                                     <img [src]="parent?.avatar| imagenPipe: 'parents' " class="imagecircle shadow"
                                         alt="">
                                 </td>
-                                <td><a [routerLink]="['/dashboard/padre/detail/', parent.id]">{{parent.id}}</a></td>
+                                <td><a [routerLink]="['/dashboard/cliente/detail/', parent.id]">{{parent.id}}</a></td>
                                 <td>
-                                    <a [routerLink]="['/dashboard/padre/detail/', parent.id]">{{parent.name}}</a>
+                                    <a [routerLink]="['/dashboard/cliente/detail/', parent.id]">{{parent.name}}</a>
 
                                 </td>
                                 <td>{{parent.email}}</td>

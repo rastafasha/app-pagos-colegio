@@ -30,7 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Usuario</th>
+                                    <th>partner</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <!-- <th>Role Edit</th> -->
@@ -41,23 +41,23 @@
                             <tbody>
                                 <tr *ngFor="let user of usuarios  |  paginate: { itemsPerPage: count, currentPage: p } let i = index;">
 
-                                    <td><a [routerLink]="['/dashboard/usuario/detail/', user.id]">{{user.id}}</a></td>
-                                    <td><a [routerLink]="['/dashboard/usuario/detail/', user.id]">{{user.name}}</a> </td>
+                                    <td><a [routerLink]="['/dashboard/partner/detail/', user.id]">{{user.id}}</a></td>
+                                    <td><a [routerLink]="['/dashboard/partner/detail/', user.id]">{{user.name}}</a> </td>
                                     <td>{{user.email}}</td>
                                     <td>
                                         <!-- {{user.role }}  -->
                                         <span class="badge bg-dark" *ngIf="user.roles.name === 'SUPERADMIN'">SuperAdmin</span>
                                         <span class="badge bg-primary" *ngIf="user.roles.name === 'ADMIN'">Admin</span>
                                         <span class="badge bg-danger" *ngIf="user.roles.name === 'GUEST'">Invitado</span>
-                                        <span class="badge bg-success" *ngIf="user.roles.name === 'MAESTRO'">Maestro</span>
+                                        <span class="badge bg-success" *ngIf="user.roles.name === 'PARTNER'">Partner</span>
                                     </td>
                                     
 
                                     <td class="text-nowrap text-center">
 
-                                        <!-- <a [routerLink]="['/dashboard/user/edit', user.id]" class="cursor" data-toggle="tooltip" data-original-title="Edit">
+                                        <a [routerLink]="['/dashboard/partner/edit', user.id]" class="cursor" data-toggle="tooltip" data-original-title="Edit">
                                             <div class="btn btn-success"><i class="fa fa-edit"></i></div>
-                                        </a> -->
+                                        </a>
                                         <a (click)="eliminarUser(user.id)" class="cursor" data-toggle="tooltip" data-original-title="Borrar">
                                             <div class="btn btn-danger"><i class="fa fa-trash"></i></div>
                                         </a>

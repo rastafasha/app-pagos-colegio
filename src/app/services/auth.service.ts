@@ -18,6 +18,8 @@ const url_servicios = environment.url_servicios;
 export class AuthService {
 
   user:any;
+  role:any;
+  userprofile:any;
 
   constructor(
     private router: Router,
@@ -118,6 +120,24 @@ export class AuthService {
   for (var i = 0; i<menuLateral.length; i++) {
      menuLateral[i].classList.remove("show-sidebar");
   }
+}
+
+getRole(){
+  let USER = localStorage.getItem("user");
+     if (USER) {
+      try {
+        this.user = JSON.parse(USER);
+        this.role = this.user.roles && this.user.roles.length > 0 ? this.user.roles[0] : '';
+      } catch (e) {
+        console.error('Error parsing user from localStorage', e);
+        this.user = null;
+        this.role = '';
+      }
+    } else {
+      this.user = null;
+      this.role = '';
+    }
+    this.userprofile = this.user;
 }
 
 getLocalDarkMode(){

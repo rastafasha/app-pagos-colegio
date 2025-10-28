@@ -150,7 +150,7 @@ export class UserDetailsComponent implements OnInit {
                           showConfirmButton: false,
                           timer: 1500,
                         });
-            this.router.navigate(['/dashboard/usuarios']);
+            this.router.navigate(['/dashboard/partners']);
           }
         },
         error => this.error = error

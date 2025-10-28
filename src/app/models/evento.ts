@@ -1,30 +1,22 @@
 import { environment } from "src/environments/environment";
-import { Materia } from "./materia";
 const base_url = environment.url_media;
 
-export class User {
+export class Evento {
 
-    id: string;
-    // role_id: number = 3; // 3 = Rol miembro
-    username: string = "";
-    materia_id: string = "";
-    materia:Materia;
+    id: number;
+    user_id: number;
+    client_id: number;
     name: string = "";
-    surname: string = "";
-    n_doc: string = "";
-    address: string = "";
-    mobile: string = "";
-    telefono: string = "";
-    birth_date: Date ;
-    gender: number;
-    email: string = "";
-    password?: string = "";
-    token: string = "";
-    empresa: string = "";
-    is_active: number = 0;
+    description: string = "";
+    fecha_inicio: Date;
+    fecha_fin: Date;
+    precio_general: number = 0;
+    precio_estudiantes: number = 0;
+    precio_especialistas: number = 0;
     created_at: string = "";
     image: string = "";
-    roles?: 'SUPERADMIN' | 'ADMIN' | 'MEMBER' | 'GUEST'|'PARTNER';
+    avatar: string = "";
+    status?: 'ACTIVE' | 'INACTIVE' | 'FINISHED' | 'RETIRED';
     
 
 

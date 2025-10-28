@@ -1,8 +1,11 @@
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { Calificacion } from 'src/app/models/calificacion';
+import { Evento } from 'src/app/models/evento';
 import { Student } from 'src/app/models/student';
+import { User } from 'src/app/models/users';
 import { CalificacionService } from 'src/app/services/calificacion.service';
+import { EventoService } from 'src/app/services/evento.service';
 import { ParentService } from 'src/app/services/parent-service.service';
 import { StudentService } from 'src/app/services/student-service.service';
 import { environment } from 'src/environments/environment';
@@ -19,7 +22,9 @@ export class CalificacionesComponent {
   
     loading = false;
     usersCount = 0;
-    students: Student;
+    event: Evento;
+    eventos: Evento;
+    clients: User;
     studentprofile: Student;
     roles;
   
@@ -36,7 +41,7 @@ export class CalificacionesComponent {
     selectedMateria: Calificacion;
   
     constructor(
-     private calificacionService: CalificacionService,
+     private calificacionService: EventoService,
       private http: HttpClient,
       handler: HttpBackend
     ) {
@@ -62,10 +67,10 @@ export class CalificacionesComponent {
         return;
       }
       this.isLoading = true;
-      this.calificacionService.getCalificacionsbyStudent(this.userprofile.id).subscribe(
+      this.calificacionService.getUserbyEvent(this.userprofile.id).subscribe(
         (res: any) => {
-          this.students = res.students;
-          this.calificaciones = res.calificaciones;
+          this.event = res.event;
+          this.clients = res.clientes;
           this.isLoading = false;
         },
         (error) => {
@@ -77,7 +82,7 @@ export class CalificacionesComponent {
   
     search() {
       return this.calificacionService.search(this.query).subscribe((res: any) => {
-        this.students = res;
+        this.eventos = res;
         if (!this.query) {
           this.ngOnInit();
         }

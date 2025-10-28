@@ -51,7 +51,7 @@ export class ParentService {
     getAll(): Observable<any> {
   
       let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-      let URL = this.serverUrl+"/parents";
+      let URL = this.serverUrl+"/clients";
       return this.http.get(URL, {headers:headers});
   
       
@@ -60,7 +60,7 @@ export class ParentService {
     getUserById(id:number): Observable<any> {
   
       let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-      let URL = this.serverUrl+"/parent/show/"+id;
+      let URL = this.serverUrl+"/client/show/"+id;
       return this.http.get(URL,{headers:headers});
   
   
@@ -68,7 +68,7 @@ export class ParentService {
   
   
     update(data: any) {
-      const url = `${baseUrl}/parent/update/${data.id}`;
+      const url = `${baseUrl}/client/update/${data.id}`;
       return this.http.put(url, data, this.headers);
     }
 
@@ -78,12 +78,12 @@ export class ParentService {
         }
   
     deleteById(user:any): Observable<any> {
-      const url = `${baseUrl}/parent/destroy/${user}`;
+      const url = `${baseUrl}/client/destroy/${user}`;
       return this.http.delete(url, this.headers)
     }
 
     search(query=''){
-    return this.http.get(`${baseUrl}/parent/search/buscar`, {params: {buscar: query}})
+    return this.http.get(`${baseUrl}/client/search/buscar`, {params: {buscar: query}})
 
   }
 }

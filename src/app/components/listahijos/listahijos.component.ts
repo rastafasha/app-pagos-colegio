@@ -1,8 +1,9 @@
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Evento } from 'src/app/models/evento';
 import { Student } from 'src/app/models/student';
+import { EventoService } from 'src/app/services/evento.service';
 import { ParentService } from 'src/app/services/parent-service.service';
-import { StudentService } from 'src/app/services/student-service.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,8 +23,8 @@ export class ListahijosComponent implements OnChanges {
 
   loading = false;
   usersCount = 0;
-  students: Student;
-  studentprofile: Student;
+  events: Evento;
+  eventprofile: Evento;
   roles;
 
   p: number = 1;
@@ -42,7 +43,7 @@ export class ListahijosComponent implements OnChanges {
 
   constructor(
     private parentService: ParentService,
-    private studentService: StudentService,
+    private eventosService: EventoService,
     private http: HttpClient,
     handler: HttpBackend
   ) {
@@ -57,20 +58,20 @@ export class ListahijosComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['userprofile'] && this.userprofile && this.userprofile.id) {
-      this.getStudents();
+      this.getEvents();
     }
   }
 
-  getStudents(): void {
+  getEvents(): void {
     if (!this.userprofile || !this.userprofile.id) {
       this.isLoading = false;
       this.error = 'User profile is not defined';
       return;
     }
     this.isLoading = true;
-    this.studentService.getByParentId(this.userprofile.id).subscribe(
+    this.eventosService.getUserbyEvent(this.userprofile.id).subscribe(
       (res: any) => {
-        this.students = res.students;
+        this.events = res.events;
         this.isLoading = false;
       },
       (error) => {
@@ -81,8 +82,8 @@ export class ListahijosComponent implements OnChanges {
   }
 
   search() {
-    return this.studentService.search(this.query).subscribe((res: any) => {
-      this.students = res;
+    return this.eventosService.search(this.query).subscribe((res: any) => {
+      this.events = res;
       if (!this.query) {
         this.ngOnInit();
       }
@@ -90,7 +91,7 @@ export class ListahijosComponent implements OnChanges {
   }
 
   public PageSize(): void {
-    this.getStudents();
+    this.getEvents();
     this.query = '';
   }
 
