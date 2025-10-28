@@ -34,17 +34,16 @@ export class MenuComponent implements OnInit {
      if (USER) {
       try {
         this.user = JSON.parse(USER);
-        this.role = this.user.roles && this.user.roles.length > 0 ? this.user.roles[0] : '';
+        this.roles = this.user.roles && this.user.roles.length > 0 ? this.user.roles[0] : '';
       } catch (e) {
         console.error('Error parsing user from localStorage', e);
         this.user = null;
-        this.role = '';
+        this.roles = '';
       }
     } else {
       this.user = null;
-      this.role = '';
+      this.roles = '';
     }
-    
   }
 
   toggleNav(){
