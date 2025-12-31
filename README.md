@@ -1,2 +1,1 @@
-# app-admin-ticket
-# app-admin-ticket
+# app-pagos-colegio
