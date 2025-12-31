@@ -19,12 +19,6 @@
                         <i class="mdi mdi-animation"></i><span class="hide-menu">Mi Perfil </span>
                     </a>
                 </li>
-                <li>
-                    <a (click)="logout()"
-                        class="waves-effect waves-dark">
-                        <i class="fa fa-power-off"></i><span class="hide-menu">Salir</span>
-                    </a>
-                </li>
                 
             </ul>
             <ul id="sidebarnav" *ngIf="role === 'MAESTRO'">
@@ -47,12 +41,6 @@
                     <a [routerLink]="['/dashboard/user/edit/', user.id]" routerLinkActive="active"
                         class="waves-effect waves-dark">
                         <i class="mdi mdi-animation"></i><span class="hide-menu">Mi Perfil </span>
-                    </a>
-                </li>
-               <li>
-                    <a (click)="logout()"
-                        class="waves-effect waves-dark">
-                        <i class="fa fa-power-off"></i><span class="hide-menu">Salir</span>
                     </a>
                 </li>
             </ul>
@@ -102,17 +90,22 @@
                         <i class="fa fa-id-card"></i><span class="hide-menu">Mi Perfil </span>
                     </a>
                 </li>
+                <!-- <li>
+                    <a routerLink="video" routerLinkActive="active" class="waves-effect waves-dark">
+                        <i class="mdi mdi-animation"></i><span class="hide-menu">Video </span>
+                    </a>
+                </li> -->
+            </ul>
+
+             <ul id="sidebarnav" >
+               
                 <li>
                     <a (click)="logout()"
                         class="waves-effect waves-dark">
                         <i class="fa fa-power-off"></i><span class="hide-menu">Salir</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a routerLink="video" routerLinkActive="active" class="waves-effect waves-dark">
-                        <i class="mdi mdi-animation"></i><span class="hide-menu">Video </span>
-                    </a>
-                </li> -->
+                
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
