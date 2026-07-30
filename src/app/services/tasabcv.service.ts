@@ -31,13 +31,18 @@ export class TasabcvService {
     }
   
   
-    getTasas() {
-      const url = `${baseUrl}/tasabcvs`;
-      return this.http.get<any>(url,this.headers)
-        .pipe(
-          map((resp:{ok: boolean, tasabcvs: Tasabcv}) => resp.tasabcvs)
-        )
-    }
+    // getTasas() {
+    //   const url = `${baseUrl}/tasabcvs`;
+    //   return this.http.get<any>(url,this.headers)
+    //     .pipe(
+    //       map((resp:{ok: boolean, tasabcvs: Tasabcv}) => resp.tasabcvs)
+    //     )
+    // }
+
+    getTasasBCV(page: number, size: number) {
+  // Envía los parámetros de paginación para que Laravel responda rápido
+  return this.http.get(`${baseUrl}/tasabcvs?page=${page}&per_page=${size}`);
+}
   
     getTasaBcv(tasabcv: any) {
       const url = `${baseUrl}/tasabcv/show/${tasabcv}`;

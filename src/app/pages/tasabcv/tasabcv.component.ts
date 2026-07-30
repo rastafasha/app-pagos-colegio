@@ -33,8 +33,8 @@ export class TasabcvComponent {
   
   getTiposdePago() {
     this.isLoading = true;
-    this.tasaBcvService.getTasas().subscribe((resp: any) => {
-      this.tasasbcv= resp;
+    this.tasaBcvService.getTasasBCV(1, 10).subscribe((resp: any) => {
+      this.tasasbcv= resp.tasabcvs;
       this.isLoading = false;
       // console.log(this.tiposdepagos);
     });
